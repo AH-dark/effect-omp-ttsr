@@ -1,147 +1,130 @@
-# Effect v4 OMP Template Library
+# effect-omp-ttsr
 
-A reusable, project-scoped policy library for Effect v4 business code.
+[![Release](https://img.shields.io/github/v/release/AH-dark/effect-omp-ttsr?sort=semver)](https://github.com/AH-dark/effect-omp-ttsr/releases/latest)
+[![Release workflow](https://github.com/AH-dark/effect-omp-ttsr/actions/workflows/release.yml/badge.svg)](https://github.com/AH-dark/effect-omp-ttsr/actions/workflows/release.yml)
 
-- 120 policies across all 20 selected areas
-- 52 short AST-based OMP TTSR rules, 26 of them for Bun native APIs
-- 141 scoped Effect tsgo diagnostics, with separate correctness and style severity
-- 20 detailed policy guides and an explicit coverage map
-- No always-apply prompt and no model-judged rules
+Ready-to-use [OMP](https://github.com/can1357/oh-my-pi) TTSR rules that keep
+coding agents on idiomatic [Effect v4](https://effect.website/docs/v4/getting-started).
+When an agent edits or writes code that reaches for a native API, such as
+`fs`, `fetch`, `setTimeout`, `process.env`, or `Bun.*`, the matching rule
+injects a short reminder that names the Effect replacement.
 
-TTSR provides timely reminders. Type-aware diagnostics catch semantic mistakes.
-The policy catalog records architecture decisions that still require review.
-No detector proves every part of a policy.
+- **52 AST-based rules**: matched on syntax, never on prose, comments, or strings
+- **26 Bun rules**: one per Bun API family, each with a concrete replacement
+- **No always-apply prompt** and no model-judged rules
+- **Backed by 120 policies** with detailed guides and a coverage map
 
-## Quick start
+## Installation
 
-1. Edit `config/business-scope.json` if the default scope does not fit.
-2. Install the templates into an existing project:
+Download the latest release into your project's `.omp/rules/` directory:
 
-   ```sh
-   node scripts/install.mjs --target /path/to/project
-   ```
+```sh
+mkdir -p .omp/rules
+curl -fsSL https://github.com/AH-dark/effect-omp-ttsr/releases/latest/download/effect-omp-ttsr.tar.gz \
+  | tar -xz --strip-components=1 -C .omp/rules
+```
 
-3. The diagnostics CLI needs a compatible native TypeScript installation. For a
-   new project using the reference baseline:
+With the GitHub CLI:
 
-   ```sh
-   bun add -d @effect/tsgo@0.73.5 typescript@7.0.2
-   ```
+```sh
+gh release download -R AH-dark/effect-omp-ttsr -p 'effect-omp-ttsr.tar.gz' -O - \
+  | tar -xz --strip-components=1 -C .omp/rules
+```
 
-   For an existing project, review compiler compatibility first. Follow the
-   upstream setup for a separate native TypeScript alias if the project must
-   retain another compiler. Treat a compiler upgrade as a separate change.
+Prefer a manual install? Download `effect-omp-ttsr.zip` from the
+[latest release](https://github.com/AH-dark/effect-omp-ttsr/releases/latest),
+extract it, and copy the `effect-omp-ttsr/*.md` files into `.omp/rules/`.
+Each release also publishes `SHA256SUMS` for verifying the archives.
 
-4. Run the standalone business-policy check:
+Then start OMP from the project root so it discovers `.omp/rules/`. Make sure
+TTSR is enabled in your OMP settings.
 
-   ```sh
-   node .omp/effect-template/scripts/check.mjs --project tsconfig.json
-   ```
+### Updating
 
-The installer writes `.omp/rules/effect-v4-*.md` and
-`.omp/effect-template/`. It preserves `package.json`, `tsconfig.json`, existing
-unrelated rules, and global OMP configuration. It does not install dependencies,
-patch compilers, enable tools globally, or add an application-wide system prompt.
+Run the install command again. Rule files are named `effect-v4-*.md`, so they
+do not overwrite your own rules. Remove stale `effect-v4-*.md` files first if a
+release renames or drops a rule.
 
-Start OMP from the installation target as its working directory so its native
-project-rule discovery loads `.omp/rules/`. Do not assume a session launched
-from a nested package automatically loads the root project's native rule files.
+## Usage
 
-Run the installer again after changing scope. Previously installed files can be
-regenerated; locally edited files are preserved by a conflict error.
-`--force` can replace edited files already recorded as installed, but cannot
-overwrite an unrelated conflicting file.
+Nothing to configure. When an agent edit matches a rule, OMP injects its
+reminder once per session. For example, writing
+
+```ts
+const text = await Bun.file("order.json").text()
+```
+
+triggers `effect-v4-bun-files`, which points to `FileSystem.readFileString`
+and the `BunFileSystem` layer.
+
+Direct platform calls such as `Bun.*`, Node built-in imports, and running an
+Effect runtime inside business code interrupt the tool call. Ambiguous globals
+such as `console` or `Date` produce a non-interrupting reminder.
 
 ## Scope
 
-The default scope sets no `businessInclude`, so rules and diagnostics apply to
-every file in the installation target. Only these directories are excluded, at
-any depth:
+Rules apply to every file except these directories, at any depth:
 
-```text
-**/*__*/**      (any directory whose name contains "__", e.g. __tests__)
-**/dist/**
-**/build/**
-**/coverage/**
-```
+| Pattern | Excludes |
+| --- | --- |
+| `**/*__*/**` | Any directory whose name contains `__`, such as `__tests__` and `__mocks__` |
+| `**/dist/**` | Build output |
+| `**/build/**` | Build output |
+| `**/coverage/**` | Coverage reports |
 
-Set `businessInclude` to project-relative globs to narrow the scope.
+Keep unavoidable native code, such as an SDK adapter or the application entry
+point, in one of these directories or narrow the scope with a custom build. See
+[CONTRIBUTING.md](CONTRIBUTING.md#custom-scope).
 
-For a monorepo:
+## What the rules cover
 
-```sh
-node scripts/install.mjs --target /path/to/project --scope config/business-scope.monorepo.json
-```
-
-Custom scope files override the keys they contain and retain the remaining
-defaults. Includes are relative to the installation target. Windows paths are
-normalized to POSIX separators in generated OMP globs.
-
-## What each layer checks
-
-| Layer | Purpose | Important limit |
+| Area | Native API | Effect replacement |
 | --- | --- | --- |
-| TTSR | Short reminders for direct imports and recognizable API calls | AST syntax does not resolve aliases or shadowed variables |
-| tsgo | Type-aware Effect diagnostics within selected business files | The exact installed rule implementation determines detection coverage |
-| Policy guides | Resource ownership, protocol semantics, cache correctness, and other design decisions | Requires contextual review |
-| Existing project checks | Ordinary TypeScript errors and application behavior | Keep the project's existing checks and meaningful tests |
+| Files and paths | `fs`, `path`, `Bun.file`, `Bun.Glob` | `FileSystem`, `Path`, `Glob` |
+| HTTP | `fetch`, `http`, `axios`, `Bun.serve`, `Bun.fetch` | `HttpClient`, `HttpRouter`, `HttpServer` |
+| Processes | `child_process`, `Bun.spawn`, `Bun.$` | `ChildProcess`, `ChildProcessSpawner` |
+| Time | `setTimeout`, `Date.now`, `Bun.sleep`, `Bun.cron` | `Effect.sleep`, `Clock`, `Schedule` |
+| Randomness and crypto | `Math.random`, `crypto`, `Bun.password`, `Bun.CryptoHasher` | `Random`, `SecureRandom`, `Password`, `Digest` |
+| Configuration | `process.env`, `Bun.env`, `Bun.argv` | `Config`, `Redacted`, `effect/cli` |
+| Data and storage | `JSON.parse`, `Bun.sql`, `bun:sqlite`, `Bun.redis`, `Bun.TOML` | `Schema`, `SqlClient`, `Redis`, `effect/encoding` |
+| Runtime | `Effect.runPromise` in business code, `process.exit` | `BunRuntime.runMain` at the entry point |
 
-TTSR rule bodies are at most 80 words. All use `repeatMode: once` by default.
-Direct platform imports and business runtime execution can interrupt tool calls.
-Ambiguous global names use non-interrupting reminders. These reminders can arrive
-after a tool has written the code; they are not write-time rejection.
+Full references:
 
-The installer does not change `ttsr.enabled`. Enable TTSR in your existing OMP
-configuration if you have disabled it. The rules target `edit` and `write`;
-other write mechanisms need the completed-file diagnostics and review.
+- [CATALOG.md](CATALOG.md): all 120 policies and the rules and diagnostics behind each
+- [guides/](guides/): detailed policies, exceptions, and references
+- [docs/bun.md](docs/bun.md): Bun API to Effect replacement map
+- [docs/enforcement.md](docs/enforcement.md): severity, prompt budget, and detection limits
+- [docs/scoping.md](docs/scoping.md): how path gates work
+- [docs/semantics.md](docs/semantics.md): migrations that need semantic care
+- [examples/](examples/): business code and an explicit SDK adapter
 
-## Diagnostics without changing tsconfig
+## Limitations
 
-The supplied check passes the generated options through tsgo's inline
-`--lspconfig` argument. It uses argument arrays, not a shell command string.
-It reads the installed schema and fails when the baseline version or requested
-diagnostic names are unavailable.
+- Matching is syntactic: aliases, destructuring, and shadowed bindings are not resolved.
+- Reminders can arrive after a tool has written the code; they are not write-time rejection.
+- Rules target the `edit` and `write` tools only.
+- Policies about design, such as resource ownership or cache correctness, still need review.
 
-For an explicitly reduced compatibility check with an older tool:
+For type-aware checks, add the Effect tsgo diagnostics described in
+[CONTRIBUTING.md](CONTRIBUTING.md#type-aware-diagnostics).
 
-```sh
-node .omp/effect-template/scripts/check.mjs --project tsconfig.json --allow-older-tsgo
-```
+## Compatibility
 
-Compatibility mode reports omitted diagnostics. It does not qualify as a full
-baseline-version check and should not silently replace your CI baseline.
+| Component | Version |
+| --- | --- |
+| OMP | 19.0.1 |
+| Effect | 4.1.5 |
+| `@effect/tsgo` diagnostic baseline | 0.73.5 |
+| `bun-types` | 1.4.5 |
 
-For editor diagnostics, merge the object from
-`.omp/effect-template/tsgo-options.json` into the existing
-`compilerOptions.plugins` array. Preserve unrelated plugin entries and follow
-the Effect tsgo setup instructions for your compiler/editor version.
-An ordinary TypeScript compiler does not automatically execute this plugin
-because a plugin object appears in tsconfig.
+See [SOURCES.md](SOURCES.md) for pinned commits and references.
 
-Correctness errors and clear native-API substitutions are errors. Contextual
-anti-patterns are warnings. Style improvements are suggestions. Unsupported v3
-checks, deprecated duplicate checks, unrelated generic lint rules, and conflicting
-import-style prescriptions remain off. The diagnostic catalog lists every choice.
-The standalone check fails on errors; warnings and suggestions remain visible.
+## Contributing
 
-## Read the library
+Building from source, customizing scope, type-aware diagnostics, and the
+release process are documented in [CONTRIBUTING.md](CONTRIBUTING.md).
 
-- `CATALOG.md`: all 120 policies and their coverage
-- `guides/`: detailed rules, exceptions, diagnostics, and references
-- `docs/scoping.md`: path gates and exclusion behavior
-- `docs/semantics.md`: migrations that need semantic care
-- `docs/enforcement.md`: prompt budget, diagnostic severity, and coverage limits
-- `docs/bun.md`: Bun native API to Effect replacement map
-- `examples/`: business code and an explicit SDK adapter
-- `SOURCES.md`: versions, commits, and authoritative references
+## Acknowledgements
 
-`bun run build` writes generated example files to `preview/` (not committed),
-not a second installation. Each published GitHub release attaches the generated
-rule files as `.tar.gz` and `.zip` archives; they extract to a visible
-`effect-omp-ttsr/` directory of Markdown rules. Copy them into a project's
-`.omp/rules/` to use them.
-Generate project-specific files with the installer instead of copying placeholder
-absolute paths from the preview.
-
-The compiler and installer intentionally use Node APIs: they are development
-tooling outside the business-code policy scope.
+See [NOTICE.md](NOTICE.md) for upstream attributions.
