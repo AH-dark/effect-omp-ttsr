@@ -1,0 +1,591 @@
+[
+  {
+    "name": "effect-v4-node-files",
+    "policies": [
+      "B1",
+      "B2",
+      "B4",
+      "B5"
+    ],
+    "patterns": [
+      "import $$$ from \"fs\"",
+      "require(\"fs\")",
+      "import(\"fs\")",
+      "import $$$ from \"node:fs\"",
+      "require(\"node:fs\")",
+      "import(\"node:fs\")",
+      "import $$$ from \"fs/promises\"",
+      "require(\"fs/promises\")",
+      "import(\"fs/promises\")",
+      "import $$$ from \"node:fs/promises\"",
+      "require(\"node:fs/promises\")",
+      "import(\"node:fs/promises\")"
+    ],
+    "body": "Use the FileSystem service for filesystem operations. Wrapping Node fs in Effect.sync or Effect.tryPromise does not provide the service abstraction. Keep unavoidable native filesystem code in an excluded adapter.",
+    "interrupt": "tool-only",
+    "positive": "import fs from \"node:fs\"; export const read = fs.readFileSync;",
+    "negative": "import { FileSystem } from \"effect\";",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-node-path",
+    "policies": [
+      "B3"
+    ],
+    "patterns": [
+      "import $$$ from \"path\"",
+      "require(\"path\")",
+      "import(\"path\")",
+      "import $$$ from \"node:path\"",
+      "require(\"node:path\")",
+      "import(\"node:path\")",
+      "import $$$ from \"path/posix\"",
+      "require(\"path/posix\")",
+      "import(\"path/posix\")",
+      "import $$$ from \"node:path/posix\"",
+      "require(\"node:path/posix\")",
+      "import(\"node:path/posix\")",
+      "import $$$ from \"path/win32\"",
+      "require(\"path/win32\")",
+      "import(\"path/win32\")",
+      "import $$$ from \"node:path/win32\"",
+      "require(\"node:path/win32\")",
+      "import(\"node:path/win32\")"
+    ],
+    "body": "Use the injected Path service for platform-dependent paths. Preserve explicit POSIX or Windows semantics when they matter; keep platform-specific integration in an adapter.",
+    "interrupt": "tool-only",
+    "positive": "import path from \"node:path\"; export const join = path.join;",
+    "negative": "import { Path } from \"effect\";",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-node-http",
+    "policies": [
+      "C1",
+      "C3",
+      "C5",
+      "C6"
+    ],
+    "patterns": [
+      "import $$$ from \"http\"",
+      "require(\"http\")",
+      "import(\"http\")",
+      "import $$$ from \"node:http\"",
+      "require(\"node:http\")",
+      "import(\"node:http\")",
+      "import $$$ from \"https\"",
+      "require(\"https\")",
+      "import(\"https\")",
+      "import $$$ from \"node:https\"",
+      "require(\"node:https\")",
+      "import(\"node:https\")"
+    ],
+    "body": "Use the Effect HTTP client for requests and the matching platform adapter at startup. Preserve HTTP status handling, response lifetime, streaming, timeout, and retry semantics.",
+    "interrupt": "tool-only",
+    "positive": "import * as http from \"node:http\";",
+    "negative": "import { HttpClient } from \"effect/http\";",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-node-child-process",
+    "policies": [
+      "D1",
+      "D2",
+      "D3",
+      "D4"
+    ],
+    "patterns": [
+      "import $$$ from \"child_process\"",
+      "require(\"child_process\")",
+      "import(\"child_process\")",
+      "import $$$ from \"node:child_process\"",
+      "require(\"node:child_process\")",
+      "import(\"node:child_process\")"
+    ],
+    "body": "Use ChildProcess and ChildProcessSpawner from the installed v4 process API. Pass explicit arguments, choose environment inheritance deliberately, and scope subprocess lifetime and output consumption.",
+    "interrupt": "tool-only",
+    "positive": "import { spawn } from \"node:child_process\";",
+    "negative": "import { ChildProcess } from \"effect/process\";",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-node-timers",
+    "policies": [
+      "E1",
+      "E2",
+      "E3"
+    ],
+    "patterns": [
+      "import $$$ from \"timers\"",
+      "require(\"timers\")",
+      "import(\"timers\")",
+      "import $$$ from \"node:timers\"",
+      "require(\"node:timers\")",
+      "import(\"node:timers\")",
+      "import $$$ from \"timers/promises\"",
+      "require(\"timers/promises\")",
+      "import(\"timers/promises\")",
+      "import $$$ from \"node:timers/promises\"",
+      "require(\"node:timers/promises\")",
+      "import(\"node:timers/promises\")"
+    ],
+    "body": "Use Effect.sleep for waiting, Schedule for recurring work, and Effect retry operations for retries. Keep the original timing and cancellation contract.",
+    "interrupt": "tool-only",
+    "positive": "import { setTimeout } from \"node:timers/promises\";",
+    "negative": "import { Effect, Schedule } from \"effect\";",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-node-streams",
+    "policies": [
+      "O1",
+      "O2",
+      "O3",
+      "O4",
+      "O5",
+      "O6"
+    ],
+    "patterns": [
+      "import $$$ from \"stream\"",
+      "require(\"stream\")",
+      "import(\"stream\")",
+      "import $$$ from \"node:stream\"",
+      "require(\"node:stream\")",
+      "import(\"node:stream\")",
+      "import $$$ from \"stream/promises\"",
+      "require(\"stream/promises\")",
+      "import(\"stream/promises\")",
+      "import $$$ from \"node:stream/promises\"",
+      "require(\"node:stream/promises\")",
+      "import(\"node:stream/promises\")",
+      "import $$$ from \"stream/web\"",
+      "require(\"stream/web\")",
+      "import(\"stream/web\")",
+      "import $$$ from \"node:stream/web\"",
+      "require(\"node:stream/web\")",
+      "import(\"node:stream/web\")"
+    ],
+    "body": "Use Effect Stream and Sink in business pipelines. Keep Node stream conversion in adapters and preserve backpressure, ordering, early termination, and resource cleanup.",
+    "interrupt": "tool-only",
+    "positive": "import { Readable } from \"node:stream\";",
+    "negative": "import { Stream, Sink } from \"effect\";",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-node-crypto",
+    "policies": [
+      "F3",
+      "F4",
+      "F6"
+    ],
+    "patterns": [
+      "import $$$ from \"crypto\"",
+      "require(\"crypto\")",
+      "import(\"crypto\")",
+      "import $$$ from \"node:crypto\"",
+      "require(\"node:crypto\")",
+      "import(\"node:crypto\")"
+    ],
+    "body": "Prefer an equivalent Effect crypto operation; secure UUIDs use SecureRandom from effect/crypto. Preserve algorithm, encoding, and security properties. Put unmatched native crypto operations in an injected adapter.",
+    "interrupt": "tool-only",
+    "positive": "import { randomUUID } from \"node:crypto\";",
+    "negative": "import { SecureRandom } from \"effect/crypto\";",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-obsolete-imports",
+    "policies": [
+      "A2",
+      "A3",
+      "A4"
+    ],
+    "patterns": [
+      "import $$$ from \"@effect/schema\"",
+      "require(\"@effect/schema\")",
+      "import(\"@effect/schema\")",
+      "import $$$ from \"@effect/schema/Schema\"",
+      "require(\"@effect/schema/Schema\")",
+      "import(\"@effect/schema/Schema\")",
+      "import $$$ from \"@effect/match\"",
+      "require(\"@effect/match\")",
+      "import(\"@effect/match\")",
+      "import $$$ from \"@effect/platform/FileSystem\"",
+      "require(\"@effect/platform/FileSystem\")",
+      "import(\"@effect/platform/FileSystem\")",
+      "import $$$ from \"@effect/platform/Path\"",
+      "require(\"@effect/platform/Path\")",
+      "import(\"@effect/platform/Path\")",
+      "import $$$ from \"@effect/platform/HttpClient\"",
+      "require(\"@effect/platform/HttpClient\")",
+      "import(\"@effect/platform/HttpClient\")",
+      "import $$$ from \"@effect/platform/Command\"",
+      "require(\"@effect/platform/Command\")",
+      "import(\"@effect/platform/Command\")",
+      "import $$$ from \"@effect/platform/CommandExecutor\"",
+      "require(\"@effect/platform/CommandExecutor\")",
+      "import(\"@effect/platform/CommandExecutor\")",
+      "import $$$ from \"effect/Either\"",
+      "require(\"effect/Either\")",
+      "import(\"effect/Either\")"
+    ],
+    "body": "Use the installed Effect v4 exports and migration map. Schema, Match, FileSystem, and Path are integrated in effect; Result replaces the v3 Either module. Verify HTTP and process paths against the lockfile before changing an import.",
+    "interrupt": "tool-only",
+    "positive": "import * as Schema from \"@effect/schema/Schema\";",
+    "negative": "import { Schema, Match, Result } from \"effect\";",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-foreign-http-clients",
+    "policies": [
+      "C1",
+      "C2"
+    ],
+    "patterns": [
+      "import $$$ from \"axios\"",
+      "require(\"axios\")",
+      "import(\"axios\")",
+      "import $$$ from \"got\"",
+      "require(\"got\")",
+      "import(\"got\")",
+      "import $$$ from \"node-fetch\"",
+      "require(\"node-fetch\")",
+      "import(\"node-fetch\")",
+      "import $$$ from \"undici\"",
+      "require(\"undici\")",
+      "import(\"undici\")",
+      "import $$$ from \"ky\"",
+      "require(\"ky\")",
+      "import(\"ky\")",
+      "import $$$ from \"superagent\"",
+      "require(\"superagent\")",
+      "import(\"superagent\")"
+    ],
+    "body": "Prefer the existing Effect HttpClient for business HTTP work. If an existing SDK or required protocol capability needs this client, place it behind an injected adapter and preserve its cancellation and error semantics.",
+    "interrupt": "never",
+    "positive": "import axios from \"axios\";",
+    "negative": "import { HttpClient } from \"effect/http\";",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-global-fetch",
+    "policies": [
+      "C1",
+      "C3",
+      "C4",
+      "C5",
+      "C6"
+    ],
+    "patterns": [
+      "fetch($$$)",
+      "globalThis.fetch($$$)"
+    ],
+    "body": "For global HTTP requests, use the injected Effect HttpClient instead of wrapping fetch in a Promise Effect. Decode external bodies, handle status codes deliberately, and preserve cancellation. A local domain function named fetch is not a global HTTP call.",
+    "interrupt": "never",
+    "positive": "const result = fetch(\"https://example.com\");",
+    "negative": "const result = client.get(\"https://example.com\");",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-global-console",
+    "policies": [
+      "H1",
+      "H2",
+      "H3"
+    ],
+    "patterns": [
+      "console.log($$$)",
+      "console.info($$$)",
+      "console.warn($$$)",
+      "console.error($$$)",
+      "console.debug($$$)",
+      "console.trace($$$)",
+      "console.dir($$$)",
+      "console.table($$$)",
+      "console.time($$$)",
+      "console.timeEnd($$$)",
+      "globalThis.console.log($$$)",
+      "globalThis.console.info($$$)",
+      "globalThis.console.warn($$$)",
+      "globalThis.console.error($$$)",
+      "globalThis.console.debug($$$)"
+    ],
+    "body": "Use Effect.log operations for application logs and structured context. Intentional human output belongs to Console or Terminal; keep machine-readable output separate. Check whether console is a shadowed local binding before changing it.",
+    "interrupt": "never",
+    "positive": "console.log(\"order completed\");",
+    "negative": "const event = Effect.logInfo(\"order completed\");",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-global-timers",
+    "policies": [
+      "E1",
+      "E2",
+      "E3"
+    ],
+    "patterns": [
+      "setTimeout($$$)",
+      "setInterval($$$)",
+      "setImmediate($$$)",
+      "globalThis.setTimeout($$$)",
+      "globalThis.setInterval($$$)",
+      "globalThis.setImmediate($$$)"
+    ],
+    "body": "Use Effect.sleep or Schedule for business timing. Adapt required foreign callbacks outside business code, and preserve fixed-rate versus spaced timing. Check local bindings before replacing a syntactic timer call.",
+    "interrupt": "never",
+    "positive": "setTimeout(() => work(), 1000);",
+    "negative": "const wait = Effect.sleep(\"1 second\");",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-global-clock",
+    "policies": [
+      "E4",
+      "E5"
+    ],
+    "patterns": [
+      "Date.now($$$)",
+      "new Date()",
+      "globalThis.Date.now($$$)",
+      "new globalThis.Date()",
+      "performance.now($$$)",
+      "process.hrtime($$$)",
+      "process.hrtime.bigint($$$)"
+    ],
+    "body": "Read current time through Clock or the corresponding Effect date/time operation. Preserve wall-clock versus monotonic-time semantics. Pure construction from an existing timestamp can remain a pure conversion.",
+    "interrupt": "never",
+    "positive": "const now = Date.now();",
+    "negative": "const date = new Date(existingTimestamp);",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-global-random",
+    "policies": [
+      "F1",
+      "F2",
+      "F5"
+    ],
+    "patterns": [
+      "Math.random($$$)",
+      "globalThis.Math.random($$$)"
+    ],
+    "body": "Use Random for ordinary business randomness and inject a deterministic source in tests. Security-sensitive values require a cryptographically secure source instead.",
+    "interrupt": "never",
+    "positive": "const value = Math.random();",
+    "negative": "const value = Random.next;",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-secure-uuid",
+    "policies": [
+      "F3",
+      "F4",
+      "F5"
+    ],
+    "patterns": [
+      "crypto.randomUUID($$$)",
+      "globalThis.crypto.randomUUID($$$)"
+    ],
+    "body": "Use the installed v4 SecureRandom service for secure UUID generation. Preserve UUID version and formatting, and provide its required Layer at composition. Never substitute ordinary seeded Random for secure randomness.",
+    "interrupt": "never",
+    "positive": "const id = crypto.randomUUID();",
+    "negative": "const id = secureRandom.uuidV4;",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-process-env",
+    "policies": [
+      "G1",
+      "G2",
+      "G3",
+      "G4",
+      "G6"
+    ],
+    "patterns": [
+      "process.env",
+      "globalThis.process.env"
+    ],
+    "body": "Read application settings through Config and validate them at the boundary. Keep secrets Redacted and replace ConfigProvider in tests. Direct host-environment access belongs to configuration bootstrap adapters.",
+    "interrupt": "never",
+    "positive": "const port = process.env.PORT;",
+    "negative": "const port = Config.schema(Schema.FiniteFromString, \"PORT\");",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-native-json",
+    "policies": [
+      "N1",
+      "N2",
+      "N3",
+      "N5",
+      "N6"
+    ],
+    "patterns": [
+      "JSON.parse($$$)",
+      "JSON.stringify($$$)",
+      "globalThis.JSON.parse($$$)",
+      "globalThis.JSON.stringify($$$)"
+    ],
+    "body": "Use the appropriate Schema JSON codec at this boundary. Keep parsing failures typed and preserve the wire format, omission behavior, transformations, and numeric semantics; do not replace serialization mechanically.",
+    "interrupt": "never",
+    "positive": "const value = JSON.parse(text);",
+    "negative": "const codec = Schema.fromJsonString(Order);",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-promise-fanout",
+    "policies": [
+      "K1",
+      "K2",
+      "I5"
+    ],
+    "patterns": [
+      "Promise.all($$$)",
+      "Promise.allSettled($$$)",
+      "globalThis.Promise.all($$$)",
+      "globalThis.Promise.allSettled($$$)"
+    ],
+    "body": "Compose Effect work with Effect.all or Effect.forEach. Choose a concurrency bound for growing input and preserve all-versus-settled result semantics. Effect.all and forEach are sequential unless concurrency is configured.",
+    "interrupt": "never",
+    "positive": "const pending = Promise.all(items.map(load));",
+    "negative": "const program = Effect.forEach(items, load, { concurrency: 8 });",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-promise-race",
+    "policies": [
+      "K3",
+      "I6"
+    ],
+    "patterns": [
+      "Promise.race($$$)",
+      "Promise.any($$$)",
+      "globalThis.Promise.race($$$)",
+      "globalThis.Promise.any($$$)"
+    ],
+    "body": "Use the Effect race operation matching first completion or first success. Preserve aggregate failure behavior and cancel losing work where the underlying operation supports cancellation.",
+    "interrupt": "never",
+    "positive": "const pending = Promise.race(tasks);",
+    "negative": "const program = Effect.raceFirst(left, right);",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-new-promise",
+    "policies": [
+      "I1",
+      "I5",
+      "I6"
+    ],
+    "patterns": [
+      "new Promise($$$)",
+      "new globalThis.Promise($$$)"
+    ],
+    "body": "Use Effect composition for business control flow. Bridge foreign callbacks with Effect.callback in an adapter, creating work lazily and registering cleanup. Do not claim interruption cancels a foreign operation that has no cancellation support.",
+    "interrupt": "never",
+    "positive": "const pending = new Promise((resolve) => resolve(1));",
+    "negative": "const program = Effect.callback((resume) => resume(Effect.succeed(1)));",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-abort-controller",
+    "policies": [
+      "I6",
+      "K3"
+    ],
+    "patterns": [
+      "new AbortController($$$)",
+      "new globalThis.AbortController($$$)"
+    ],
+    "body": "Use the Effect-provided AbortSignal or the signal supplied to a Promise/callback constructor when adapting cancellable work. Keep unavoidable controller ownership in an adapter; do not start an unrelated cancellation tree.",
+    "interrupt": "never",
+    "positive": "const controller = new AbortController();",
+    "negative": "const request = Effect.tryPromise({ try: (signal) => sdk.load({ signal }), catch: toError });",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-process-exit",
+    "policies": [
+      "D5",
+      "L5",
+      "L6"
+    ],
+    "patterns": [
+      "process.exit($$$)",
+      "globalThis.process.exit($$$)",
+      "process.abort($$$)"
+    ],
+    "body": "Return a typed outcome from business code. Let the application entry point own exit status, signals, and graceful shutdown through the platform runtime.",
+    "interrupt": "tool-only",
+    "positive": "process.exit(1);",
+    "negative": "const result = Effect.fail(new ShutdownRequested());",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-runtime-in-business",
+    "policies": [
+      "K6",
+      "L5",
+      "L6"
+    ],
+    "patterns": [
+      "Effect.runPromise($$$)",
+      "Effect.runPromiseExit($$$)",
+      "Effect.runSync($$$)",
+      "Effect.runSyncExit($$$)",
+      "Effect.runFork($$$)",
+      "Effect.runCallback($$$)"
+    ],
+    "body": "Compose and yield Effects inside business code instead of starting another runtime. Keep runMain and Promise framework bridges at an explicit application boundary, reusing the intended services and lifetime.",
+    "interrupt": "tool-only",
+    "positive": "const pending = Effect.runPromise(program);",
+    "negative": "const next = Effect.flatMap(program, useResult);",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-detached-fiber",
+    "policies": [
+      "K4",
+      "K5"
+    ],
+    "patterns": [
+      "Effect.forkDetach($$$)"
+    ],
+    "body": "Check the owner of this background fiber. Prefer child or scoped lifetime for operation-owned work; detached work needs intentional application ownership, failure observation, and shutdown behavior.",
+    "interrupt": "never",
+    "positive": "const daemon = Effect.forkDetach(worker);",
+    "negative": "const workerFiber = Effect.forkScoped(worker);",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-schema-sync",
+    "policies": [
+      "N3",
+      "I4"
+    ],
+    "patterns": [
+      "Schema.decodeSync($$$)",
+      "Schema.decodeUnknownSync($$$)",
+      "Schema.encodeSync($$$)",
+      "Schema.encodeUnknownSync($$$)"
+    ],
+    "body": "In an Effect workflow, use the corresponding Effect-based Schema decode or encode operation so validation failures stay in the typed error channel. Pure synchronous validation at an intentional boundary may remain synchronous.",
+    "interrupt": "never",
+    "positive": "const value = Schema.decodeUnknownSync(Order)(input);",
+    "negative": "const program = Schema.decodeUnknownEffect(Order)(input);",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-native-error-class",
+    "policies": [
+      "J1",
+      "J3"
+    ],
+    "patterns": [
+      "class $NAME extends Error { $$$ }"
+    ],
+    "body": "Use a tagged Data or Schema error for expected domain failures, with useful context. Native Error subclasses needed by a foreign protocol belong in the corresponding adapter; defects may still carry an Error cause.",
+    "interrupt": "never",
+    "positive": "class InvalidOrder extends Error { }",
+    "negative": "class InvalidOrder extends Data.TaggedError(\"InvalidOrder\")<{}> {}",
+    "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  }
+]

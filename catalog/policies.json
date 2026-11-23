@@ -1,0 +1,2379 @@
+[
+  {
+    "id": "A1",
+    "group": "A",
+    "groupTitle": "Version and imports",
+    "title": "Target the installed v4 version",
+    "instruction": "Check package manifests, the lockfile, and installed types before choosing an API. Use supported v4 exports.",
+    "exceptions": "Use the project lockfile and installed exports as the final API authority. Do not upgrade dependencies as an incidental rule fix.",
+    "diagnostics": [
+      "duplicatePackage",
+      "outdatedApi"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/getting-started",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "A2",
+    "group": "A",
+    "groupTitle": "Version and imports",
+    "title": "Replace removed APIs",
+    "instruction": "Replace removed or renamed APIs using the migration map for the installed version. Do not copy v3 examples unchanged.",
+    "exceptions": "Use the project lockfile and installed exports as the final API authority. Do not upgrade dependencies as an incidental rule fix.",
+    "diagnostics": [
+      "outdatedApi"
+    ],
+    "triggers": [
+      "effect-v4-obsolete-imports"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/getting-started",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "A3",
+    "group": "A",
+    "groupTitle": "Version and imports",
+    "title": "Use integrated Schema and Match",
+    "instruction": "Import Schema and Match from the v4 effect package instead of obsolete standalone packages.",
+    "exceptions": "Use the project lockfile and installed exports as the final API authority. Do not upgrade dependencies as an incidental rule fix.",
+    "diagnostics": [
+      "obsoleteSchemaImport",
+      "obsoleteMatchImport"
+    ],
+    "triggers": [
+      "effect-v4-obsolete-imports"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/getting-started",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "A4",
+    "group": "A",
+    "groupTitle": "Version and imports",
+    "title": "Use current platform imports",
+    "instruction": "Use FileSystem and Path from effect. Use the installed v4 HTTP, process, crypto, and runtime exports.",
+    "exceptions": "Use the project lockfile and installed exports as the final API authority. Do not upgrade dependencies as an incidental rule fix.",
+    "diagnostics": [
+      "nodeBuiltinImport"
+    ],
+    "triggers": [
+      "effect-v4-obsolete-imports"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/getting-started",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "A5",
+    "group": "A",
+    "groupTitle": "Version and imports",
+    "title": "Verify uncertain APIs",
+    "instruction": "Inspect the installed declaration or authoritative source when an API is uncertain. Do not invent an export, signature, or error type.",
+    "exceptions": "Use the project lockfile and installed exports as the final API authority. Do not upgrade dependencies as an incidental rule fix.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/getting-started",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "A6",
+    "group": "A",
+    "groupTitle": "Version and imports",
+    "title": "Preserve dependency decisions",
+    "instruction": "Keep existing dependency versions and package-manager conventions. Propose a separate upgrade when a required capability is unavailable.",
+    "exceptions": "Use the project lockfile and installed exports as the final API authority. Do not upgrade dependencies as an incidental rule fix.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/getting-started",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "B1",
+    "group": "B",
+    "groupTitle": "Files, paths, and terminal",
+    "title": "Use FileSystem",
+    "instruction": "Read, write, inspect, copy, remove, and enumerate files through the FileSystem service.",
+    "exceptions": "Platform adapters and application startup are outside the default business scope. Preserve required platform-specific path behavior.",
+    "diagnostics": [
+      "nodeBuiltinImport"
+    ],
+    "triggers": [
+      "effect-v4-node-files"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/platform/file-system",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "B2",
+    "group": "B",
+    "groupTitle": "Files, paths, and terminal",
+    "title": "Avoid blocking filesystem calls",
+    "instruction": "Keep synchronous filesystem I/O out of business code. Wrapping a blocking Node operation in Effect.sync does not make it nonblocking.",
+    "exceptions": "Platform adapters and application startup are outside the default business scope. Preserve required platform-specific path behavior.",
+    "diagnostics": [
+      "nodeBuiltinImport"
+    ],
+    "triggers": [
+      "effect-v4-node-files"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/platform/file-system",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "B3",
+    "group": "B",
+    "groupTitle": "Files, paths, and terminal",
+    "title": "Use the Path service",
+    "instruction": "Use the injected Path service for platform-dependent path operations. Make POSIX or Windows-specific semantics explicit.",
+    "exceptions": "Platform adapters and application startup are outside the default business scope. Preserve required platform-specific path behavior.",
+    "diagnostics": [
+      "nodeBuiltinImport"
+    ],
+    "triggers": [
+      "effect-v4-node-path"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/platform/file-system",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "B4",
+    "group": "B",
+    "groupTitle": "Files, paths, and terminal",
+    "title": "Scope filesystem resources",
+    "instruction": "Use scoped file handles and scoped temporary resources when their lifetime belongs to the operation. Close or remove resources on interruption.",
+    "exceptions": "Platform adapters and application startup are outside the default business scope. Preserve required platform-specific path behavior.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-node-files"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/platform/file-system",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "B5",
+    "group": "B",
+    "groupTitle": "Files, paths, and terminal",
+    "title": "Stream file changes and content",
+    "instruction": "Use FileSystem stream and watch operations when processing incremental content or changes. Keep consumption bounded.",
+    "exceptions": "Platform adapters and application startup are outside the default business scope. Preserve required platform-specific path behavior.",
+    "diagnostics": [
+      "nodeBuiltinImport"
+    ],
+    "triggers": [
+      "effect-v4-node-files"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/platform/file-system",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "B6",
+    "group": "B",
+    "groupTitle": "Files, paths, and terminal",
+    "title": "Use terminal services",
+    "instruction": "Use Terminal for interactive input and output. Keep machine-readable command output separate from application logs.",
+    "exceptions": "Platform adapters and application startup are outside the default business scope. Preserve required platform-specific path behavior.",
+    "diagnostics": [
+      "nodeBuiltinImport"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/platform/file-system",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "C1",
+    "group": "C",
+    "groupTitle": "HTTP and remote I/O",
+    "title": "Use HttpClient",
+    "instruction": "Use an injected Effect HttpClient for HTTP requests instead of global fetch or direct Node HTTP calls.",
+    "exceptions": "A required vendor SDK may remain behind an injected adapter. Preserve status handling, streaming, retry, and cancellation behavior when migrating.",
+    "diagnostics": [
+      "globalFetch",
+      "globalFetchInEffect",
+      "nodeBuiltinImport"
+    ],
+    "triggers": [
+      "effect-v4-node-http",
+      "effect-v4-foreign-http-clients",
+      "effect-v4-global-fetch"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/platform/introduction",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "C2",
+    "group": "C",
+    "groupTitle": "HTTP and remote I/O",
+    "title": "Prefer the existing Effect HTTP stack",
+    "instruction": "Use existing Effect HTTP capabilities before adding another HTTP client. Put unavoidable vendor clients behind a service.",
+    "exceptions": "A required vendor SDK may remain behind an injected adapter. Preserve status handling, streaming, retry, and cancellation behavior when migrating.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-foreign-http-clients"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/platform/introduction",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "C3",
+    "group": "C",
+    "groupTitle": "HTTP and remote I/O",
+    "title": "Choose status handling explicitly",
+    "instruction": "Specify which HTTP status codes count as success or typed failure. Do not assume transport success implies application success.",
+    "exceptions": "A required vendor SDK may remain behind an injected adapter. Preserve status handling, streaming, retry, and cancellation behavior when migrating.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-node-http",
+      "effect-v4-global-fetch"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/platform/introduction",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "C4",
+    "group": "C",
+    "groupTitle": "HTTP and remote I/O",
+    "title": "Decode response boundaries",
+    "instruction": "Decode external response bodies with a Schema. Keep transport, parsing, and domain validation errors distinguishable.",
+    "exceptions": "A required vendor SDK may remain behind an injected adapter. Preserve status handling, streaming, retry, and cancellation behavior when migrating.",
+    "diagnostics": [
+      "schemaSyncInEffect"
+    ],
+    "triggers": [
+      "effect-v4-global-fetch"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/platform/introduction",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "C5",
+    "group": "C",
+    "groupTitle": "HTTP and remote I/O",
+    "title": "Own response resources",
+    "instruction": "Consume response bodies in the lifetime required by the HTTP API. Do not leak a response stream past its resource scope.",
+    "exceptions": "A required vendor SDK may remain behind an injected adapter. Preserve status handling, streaming, retry, and cancellation behavior when migrating.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-node-http",
+      "effect-v4-global-fetch"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/platform/introduction",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "C6",
+    "group": "C",
+    "groupTitle": "HTTP and remote I/O",
+    "title": "Preserve request policies",
+    "instruction": "Define timeout and retry behavior deliberately. Retry only operations and failures for which repeating work is safe.",
+    "exceptions": "A required vendor SDK may remain behind an injected adapter. Preserve status handling, streaming, retry, and cancellation behavior when migrating.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-node-http",
+      "effect-v4-global-fetch"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/platform/introduction",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "D1",
+    "group": "D",
+    "groupTitle": "Processes and platform boundaries",
+    "title": "Use ChildProcess",
+    "instruction": "Describe subprocesses with the installed v4 ChildProcess API and execute them through ChildProcessSpawner.",
+    "exceptions": "Low-level platform operations without an equivalent belong in adapters. Command argument and environment semantics must remain unchanged.",
+    "diagnostics": [
+      "nodeBuiltinImport"
+    ],
+    "triggers": [
+      "effect-v4-node-child-process"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/platform/introduction",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "D2",
+    "group": "D",
+    "groupTitle": "Processes and platform boundaries",
+    "title": "Prefer explicit argument arrays",
+    "instruction": "Pass command arguments as separate values. Use a shell only when shell semantics are required and inputs are handled safely.",
+    "exceptions": "Low-level platform operations without an equivalent belong in adapters. Command argument and environment semantics must remain unchanged.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-node-child-process"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/platform/introduction",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "D3",
+    "group": "D",
+    "groupTitle": "Processes and platform boundaries",
+    "title": "Inject process execution",
+    "instruction": "Expose subprocess execution through an injected service. Business modules should not start a global process executor.",
+    "exceptions": "Low-level platform operations without an equivalent belong in adapters. Command argument and environment semantics must remain unchanged.",
+    "diagnostics": [
+      "nodeBuiltinImport"
+    ],
+    "triggers": [
+      "effect-v4-node-child-process"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/platform/introduction",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "D4",
+    "group": "D",
+    "groupTitle": "Processes and platform boundaries",
+    "title": "Stream subprocess output",
+    "instruction": "Consume potentially large subprocess output incrementally with Stream or Sink. Choose a bounded collection limit when collecting.",
+    "exceptions": "Low-level platform operations without an equivalent belong in adapters. Command argument and environment semantics must remain unchanged.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-node-child-process"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/platform/introduction",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "D5",
+    "group": "D",
+    "groupTitle": "Processes and platform boundaries",
+    "title": "Keep exit decisions at startup",
+    "instruction": "Return typed outcomes from business code. Application startup owns exit status, shutdown, and signal handling.",
+    "exceptions": "Low-level platform operations without an equivalent belong in adapters. Command argument and environment semantics must remain unchanged.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-process-exit"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/platform/introduction",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "D6",
+    "group": "D",
+    "groupTitle": "Processes and platform boundaries",
+    "title": "Require a real replacement",
+    "instruction": "Restrict Node APIs that have suitable Effect replacements. For unmatched capabilities, define an adapter instead of inventing an Effect equivalent.",
+    "exceptions": "Low-level platform operations without an equivalent belong in adapters. Command argument and environment semantics must remain unchanged.",
+    "diagnostics": [
+      "nodeBuiltinImport"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/platform/introduction",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "E1",
+    "group": "E",
+    "groupTitle": "Time and scheduling",
+    "title": "Sleep with Effect",
+    "instruction": "Use Effect.sleep for interruptible waiting. Do not implement sleeps with timers or Promise constructors.",
+    "exceptions": "Pure conversion of an existing timestamp may stay pure. Preserve wall-clock versus monotonic-time semantics, schedule timing, and time zones.",
+    "diagnostics": [
+      "globalTimers",
+      "globalTimersInEffect",
+      "newPromise"
+    ],
+    "triggers": [
+      "effect-v4-node-timers",
+      "effect-v4-global-timers"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/scheduling/using-schedules",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "E2",
+    "group": "E",
+    "groupTitle": "Time and scheduling",
+    "title": "Schedule repeated work",
+    "instruction": "Use Schedule and Effect repetition for recurring jobs. Specify fixed-rate versus spaced timing deliberately.",
+    "exceptions": "Pure conversion of an existing timestamp may stay pure. Preserve wall-clock versus monotonic-time semantics, schedule timing, and time zones.",
+    "diagnostics": [
+      "globalTimers",
+      "globalTimersInEffect"
+    ],
+    "triggers": [
+      "effect-v4-node-timers",
+      "effect-v4-global-timers"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/scheduling/using-schedules",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "E3",
+    "group": "E",
+    "groupTitle": "Time and scheduling",
+    "title": "Compose retries",
+    "instruction": "Use Effect.retry with an explicit Schedule or retry policy. Bound attempts or elapsed time where required.",
+    "exceptions": "Pure conversion of an existing timestamp may stay pure. Preserve wall-clock versus monotonic-time semantics, schedule timing, and time zones.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-node-timers",
+      "effect-v4-global-timers"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/scheduling/using-schedules",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "E4",
+    "group": "E",
+    "groupTitle": "Time and scheduling",
+    "title": "Read time through Clock",
+    "instruction": "Get current time through Clock or the corresponding Effect time API so tests can control it.",
+    "exceptions": "Pure conversion of an existing timestamp may stay pure. Preserve wall-clock versus monotonic-time semantics, schedule timing, and time zones.",
+    "diagnostics": [
+      "globalDate",
+      "globalDateInEffect"
+    ],
+    "triggers": [
+      "effect-v4-global-clock"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/scheduling/using-schedules",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "E5",
+    "group": "E",
+    "groupTitle": "Time and scheduling",
+    "title": "Use DateTime for date operations",
+    "instruction": "Use DateTime for domain date and time calculations when its semantics fit. Make time-zone and calendar assumptions explicit.",
+    "exceptions": "Pure conversion of an existing timestamp may stay pure. Preserve wall-clock versus monotonic-time semantics, schedule timing, and time zones.",
+    "diagnostics": [
+      "globalDate",
+      "globalDateInEffect"
+    ],
+    "triggers": [
+      "effect-v4-global-clock"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/scheduling/using-schedules",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "E6",
+    "group": "E",
+    "groupTitle": "Time and scheduling",
+    "title": "Make duration units explicit",
+    "instruction": "Represent durations with Duration constructors or supported unit-bearing literals. Avoid unexplained numeric time constants.",
+    "exceptions": "Pure conversion of an existing timestamp may stay pure. Preserve wall-clock versus monotonic-time semantics, schedule timing, and time zones.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/scheduling/using-schedules",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "F1",
+    "group": "F",
+    "groupTitle": "Randomness and cryptography",
+    "title": "Use Random for ordinary randomness",
+    "instruction": "Use the Random service for ordinary random choices instead of Math.random.",
+    "exceptions": "Ordinary seeded Random is not cryptographically secure. Verify SecureRandom operations and layer requirements against the installed v4 package.",
+    "diagnostics": [
+      "globalRandom",
+      "globalRandomInEffect"
+    ],
+    "triggers": [
+      "effect-v4-global-random"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/requirements-management/default-services",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "F2",
+    "group": "F",
+    "groupTitle": "Randomness and cryptography",
+    "title": "Use appropriate random operations",
+    "instruction": "Use Random operations with documented integer-range and shuffle semantics. Check whether bounds are inclusive or exclusive.",
+    "exceptions": "Ordinary seeded Random is not cryptographically secure. Verify SecureRandom operations and layer requirements against the installed v4 package.",
+    "diagnostics": [
+      "globalRandom",
+      "globalRandomInEffect"
+    ],
+    "triggers": [
+      "effect-v4-global-random"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/requirements-management/default-services",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "F3",
+    "group": "F",
+    "groupTitle": "Randomness and cryptography",
+    "title": "Use SecureRandom for UUIDs",
+    "instruction": "Use SecureRandom from effect/crypto for secure UUID generation when the installed version supports the needed format.",
+    "exceptions": "Ordinary seeded Random is not cryptographically secure. Verify SecureRandom operations and layer requirements against the installed v4 package.",
+    "diagnostics": [
+      "cryptoRandomUUID",
+      "cryptoRandomUUIDInEffect"
+    ],
+    "triggers": [
+      "effect-v4-node-crypto",
+      "effect-v4-secure-uuid"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/requirements-management/default-services",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "F4",
+    "group": "F",
+    "groupTitle": "Randomness and cryptography",
+    "title": "Keep security guarantees",
+    "instruction": "Use a cryptographically secure source for tokens, secrets, and security-sensitive identifiers. Never replace it with seeded Random.",
+    "exceptions": "Ordinary seeded Random is not cryptographically secure. Verify SecureRandom operations and layer requirements against the installed v4 package.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-node-crypto",
+      "effect-v4-secure-uuid"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/requirements-management/default-services",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "F5",
+    "group": "F",
+    "groupTitle": "Randomness and cryptography",
+    "title": "Control randomness in tests",
+    "instruction": "Provide a deterministic Random seed or test service for ordinary randomness. Keep security-sensitive test doubles explicit.",
+    "exceptions": "Ordinary seeded Random is not cryptographically secure. Verify SecureRandom operations and layer requirements against the installed v4 package.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-global-random",
+      "effect-v4-secure-uuid"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/requirements-management/default-services",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "F6",
+    "group": "F",
+    "groupTitle": "Randomness and cryptography",
+    "title": "Adapt unmatched crypto operations",
+    "instruction": "Use an Effect crypto operation only when algorithm, encoding, timing, and security properties match. Put unmatched native crypto behind an adapter.",
+    "exceptions": "Ordinary seeded Random is not cryptographically secure. Verify SecureRandom operations and layer requirements against the installed v4 package.",
+    "diagnostics": [
+      "nodeBuiltinImport"
+    ],
+    "triggers": [
+      "effect-v4-node-crypto"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/requirements-management/default-services",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "G1",
+    "group": "G",
+    "groupTitle": "Configuration and secrets",
+    "title": "Read configuration through Config",
+    "instruction": "Read application settings through Config and ConfigProvider instead of reading process.env in business code.",
+    "exceptions": "Configuration bootstrap adapters may read the host environment. Decode missing, malformed, and empty values according to explicit application requirements.",
+    "diagnostics": [
+      "processEnv",
+      "processEnvInEffect"
+    ],
+    "triggers": [
+      "effect-v4-process-env"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/configuration",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "G2",
+    "group": "G",
+    "groupTitle": "Configuration and secrets",
+    "title": "Validate configuration types",
+    "instruction": "Decode and validate configuration at its boundary with Config and Schema rather than spreading ad hoc parsing through business logic.",
+    "exceptions": "Configuration bootstrap adapters may read the host environment. Decode missing, malformed, and empty values according to explicit application requirements.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-process-env"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/configuration",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "G3",
+    "group": "G",
+    "groupTitle": "Configuration and secrets",
+    "title": "Make defaults intentional",
+    "instruction": "Mark required settings explicitly. Add defaults only when missing configuration genuinely has a valid meaning.",
+    "exceptions": "Configuration bootstrap adapters may read the host environment. Decode missing, malformed, and empty values according to explicit application requirements.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-process-env"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/configuration",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "G4",
+    "group": "G",
+    "groupTitle": "Configuration and secrets",
+    "title": "Redact secrets",
+    "instruction": "Represent sensitive configuration as Redacted values. Keep the wrapper until the external boundary needs the secret.",
+    "exceptions": "Configuration bootstrap adapters may read the host environment. Decode missing, malformed, and empty values according to explicit application requirements.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-process-env"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/configuration",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "G5",
+    "group": "G",
+    "groupTitle": "Configuration and secrets",
+    "title": "Limit secret access",
+    "instruction": "Unwrap a Redacted value only at a necessary boundary. Keep secrets out of logs, traces, errors, and diagnostic messages.",
+    "exceptions": "Configuration bootstrap adapters may read the host environment. Decode missing, malformed, and empty values according to explicit application requirements.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/configuration",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "G6",
+    "group": "G",
+    "groupTitle": "Configuration and secrets",
+    "title": "Replace providers in tests",
+    "instruction": "Provide test configuration through ConfigProvider. Avoid changing global process.env to control business tests.",
+    "exceptions": "Configuration bootstrap adapters may read the host environment. Decode missing, malformed, and empty values according to explicit application requirements.",
+    "diagnostics": [
+      "processEnv",
+      "processEnvInEffect"
+    ],
+    "triggers": [
+      "effect-v4-process-env"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/configuration",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "H1",
+    "group": "H",
+    "groupTitle": "Logging and observability",
+    "title": "Use Effect logging",
+    "instruction": "Write application logs with Effect.log operations and configured Logger services instead of global console methods.",
+    "exceptions": "Human-facing terminal output and protocol output are not application logs. Avoid adding spans to tiny pure helpers or high-cardinality metric labels.",
+    "diagnostics": [
+      "globalConsole",
+      "globalConsoleInEffect"
+    ],
+    "triggers": [
+      "effect-v4-global-console"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/observability/logging",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "H2",
+    "group": "H",
+    "groupTitle": "Logging and observability",
+    "title": "Keep output channels separate",
+    "instruction": "Use Console or Terminal for intentional user output. Keep logs separate from JSON, binary, or other machine-readable output.",
+    "exceptions": "Human-facing terminal output and protocol output are not application logs. Avoid adding spans to tiny pure helpers or high-cardinality metric labels.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-global-console"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/observability/logging",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "H3",
+    "group": "H",
+    "groupTitle": "Logging and observability",
+    "title": "Attach structured context",
+    "instruction": "Attach stable structured log annotations for relevant identifiers. Do not encode every field into a free-form message.",
+    "exceptions": "Human-facing terminal output and protocol output are not application logs. Avoid adding spans to tiny pure helpers or high-cardinality metric labels.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-global-console"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/observability/logging",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "H4",
+    "group": "H",
+    "groupTitle": "Logging and observability",
+    "title": "Trace meaningful operations",
+    "instruction": "Use named Effect.fn functions or spans for meaningful business and I/O operations. Preserve context across service calls.",
+    "exceptions": "Human-facing terminal output and protocol output are not application logs. Avoid adding spans to tiny pure helpers or high-cardinality metric labels.",
+    "diagnostics": [
+      "effectFnOpportunity"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/observability/logging",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "H5",
+    "group": "H",
+    "groupTitle": "Logging and observability",
+    "title": "Use Effect metrics",
+    "instruction": "Record counters, durations, and other metrics through Effect Metric operations. Reuse metric definitions and control label cardinality.",
+    "exceptions": "Human-facing terminal output and protocol output are not application logs. Avoid adding spans to tiny pure helpers or high-cardinality metric labels.",
+    "diagnostics": [
+      "manualMetricTapToTrack"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/observability/logging",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "H6",
+    "group": "H",
+    "groupTitle": "Logging and observability",
+    "title": "Configure backends at composition",
+    "instruction": "Configure logging, tracing, and metric export at the composition root. Avoid constructing a new backend on each business operation.",
+    "exceptions": "Human-facing terminal output and protocol output are not application logs. Avoid adding spans to tiny pure helpers or high-cardinality metric labels.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/observability/logging",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "I1",
+    "group": "I",
+    "groupTitle": "Effect construction and interop",
+    "title": "Return Effect from effectful business APIs",
+    "instruction": "Express effectful business functions as Effect values or functions returning Effect. Compose asynchronous steps with Effect.gen or Effect.fn.",
+    "exceptions": "Pure helpers may return plain values. Promise-only framework callbacks and third-party adapters may use their required foreign types outside business scope.",
+    "diagnostics": [
+      "asyncFunction",
+      "effectFnOpportunity"
+    ],
+    "triggers": [
+      "effect-v4-new-promise"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/getting-started",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "I2",
+    "group": "I",
+    "groupTitle": "Effect construction and interop",
+    "title": "Keep pure code simple",
+    "instruction": "Leave deterministic pure calculations as ordinary functions unless an Effect abstraction provides a concrete benefit.",
+    "exceptions": "Pure helpers may return plain values. Promise-only framework callbacks and third-party adapters may use their required foreign types outside business scope.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/getting-started",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "I3",
+    "group": "I",
+    "groupTitle": "Effect construction and interop",
+    "title": "Defer side effects",
+    "instruction": "Do not execute a side effect while constructing Effect.succeed or at module initialization. Put execution in a lazy Effect constructor.",
+    "exceptions": "Pure helpers may return plain values. Promise-only framework callbacks and third-party adapters may use their required foreign types outside business scope.",
+    "diagnostics": [
+      "syncToSucceed"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/getting-started",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "I4",
+    "group": "I",
+    "groupTitle": "Effect construction and interop",
+    "title": "Choose synchronous constructors correctly",
+    "instruction": "Use Effect.sync for deferred operations whose thrown exceptions are defects. Use Effect.try with a typed catch mapping for expected exceptions.",
+    "exceptions": "Pure helpers may return plain values. Promise-only framework callbacks and third-party adapters may use their required foreign types outside business scope.",
+    "diagnostics": [
+      "effectTryWithoutCatch"
+    ],
+    "triggers": [
+      "effect-v4-schema-sync"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/getting-started",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "I5",
+    "group": "I",
+    "groupTitle": "Effect construction and interop",
+    "title": "Choose Promise constructors correctly",
+    "instruction": "Use Effect.tryPromise with a typed catch mapping for expected rejection. Use Effect.promise only when rejection should be treated as a defect.",
+    "exceptions": "Pure helpers may return plain values. Promise-only framework callbacks and third-party adapters may use their required foreign types outside business scope.",
+    "diagnostics": [
+      "effectTryWithoutCatch",
+      "lazyPromiseInEffectSync",
+      "promiseInEffectSuccess"
+    ],
+    "triggers": [
+      "effect-v4-promise-fanout",
+      "effect-v4-new-promise"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/getting-started",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "I6",
+    "group": "I",
+    "groupTitle": "Effect construction and interop",
+    "title": "Bridge cancellation deliberately",
+    "instruction": "Create foreign work lazily inside the Effect callback. Pass the provided AbortSignal when supported, and register callback cleanup without claiming that uncancellable work becomes cancellable.",
+    "exceptions": "Pure helpers may return plain values. Promise-only framework callbacks and third-party adapters may use their required foreign types outside business scope.",
+    "diagnostics": [
+      "newPromise",
+      "abortControllerInEffect"
+    ],
+    "triggers": [
+      "effect-v4-promise-race",
+      "effect-v4-new-promise",
+      "effect-v4-abort-controller"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/getting-started",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "J1",
+    "group": "J",
+    "groupTitle": "Typed errors and causes",
+    "title": "Use discriminated expected errors",
+    "instruction": "Represent expected failures with useful tagged error types such as Data.TaggedError or Schema.TaggedError. Include actionable context.",
+    "exceptions": "Invariant violations may be defects. Intentional recovery is allowed when the failure contract and interruption behavior remain correct.",
+    "diagnostics": [
+      "extendsNativeError",
+      "globalErrorInEffectFailure",
+      "preferSchemaTaggedError"
+    ],
+    "triggers": [
+      "effect-v4-native-error-class"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/error-management/expected-errors",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "J2",
+    "group": "J",
+    "groupTitle": "Typed errors and causes",
+    "title": "Fail through the error channel",
+    "instruction": "Use Effect.fail or a supported yieldable error for expected business failure. Do not use thrown exceptions as the normal business failure path.",
+    "exceptions": "Invariant violations may be defects. Intentional recovery is allowed when the failure contract and interruption behavior remain correct.",
+    "diagnostics": [
+      "tryCatchInEffectGen"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/error-management/expected-errors",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "J3",
+    "group": "J",
+    "groupTitle": "Typed errors and causes",
+    "title": "Preserve error information",
+    "instruction": "Map foreign errors to domain errors while retaining the useful cause and context. Do not erase the original error with a generic string.",
+    "exceptions": "Invariant violations may be defects. Intentional recovery is allowed when the failure contract and interruption behavior remain correct.",
+    "diagnostics": [
+      "globalErrorInEffectCatch",
+      "unknownInEffectCatch",
+      "catchAllToMapError"
+    ],
+    "triggers": [
+      "effect-v4-native-error-class"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/error-management/expected-errors",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "J4",
+    "group": "J",
+    "groupTitle": "Typed errors and causes",
+    "title": "Recover selectively",
+    "instruction": "Use catchTag, catchTags, or an appropriate conditional catch for specific expected failures. Preserve unmatched failures.",
+    "exceptions": "Invariant violations may be defects. Intentional recovery is allowed when the failure contract and interruption behavior remain correct.",
+    "diagnostics": [
+      "catchAllTagDispatchToCatchTag",
+      "catchIfTagToCatchTag"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/error-management/expected-errors",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "J5",
+    "group": "J",
+    "groupTitle": "Typed errors and causes",
+    "title": "Keep defects distinct",
+    "instruction": "Do not convert all expected failures to defects with orDie. Use fatal failure only when the application contract really treats it as unrecoverable.",
+    "exceptions": "Invariant violations may be defects. Intentional recovery is allowed when the failure contract and interruption behavior remain correct.",
+    "diagnostics": [
+      "redundantOrDie"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/error-management/expected-errors",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "J6",
+    "group": "J",
+    "groupTitle": "Typed errors and causes",
+    "title": "Preserve cancellation",
+    "instruction": "When handling Cause, distinguish interruption from recoverable failure. Do not accidentally swallow interruption or convert cancellation into successful work.",
+    "exceptions": "Invariant violations may be defects. Intentional recovery is allowed when the failure contract and interruption behavior remain correct.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/error-management/expected-errors",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "K1",
+    "group": "K",
+    "groupTitle": "Concurrency and fibers",
+    "title": "Compose concurrent work with Effect",
+    "instruction": "Use Effect.all or Effect.forEach rather than Promise fan-out for Effect-based operations.",
+    "exceptions": "Effect.all and Effect.forEach are sequential by default. Fixed finite parallel work and application-owned detached fibers need explicit lifetime decisions.",
+    "diagnostics": [
+      "promiseAllInEffect",
+      "allOfMapToForEach"
+    ],
+    "triggers": [
+      "effect-v4-promise-fanout"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/concurrency/fibers",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "K2",
+    "group": "K",
+    "groupTitle": "Concurrency and fibers",
+    "title": "Bound growing concurrency",
+    "instruction": "Set a deliberate concurrency limit for input-dependent fan-out. Keep sequential execution when required; missing concurrency is not automatically unbounded.",
+    "exceptions": "Effect.all and Effect.forEach are sequential by default. Fixed finite parallel work and application-owned detached fibers need explicit lifetime decisions.",
+    "diagnostics": [
+      "missingConcurrencyOption"
+    ],
+    "triggers": [
+      "effect-v4-promise-fanout"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/concurrency/fibers",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "K3",
+    "group": "K",
+    "groupTitle": "Concurrency and fibers",
+    "title": "Choose race semantics",
+    "instruction": "Distinguish first completion from first success before replacing Promise.race or Promise.any. Ensure losing work is cancelled when supported.",
+    "exceptions": "Effect.all and Effect.forEach are sequential by default. Fixed finite parallel work and application-owned detached fibers need explicit lifetime decisions.",
+    "diagnostics": [
+      "promiseRaceInEffect",
+      "raceFirstWithSleepToTimeout"
+    ],
+    "triggers": [
+      "effect-v4-promise-race",
+      "effect-v4-abort-controller"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/concurrency/fibers",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "K4",
+    "group": "K",
+    "groupTitle": "Concurrency and fibers",
+    "title": "Own fiber lifetimes",
+    "instruction": "Choose forkChild, forkScoped, or an explicit Scope according to the owner. Use forkDetach only for intentionally application-owned background work.",
+    "exceptions": "Effect.all and Effect.forEach are sequential by default. Fixed finite parallel work and application-owned detached fibers need explicit lifetime decisions.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-detached-fiber"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/concurrency/fibers",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "K5",
+    "group": "K",
+    "groupTitle": "Concurrency and fibers",
+    "title": "Handle background outcomes",
+    "instruction": "Retain, join, interrupt, or observe fibers as required. Define how background failure and application shutdown are handled.",
+    "exceptions": "Effect.all and Effect.forEach are sequential by default. Fixed finite parallel work and application-owned detached fibers need explicit lifetime decisions.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-detached-fiber"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/concurrency/fibers",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "K6",
+    "group": "K",
+    "groupTitle": "Concurrency and fibers",
+    "title": "Compose instead of starting runtimes",
+    "instruction": "Inside business Effects, yield or combine Effects instead of calling Effect.run operations. Runtime execution belongs to an explicit foreign boundary.",
+    "exceptions": "Effect.all and Effect.forEach are sequential by default. Fixed finite parallel work and application-owned detached fibers need explicit lifetime decisions.",
+    "diagnostics": [
+      "runEffectInsideEffect"
+    ],
+    "triggers": [
+      "effect-v4-runtime-in-business"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/concurrency/fibers",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "L1",
+    "group": "L",
+    "groupTitle": "Resources and runtime boundaries",
+    "title": "Pair acquisition and release",
+    "instruction": "Use acquireRelease, acquireUseRelease, or acquireDisposable for owned resources as appropriate. Define acquisition failure behavior.",
+    "exceptions": "Application entry points and framework bridges are outside default business scope. A truly pure synchronous constructor can use its documented safe or Unsafe API when its preconditions are proved.",
+    "diagnostics": [
+      "acquireReleaseDisposable"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/resource-management/introduction",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "L2",
+    "group": "L",
+    "groupTitle": "Resources and runtime boundaries",
+    "title": "Close the owning Scope",
+    "instruction": "Open and close Scope at the owner of the resource lifetime. Do not remove Scope requirements with a cast.",
+    "exceptions": "Application entry points and framework bridges are outside default business scope. A truly pure synchronous constructor can use its documented safe or Unsafe API when its preconditions are proved.",
+    "diagnostics": [
+      "scopeInLayerEffect",
+      "unsafeEffectTypeAssertion"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/resource-management/introduction",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "L3",
+    "group": "L",
+    "groupTitle": "Resources and runtime boundaries",
+    "title": "Clean up on every exit",
+    "instruction": "Register finalizers so normal completion, failure, and interruption release resources. Avoid leaking resources when acquisition partially succeeds.",
+    "exceptions": "Application entry points and framework bridges are outside default business scope. A truly pure synchronous constructor can use its documented safe or Unsafe API when its preconditions are proved.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/resource-management/introduction",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "L4",
+    "group": "L",
+    "groupTitle": "Resources and runtime boundaries",
+    "title": "Keep resources inside their lifetime",
+    "instruction": "Do not return or store a scoped resource for use after its owner has closed. Extend the owner scope instead.",
+    "exceptions": "Application entry points and framework bridges are outside default business scope. A truly pure synchronous constructor can use its documented safe or Unsafe API when its preconditions are proved.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/resource-management/introduction",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "L5",
+    "group": "L",
+    "groupTitle": "Resources and runtime boundaries",
+    "title": "Use the platform entry point",
+    "instruction": "For a standalone application, run the main Effect with the correct platform runMain so shutdown and interruption are handled.",
+    "exceptions": "Application entry points and framework bridges are outside default business scope. A truly pure synchronous constructor can use its documented safe or Unsafe API when its preconditions are proved.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-process-exit",
+      "effect-v4-runtime-in-business"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/resource-management/introduction",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "L6",
+    "group": "L",
+    "groupTitle": "Resources and runtime boundaries",
+    "title": "Centralize foreign runtime bridges",
+    "instruction": "Integrate Promise-only frameworks at a dedicated adapter or entry point. Reuse the intended application context and dispose its lifetime correctly.",
+    "exceptions": "Application entry points and framework bridges are outside default business scope. A truly pure synchronous constructor can use its documented safe or Unsafe API when its preconditions are proved.",
+    "diagnostics": [
+      "runEffectInsideEffect"
+    ],
+    "triggers": [
+      "effect-v4-process-exit",
+      "effect-v4-runtime-in-business"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/resource-management/introduction",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "M1",
+    "group": "M",
+    "groupTitle": "Services and layers",
+    "title": "Inject replaceable dependencies",
+    "instruction": "Model external and replaceable dependencies as v4 Context.Service identifiers with stable keys.",
+    "exceptions": "Small pure helpers do not need services. Per-request resources are valid when request ownership is explicit rather than accidental.",
+    "diagnostics": [
+      "classSelfMismatch",
+      "genericEffectServices",
+      "serviceNotAsClass",
+      "deterministicKeys"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/requirements-management/services",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "M2",
+    "group": "M",
+    "groupTitle": "Services and layers",
+    "title": "Construct implementations with Layer",
+    "instruction": "Use Layer to construct service implementations and their dependencies. Keep live and test implementations replaceable.",
+    "exceptions": "Small pure helpers do not need services. Per-request resources are valid when request ownership is explicit rather than accidental.",
+    "diagnostics": [
+      "missingLayerContext"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/requirements-management/services",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "M3",
+    "group": "M",
+    "groupTitle": "Services and layers",
+    "title": "Hide implementation requirements",
+    "instruction": "Capture implementation-only dependencies when building a service. Do not leak them from every public service method.",
+    "exceptions": "Small pure helpers do not need services. Per-request resources are valid when request ownership is explicit rather than accidental.",
+    "diagnostics": [
+      "leakingRequirements"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/requirements-management/services",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "M4",
+    "group": "M",
+    "groupTitle": "Services and layers",
+    "title": "Compose layer dependencies correctly",
+    "instruction": "Use dependency-providing operations when one Layer requires another. Layer merge alone does not supply one sibling to another.",
+    "exceptions": "Small pure helpers do not need services. Per-request resources are valid when request ownership is explicit rather than accidental.",
+    "diagnostics": [
+      "layerMergeAllWithDependencies"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/requirements-management/services",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "M5",
+    "group": "M",
+    "groupTitle": "Services and layers",
+    "title": "Choose sharing deliberately",
+    "instruction": "Reuse Layer values when memoized sharing is intended. Use fresh construction only when an independent instance is required.",
+    "exceptions": "Small pure helpers do not need services. Per-request resources are valid when request ownership is explicit rather than accidental.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/requirements-management/services",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "M6",
+    "group": "M",
+    "groupTitle": "Services and layers",
+    "title": "Provide at the composition boundary",
+    "instruction": "Provide the application service graph at a clear composition boundary. Avoid repeated provide chains that unintentionally rebuild lifetimes.",
+    "exceptions": "Small pure helpers do not need services. Per-request resources are valid when request ownership is explicit rather than accidental.",
+    "diagnostics": [
+      "multipleEffectProvide",
+      "strictEffectProvide"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/requirements-management/services",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "N1",
+    "group": "N",
+    "groupTitle": "Schema and JSON boundaries",
+    "title": "Decode external unknown values",
+    "instruction": "Treat external input as unknown until it has passed a Schema decoder. Avoid type assertions that pretend validation occurred.",
+    "exceptions": "Trusted internal values do not require repeated decoding. Serialization must preserve the existing wire format, omission rules, numeric values, and transformations.",
+    "diagnostics": [
+      "preferTypedSchemaDecoder"
+    ],
+    "triggers": [
+      "effect-v4-native-json"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/schema/getting-started",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "N2",
+    "group": "N",
+    "groupTitle": "Schema and JSON boundaries",
+    "title": "Use JSON codecs",
+    "instruction": "Parse and encode JSON through the appropriate Schema codec. Use fromJsonString for strings and the correct JSON codec for JSON values.",
+    "exceptions": "Trusted internal values do not require repeated decoding. Serialization must preserve the existing wire format, omission rules, numeric values, and transformations.",
+    "diagnostics": [
+      "globalJson",
+      "globalJsonInEffect"
+    ],
+    "triggers": [
+      "effect-v4-native-json"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/schema/getting-started",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "N3",
+    "group": "N",
+    "groupTitle": "Schema and JSON boundaries",
+    "title": "Decode in the Effect error channel",
+    "instruction": "Inside an Effect workflow, use Effect-based Schema decode and encode operations so expected validation errors stay typed.",
+    "exceptions": "Trusted internal values do not require repeated decoding. Serialization must preserve the existing wire format, omission rules, numeric values, and transformations.",
+    "diagnostics": [
+      "schemaSync",
+      "schemaSyncInEffect"
+    ],
+    "triggers": [
+      "effect-v4-native-json",
+      "effect-v4-schema-sync"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/schema/getting-started",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "N4",
+    "group": "N",
+    "groupTitle": "Schema and JSON boundaries",
+    "title": "Derive types from Schema",
+    "instruction": "Use the Schema inferred Type and Encoded types when they are the source of truth. Avoid independently maintained duplicate interfaces.",
+    "exceptions": "Trusted internal values do not require repeated decoding. Serialization must preserve the existing wire format, omission rules, numeric values, and transformations.",
+    "diagnostics": [
+      "preferSchemaTypeProperty"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/schema/getting-started",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "N5",
+    "group": "N",
+    "groupTitle": "Schema and JSON boundaries",
+    "title": "Keep encoded and decoded types distinct",
+    "instruction": "Account for codecs, transformations, defaults, and encoded representations. Do not assume the wire type equals the domain type.",
+    "exceptions": "Trusted internal values do not require repeated decoding. Serialization must preserve the existing wire format, omission rules, numeric values, and transformations.",
+    "diagnostics": [
+      "schemaClassObjectLiteral"
+    ],
+    "triggers": [
+      "effect-v4-native-json"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/schema/getting-started",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "N6",
+    "group": "N",
+    "groupTitle": "Schema and JSON boundaries",
+    "title": "Validate without unsafe casts",
+    "instruction": "Use decoding or a proper type guard rather than an unchecked cast for runtime input. Preserve Schema class construction and prototype requirements.",
+    "exceptions": "Trusted internal values do not require repeated decoding. Serialization must preserve the existing wire format, omission rules, numeric values, and transformations.",
+    "diagnostics": [
+      "overriddenSchemaConstructor",
+      "schemaClassObjectLiteral"
+    ],
+    "triggers": [
+      "effect-v4-native-json"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/schema/getting-started",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "O1",
+    "group": "O",
+    "groupTitle": "Streams and sinks",
+    "title": "Represent continuous data as Stream",
+    "instruction": "Use Stream for ongoing or incremental effectful data sources instead of hand-managed event loops and native stream plumbing.",
+    "exceptions": "A small finite array is not automatically a stream. Preserve ordering, buffering, error behavior, and resource ownership when migrating a pipeline.",
+    "diagnostics": [
+      "nodeBuiltinImport"
+    ],
+    "triggers": [
+      "effect-v4-node-streams"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/stream/introduction",
+    "coverage": [
+      "review",
+      "tsgo",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "O2",
+    "group": "O",
+    "groupTitle": "Streams and sinks",
+    "title": "Preserve backpressure",
+    "instruction": "Use bounded buffers and concurrency where load can grow. Do not let a faster producer create unlimited pending work.",
+    "exceptions": "A small finite array is not automatically a stream. Preserve ordering, buffering, error behavior, and resource ownership when migrating a pipeline.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-node-streams"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/stream/introduction",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "O3",
+    "group": "O",
+    "groupTitle": "Streams and sinks",
+    "title": "Avoid unbounded collection",
+    "instruction": "Do not runCollect an unbounded source or load a large file without a size policy. Use incremental processing or an explicit bound.",
+    "exceptions": "A small finite array is not automatically a stream. Preserve ordering, buffering, error behavior, and resource ownership when migrating a pipeline.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-node-streams"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/stream/introduction",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "O4",
+    "group": "O",
+    "groupTitle": "Streams and sinks",
+    "title": "Scope stream resources",
+    "instruction": "Acquire stream resources with stream-aware or scoped constructors. Keep their Scope alive while the stream is consumed.",
+    "exceptions": "A small finite array is not automatically a stream. Preserve ordering, buffering, error behavior, and resource ownership when migrating a pipeline.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-node-streams"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/stream/introduction",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "O5",
+    "group": "O",
+    "groupTitle": "Streams and sinks",
+    "title": "Use a fitting Sink",
+    "instruction": "Use Sink or incremental folds for aggregation and output. Choose leftover and termination behavior deliberately.",
+    "exceptions": "A small finite array is not automatically a stream. Preserve ordering, buffering, error behavior, and resource ownership when migrating a pipeline.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-node-streams"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/stream/introduction",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "O6",
+    "group": "O",
+    "groupTitle": "Streams and sinks",
+    "title": "Preserve stream exits",
+    "instruction": "Propagate failures and interruption through the stream pipeline. Clean up upstream work when the consumer stops early.",
+    "exceptions": "A small finite array is not automatically a stream. Preserve ordering, buffering, error behavior, and resource ownership when migrating a pipeline.",
+    "diagnostics": [],
+    "triggers": [
+      "effect-v4-node-streams"
+    ],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/stream/introduction",
+    "coverage": [
+      "review",
+      "ttsr-reminder"
+    ]
+  },
+  {
+    "id": "P1",
+    "group": "P",
+    "groupTitle": "State, coordination, cache, and batching",
+    "title": "Use Ref for shared state",
+    "instruction": "Use Ref for mutable state shared between Effects. Keep updates atomic and callbacks pure.",
+    "exceptions": "Local mutation inside a pure, non-escaping calculation is allowed. Coordination, caching, and batching are introduced only when the actual behavior needs them.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/state-management/ref",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "P2",
+    "group": "P",
+    "groupTitle": "State, coordination, cache, and batching",
+    "title": "Serialize effectful atomic updates",
+    "instruction": "Use SynchronizedRef when an update itself must perform effects while remaining serialized. Avoid read-then-write races.",
+    "exceptions": "Local mutation inside a pure, non-escaping calculation is allowed. Coordination, caching, and batching are introduced only when the actual behavior needs them.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/state-management/ref",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "P3",
+    "group": "P",
+    "groupTitle": "State, coordination, cache, and batching",
+    "title": "Bound producer-consumer queues",
+    "instruction": "Use Queue for producer-consumer coordination. Choose capacity, overflow behavior, and shutdown ownership explicitly.",
+    "exceptions": "Local mutation inside a pure, non-escaping calculation is allowed. Coordination, caching, and batching are introduced only when the actual behavior needs them.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/state-management/ref",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "P4",
+    "group": "P",
+    "groupTitle": "State, coordination, cache, and batching",
+    "title": "Use appropriate notification primitives",
+    "instruction": "Use Deferred, PubSub, SubscriptionRef, or a semaphore according to whether the requirement is one result, broadcast, observable state, or limited access.",
+    "exceptions": "Local mutation inside a pure, non-escaping calculation is allowed. Coordination, caching, and batching are introduced only when the actual behavior needs them.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/state-management/ref",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "P5",
+    "group": "P",
+    "groupTitle": "State, coordination, cache, and batching",
+    "title": "Define cache correctness",
+    "instruction": "Use Cache or Effect caching when suitable. Define keys, capacity, TTL, invalidation, and whether failures are cached.",
+    "exceptions": "Local mutation inside a pure, non-escaping calculation is allowed. Coordination, caching, and batching are introduced only when the actual behavior needs them.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/state-management/ref",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "P6",
+    "group": "P",
+    "groupTitle": "State, coordination, cache, and batching",
+    "title": "Batch equivalent requests safely",
+    "instruction": "Use Effect request batching where repeated requests share a compatible lookup. Preserve caller isolation, ordering, and failure semantics.",
+    "exceptions": "Local mutation inside a pure, non-escaping calculation is allowed. Coordination, caching, and batching are introduced only when the actual behavior needs them.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/state-management/ref",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "Q1",
+    "group": "Q",
+    "groupTitle": "Domain data types",
+    "title": "Model meaningful absence",
+    "instruction": "Use Option where absence is part of the domain contract. Preserve external null and undefined representations at boundaries.",
+    "exceptions": "Do not mechanically replace external nullability contracts, ordinary numbers, object identity, or simple branches. Convert at a deliberate domain boundary.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/data-types/option",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "Q2",
+    "group": "Q",
+    "groupTitle": "Domain data types",
+    "title": "Represent pure failures with Result",
+    "instruction": "Use Result for pure computations that need a typed success-or-failure value. Use Effect for effectful workflows.",
+    "exceptions": "Do not mechanically replace external nullability contracts, ordinary numbers, object identity, or simple branches. Convert at a deliberate domain boundary.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/data-types/option",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "Q3",
+    "group": "Q",
+    "groupTitle": "Domain data types",
+    "title": "Match closed unions exhaustively",
+    "instruction": "Use Match or a type-checked exhaustive branch for closed unions. Add explicit handling when a union member is introduced.",
+    "exceptions": "Do not mechanically replace external nullability contracts, ordinary numbers, object identity, or simple branches. Convert at a deliberate domain boundary.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/data-types/option",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "Q4",
+    "group": "Q",
+    "groupTitle": "Domain data types",
+    "title": "Brand easily confused values",
+    "instruction": "Use branded types or schemas for identifiers and units that are easy to mix up. Validate values before branding when runtime checks are needed.",
+    "exceptions": "Do not mechanically replace external nullability contracts, ordinary numbers, object identity, or simple branches. Convert at a deliberate domain boundary.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/data-types/option",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "Q5",
+    "group": "Q",
+    "groupTitle": "Domain data types",
+    "title": "Use exact decimal semantics when required",
+    "instruction": "Use BigDecimal for exact decimal calculations when the domain requires it. Choose scale, rounding, and serialization explicitly.",
+    "exceptions": "Do not mechanically replace external nullability contracts, ordinary numbers, object identity, or simple branches. Convert at a deliberate domain boundary.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/data-types/option",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "Q6",
+    "group": "Q",
+    "groupTitle": "Domain data types",
+    "title": "Choose equality and hashing semantics",
+    "instruction": "Use Equal, Hash, HashSet, or related data types when value semantics are needed. Preserve object identity where identity is meaningful.",
+    "exceptions": "Do not mechanically replace external nullability contracts, ordinary numbers, object identity, or simple branches. Convert at a deliberate domain boundary.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/data-types/option",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "R1",
+    "group": "R",
+    "groupTitle": "Readable Effect style",
+    "title": "Name meaningful Effect functions",
+    "instruction": "Use a named Effect.fn for reusable effectful business operations where tracing and function structure benefit. Avoid wrapping a one-off expression as an IIFE.",
+    "exceptions": "A style rewrite must keep behavior and useful type inference. Unsafe constructors are not universally forbidden; prove and document their preconditions.",
+    "diagnostics": [
+      "effectFnOpportunity",
+      "effectFnIife"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/code-style/guidelines",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "R2",
+    "group": "R",
+    "groupTitle": "Readable Effect style",
+    "title": "Keep sequential flow readable",
+    "instruction": "Use Effect.gen for readable dependent steps. Avoid redundant nested generators and unneeded wrappers.",
+    "exceptions": "A style rewrite must keep behavior and useful type inference. Unsafe constructors are not universally forbidden; prove and document their preconditions.",
+    "diagnostics": [
+      "effectDoNotation",
+      "nestedEffectGenYield",
+      "unnecessaryEffectGen"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/code-style/guidelines",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "R3",
+    "group": "R",
+    "groupTitle": "Readable Effect style",
+    "title": "Choose the operation that expresses intent",
+    "instruction": "Use map for pure transformation, flatMap for dependent effects, and tap for observation. Keep value and error transformations distinct.",
+    "exceptions": "A style rewrite must keep behavior and useful type inference. Unsafe constructors are not universally forbidden; prove and document their preconditions.",
+    "diagnostics": [
+      "flatMapToMap",
+      "flatMapToTap",
+      "effectMapFlatten"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/code-style/guidelines",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "R4",
+    "group": "R",
+    "groupTitle": "Readable Effect style",
+    "title": "Simplify only equivalent compositions",
+    "instruction": "Use focused combinators for clearly equivalent constructions. Preserve eager versus lazy evaluation, concurrency, and error behavior.",
+    "exceptions": "A style rewrite must keep behavior and useful type inference. Unsafe constructors are not universally forbidden; prove and document their preconditions.",
+    "diagnostics": [
+      "mapConstToAs",
+      "flatMapIgnoredParamToAndThen",
+      "catchAllToMapError"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/code-style/guidelines",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "R5",
+    "group": "R",
+    "groupTitle": "Readable Effect style",
+    "title": "Keep callback inference safe",
+    "instruction": "Use explicit callback parameters when a point-free reference loses generics, selects a wrong overload, or receives unexpected extra arguments.",
+    "exceptions": "A style rewrite must keep behavior and useful type inference. Unsafe constructors are not universally forbidden; prove and document their preconditions.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/code-style/guidelines",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "R6",
+    "group": "R",
+    "groupTitle": "Readable Effect style",
+    "title": "Prefer fitting Effect data helpers",
+    "instruction": "Prefer Effect Array, Record, and String helpers when their semantics fit. Check Option returns, indexing, mutation, callback arguments, and Unicode behavior before replacing native operations.",
+    "exceptions": "A style rewrite must keep behavior and useful type inference. Unsafe constructors are not universally forbidden; prove and document their preconditions.",
+    "diagnostics": [
+      "preferEffectArray",
+      "preferEffectRecord",
+      "preferEffectString"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/code-style/guidelines",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "S1",
+    "group": "S",
+    "groupTitle": "Testing policy",
+    "title": "Control time with TestClock",
+    "instruction": "Use TestClock to test sleeps, schedules, timeouts, and retries. Avoid real waits where virtual time can express the behavior.",
+    "exceptions": "Tests are outside automatic business-source enforcement. Apply these testing policies when writing tests for business behavior; do not introduce production workarounds to satisfy a fixture.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "test-authoring guidance; no automatic test-file enforcement",
+    "source": "https://effect.website/docs/v4/testing/testclock",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "S2",
+    "group": "S",
+    "groupTitle": "Testing policy",
+    "title": "Provide test services",
+    "instruction": "Replace external dependencies with test Layers or services rather than patching global implementations.",
+    "exceptions": "Tests are outside automatic business-source enforcement. Apply these testing policies when writing tests for business behavior; do not introduce production workarounds to satisfy a fixture.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "test-authoring guidance; no automatic test-file enforcement",
+    "source": "https://effect.website/docs/v4/testing/testclock",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "S3",
+    "group": "S",
+    "groupTitle": "Testing policy",
+    "title": "Make random behavior reproducible",
+    "instruction": "Inject a deterministic source for ordinary randomness. Make security-oriented test doubles explicit and isolated.",
+    "exceptions": "Tests are outside automatic business-source enforcement. Apply these testing policies when writing tests for business behavior; do not introduce production workarounds to satisfy a fixture.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "test-authoring guidance; no automatic test-file enforcement",
+    "source": "https://effect.website/docs/v4/testing/testclock",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "S4",
+    "group": "S",
+    "groupTitle": "Testing policy",
+    "title": "Assert the intended failure contract",
+    "instruction": "Check the expected tagged error or Exit/Cause when that is the behavior under test. Avoid assertions that only accept any failure.",
+    "exceptions": "Tests are outside automatic business-source enforcement. Apply these testing policies when writing tests for business behavior; do not introduce production workarounds to satisfy a fixture.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "test-authoring guidance; no automatic test-file enforcement",
+    "source": "https://effect.website/docs/v4/testing/testclock",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "S5",
+    "group": "S",
+    "groupTitle": "Testing policy",
+    "title": "Test resource lifetimes when relevant",
+    "instruction": "For resource-owning or concurrent behavior, verify cleanup, interruption, and background termination when they are material risks.",
+    "exceptions": "Tests are outside automatic business-source enforcement. Apply these testing policies when writing tests for business behavior; do not introduce production workarounds to satisfy a fixture.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "test-authoring guidance; no automatic test-file enforcement",
+    "source": "https://effect.website/docs/v4/testing/testclock",
+    "coverage": [
+      "review"
+    ]
+  },
+  {
+    "id": "S6",
+    "group": "S",
+    "groupTitle": "Testing policy",
+    "title": "Use an Effect-aware test entry",
+    "instruction": "Use an Effect-aware test API or explicitly run and await the Effect at the test boundary. Do not return an unevaluated Effect to a plain test callback.",
+    "exceptions": "Tests are outside automatic business-source enforcement. Apply these testing policies when writing tests for business behavior; do not introduce production workarounds to satisfy a fixture.",
+    "diagnostics": [
+      "floatingEffectInVitest"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "test-authoring guidance; no automatic test-file enforcement",
+    "source": "https://effect.website/docs/v4/testing/testclock",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "T1",
+    "group": "T",
+    "groupTitle": "Diagnostics and enforcement",
+    "title": "Detect floating Effects",
+    "instruction": "Enable type-aware checks for Effect values that are neither composed nor executed. Fix the missing execution instead of hiding the value.",
+    "exceptions": "Only selected business files receive additional diagnostics. Existing TypeScript checking remains the project own responsibility; TTSR is guidance, not a complete static analyzer.",
+    "diagnostics": [
+      "floatingEffect"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/getting-started",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "T2",
+    "group": "T",
+    "groupTitle": "Diagnostics and enforcement",
+    "title": "Keep error and dependency channels accurate",
+    "instruction": "Check missing Effect errors, Effect requirements, and Layer requirements. Preserve useful inferred types.",
+    "exceptions": "Only selected business files receive additional diagnostics. Existing TypeScript checking remains the project own responsibility; TTSR is guidance, not a complete static analyzer.",
+    "diagnostics": [
+      "missingEffectError",
+      "missingEffectContext",
+      "missingLayerContext",
+      "anyUnknownInErrorContext"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/getting-started",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "T3",
+    "group": "T",
+    "groupTitle": "Diagnostics and enforcement",
+    "title": "Reject channel-erasing assertions",
+    "instruction": "Reject assertions that narrow Effect, Stream, or Layer errors or requirements without providing or handling them.",
+    "exceptions": "Only selected business files receive additional diagnostics. Existing TypeScript checking remains the project own responsibility; TTSR is guidance, not a complete static analyzer.",
+    "diagnostics": [
+      "unsafeEffectTypeAssertion"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/getting-started",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "T4",
+    "group": "T",
+    "groupTitle": "Diagnostics and enforcement",
+    "title": "Detect nested asynchronous values",
+    "instruction": "Check accidental Effect-in-Effect and Promise-in-Effect success values. Yield or flatten only when that matches the intended return contract.",
+    "exceptions": "Only selected business files receive additional diagnostics. Existing TypeScript checking remains the project own responsibility; TTSR is guidance, not a complete static analyzer.",
+    "diagnostics": [
+      "returnEffectInGen",
+      "effectInVoidSuccess",
+      "promiseInEffectSuccess",
+      "lazyPromiseInEffectSync"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/getting-started",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "T5",
+    "group": "T",
+    "groupTitle": "Diagnostics and enforcement",
+    "title": "Enable selected native API checks",
+    "instruction": "Enable the API diagnostics that match the selected policies. Keep style recommendations lower severity than correctness failures.",
+    "exceptions": "Only selected business files receive additional diagnostics. Existing TypeScript checking remains the project own responsibility; TTSR is guidance, not a complete static analyzer.",
+    "diagnostics": [
+      "nodeBuiltinImport"
+    ],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/getting-started",
+    "coverage": [
+      "review",
+      "tsgo"
+    ]
+  },
+  {
+    "id": "T6",
+    "group": "T",
+    "groupTitle": "Diagnostics and enforcement",
+    "title": "Run scoped checks without bypasses",
+    "instruction": "Run the supplied project check in CI. Do not suppress diagnostics or rename bindings merely to evade a policy; document a narrow justified exception.",
+    "exceptions": "Only selected business files receive additional diagnostics. Existing TypeScript checking remains the project own responsibility; TTSR is guidance, not a complete static analyzer.",
+    "diagnostics": [],
+    "triggers": [],
+    "reviewRequired": true,
+    "application": "business source",
+    "source": "https://effect.website/docs/v4/getting-started",
+    "coverage": [
+      "review"
+    ]
+  }
+]

@@ -1,0 +1,22 @@
+{
+  "businessInclude": [
+    "src/domain/**/*.{ts,tsx,mts,cts}",
+    "src/application/**/*.{ts,tsx,mts,cts}",
+    "src/use-cases/**/*.{ts,tsx,mts,cts}"
+  ],
+  "businessExclude": [
+    "**/*.test.*", "**/*.spec.*", "**/*.bench.*", "**/*.stories.*",
+    "**/*.d.ts", "**/*.d.mts", "**/*.d.cts", "**/*.config.*",
+    "**/__tests__/**", "**/__mocks__/**", "**/__fixtures__/**",
+    "**/test/**", "**/tests/**", "**/fixtures/**", "**/mocks/**",
+    "**/adapters/**", "**/infrastructure/**", "**/integrations/**",
+    "**/generated/**", "**/__generated__/**", "**/vendor/**",
+    "**/node_modules/**", "**/dist/**", "**/build/**", "**/coverage/**",
+    "**/scripts/**", "**/tooling/**", "**/config/**", "**/configuration/**"
+  ],
+  "repeatMode": "once",
+  "interruptClearImports": true,
+  "minimumTsgoVersion": "0.73.5",
+  "allowedUnstableApis": ["effect/crypto", "effect/http", "effect/process"],
+  "allowedExperimentalApis": []
+}

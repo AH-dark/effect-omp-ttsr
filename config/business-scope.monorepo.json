@@ -1,0 +1,8 @@
+{
+  "businessInclude": [
+    "packages/*/src/domain/**/*.{ts,tsx,mts,cts}",
+    "packages/*/src/application/**/*.{ts,tsx,mts,cts}",
+    "apps/*/src/domain/**/*.{ts,tsx,mts,cts}",
+    "apps/*/src/application/**/*.{ts,tsx,mts,cts}"
+  ]
+}

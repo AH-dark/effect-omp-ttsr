@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "baseline": "@effect/tsgo@0.73.5",
+  "commit": "d245bc034a0cee10944d5327a2974ae0cf5ae3f0",
+  "validator": "Ajv 8.20.0, JSON Schema draft-07",
+  "upstreamNamedPluginSchemaValidated": true,
+  "upstreamDiagnosticMetadataValidated": true,
+  "enabledDiagnostics": 141,
+  "baselineBinaryExecuted": false
+}

@@ -1,0 +1,1985 @@
+{
+  "baselineVersion": "0.73.5",
+  "commit": "d245bc034a0cee10944d5327a2974ae0cf5ae3f0",
+  "rules": [
+    {
+      "name": "anyUnknownInErrorContext",
+      "group": "correctness",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377030
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/any-unknown-in-error-context.md"
+    },
+    {
+      "name": "classSelfMismatch",
+      "group": "correctness",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377046
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/class-self-mismatch.md"
+    },
+    {
+      "name": "duplicatePackage",
+      "group": "correctness",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377051
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/duplicate-package.md"
+    },
+    {
+      "name": "effectFnImplicitAny",
+      "group": "correctness",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377062
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/effect-fn-implicit-any.md"
+    },
+    {
+      "name": "errorPayloadShadowsName",
+      "group": "correctness",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377145
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/error-payload-shadows-name.md"
+    },
+    {
+      "name": "experimentalApiUsage",
+      "group": "correctness",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377135
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/experimental-api-usage.md"
+    },
+    {
+      "name": "floatingEffect",
+      "group": "correctness",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377001,
+        377058
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/floating-effect.md"
+    },
+    {
+      "name": "floatingEffectInVitest",
+      "group": "correctness",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377105
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/floating-effect-in-vitest.md"
+    },
+    {
+      "name": "genericEffectServices",
+      "group": "correctness",
+      "supportedEffect": [
+        "v3"
+      ],
+      "severity": "off",
+      "codes": [
+        377043
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/generic-effect-services.md"
+    },
+    {
+      "name": "missingEffectContext",
+      "group": "correctness",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377004
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/missing-effect-context.md"
+    },
+    {
+      "name": "missingEffectError",
+      "group": "correctness",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377003
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/missing-effect-error.md"
+    },
+    {
+      "name": "missingLayerContext",
+      "group": "correctness",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377034
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/missing-layer-context.md"
+    },
+    {
+      "name": "missingReturnYieldStar",
+      "group": "correctness",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377006
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/missing-return-yield-star.md"
+    },
+    {
+      "name": "missingStarInYieldEffectGen",
+      "group": "correctness",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377007,
+        377008
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/missing-star-in-yield-effect-gen.md"
+    },
+    {
+      "name": "nonObjectEffectServiceType",
+      "group": "correctness",
+      "supportedEffect": [
+        "v3"
+      ],
+      "severity": "off",
+      "codes": [
+        377048
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/non-object-effect-service-type.md"
+    },
+    {
+      "name": "obsoleteMatchImport",
+      "group": "correctness",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377129
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/obsolete-match-import.md"
+    },
+    {
+      "name": "obsoleteSchemaImport",
+      "group": "correctness",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377128
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/obsolete-schema-import.md"
+    },
+    {
+      "name": "outdatedApi",
+      "group": "correctness",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377052,
+        377053
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/outdated-api.md"
+    },
+    {
+      "name": "overriddenSchemaConstructor",
+      "group": "correctness",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377044
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/overridden-schema-constructor.md"
+    },
+    {
+      "name": "promiseInEffectSuccess",
+      "group": "correctness",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377108
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/promise-in-effect-success.md"
+    },
+    {
+      "name": "schemaClassMissingBrand",
+      "group": "correctness",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377141
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/schema-class-missing-brand.md"
+    },
+    {
+      "name": "schemaClassObjectLiteral",
+      "group": "correctness",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377149
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/schema-class-object-literal.md"
+    },
+    {
+      "name": "schemaLiteralNonFinite",
+      "group": "correctness",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377106
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/schema-literal-non-finite.md"
+    },
+    {
+      "name": "schemaOpaqueInstanceMember",
+      "group": "correctness",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377102
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/schema-opaque-instance-member.md"
+    },
+    {
+      "name": "unsafeEffectTypeAssertion",
+      "group": "correctness",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377075
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/unsafe-effect-type-assertion.md"
+    },
+    {
+      "name": "unstableApiUsage",
+      "group": "correctness",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377136
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/unstable-api-usage.md"
+    },
+    {
+      "name": "catchUnfailableEffect",
+      "group": "antipattern",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377009
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/catch-unfailable-effect.md"
+    },
+    {
+      "name": "effectFnIife",
+      "group": "antipattern",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377011
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/effect-fn-iife.md"
+    },
+    {
+      "name": "effectGenUsesAdapter",
+      "group": "antipattern",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377027
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/effect-gen-uses-adapter.md"
+    },
+    {
+      "name": "effectInFailure",
+      "group": "antipattern",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377054
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/effect-in-failure.md"
+    },
+    {
+      "name": "effectInVoidSuccess",
+      "group": "antipattern",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377020
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/effect-in-void-success.md"
+    },
+    {
+      "name": "effectTryWithoutCatch",
+      "group": "antipattern",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377169
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/effect-try-without-catch.md"
+    },
+    {
+      "name": "globalErrorInEffectCatch",
+      "group": "antipattern",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377022
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/global-error-in-effect-catch.md"
+    },
+    {
+      "name": "globalErrorInEffectFailure",
+      "group": "antipattern",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377023
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/global-error-in-effect-failure.md"
+    },
+    {
+      "name": "layerMergeAllWithDependencies",
+      "group": "antipattern",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377035
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/layer-merge-all-with-dependencies.md"
+    },
+    {
+      "name": "lazyEffect",
+      "group": "antipattern",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377091
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/lazy-effect.md"
+    },
+    {
+      "name": "lazyPromiseInEffectSync",
+      "group": "antipattern",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377082
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/lazy-promise-in-effect-sync.md"
+    },
+    {
+      "name": "leakingRequirements",
+      "group": "antipattern",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377041
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/leaking-requirements.md"
+    },
+    {
+      "name": "multipleEffectProvide",
+      "group": "antipattern",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377033
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/multiple-effect-provide.md"
+    },
+    {
+      "name": "preferUnsafeConstructor",
+      "group": "antipattern",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377109
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/prefer-unsafe-constructor.md"
+    },
+    {
+      "name": "returnEffectInGen",
+      "group": "antipattern",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377014
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/return-effect-in-gen.md"
+    },
+    {
+      "name": "runEffectInsideEffect",
+      "group": "antipattern",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377024,
+        377025,
+        377074,
+        377160
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/run-effect-inside-effect.md"
+    },
+    {
+      "name": "schemaSyncInEffect",
+      "group": "antipattern",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377037
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/schema-sync-in-effect.md"
+    },
+    {
+      "name": "scopeInLayerEffect",
+      "group": "antipattern",
+      "supportedEffect": [
+        "v3"
+      ],
+      "severity": "off",
+      "codes": [
+        377031
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/scope-in-layer-effect.md"
+    },
+    {
+      "name": "strictEffectProvide",
+      "group": "antipattern",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377032
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/strict-effect-provide.md"
+    },
+    {
+      "name": "tryCatchInEffectGen",
+      "group": "antipattern",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377012
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/try-catch-in-effect-gen.md"
+    },
+    {
+      "name": "unknownInEffectCatch",
+      "group": "antipattern",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377021
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/unknown-in-effect-catch.md"
+    },
+    {
+      "name": "abortControllerInEffect",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377111
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/abort-controller-in-effect.md"
+    },
+    {
+      "name": "asyncFunction",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377081
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/async-function.md"
+    },
+    {
+      "name": "cryptoRandomUUID",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377078
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/crypto-random-u-u-i-d.md"
+    },
+    {
+      "name": "cryptoRandomUUIDInEffect",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377079
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/crypto-random-u-u-i-d-in-effect.md"
+    },
+    {
+      "name": "extendsNativeError",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377055
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/extends-native-error.md"
+    },
+    {
+      "name": "globalConsole",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377064
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/global-console.md"
+    },
+    {
+      "name": "globalConsoleInEffect",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377065
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/global-console-in-effect.md"
+    },
+    {
+      "name": "globalDate",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377066,
+        377068
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/global-date.md"
+    },
+    {
+      "name": "globalDateInEffect",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377067,
+        377069
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/global-date-in-effect.md"
+    },
+    {
+      "name": "globalFetch",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377061
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/global-fetch.md"
+    },
+    {
+      "name": "globalFetchInEffect",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377063
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/global-fetch-in-effect.md"
+    },
+    {
+      "name": "globalJson",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377156
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/global-json.md"
+    },
+    {
+      "name": "globalJsonInEffect",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377157
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/global-json-in-effect.md"
+    },
+    {
+      "name": "globalRandom",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377070
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/global-random.md"
+    },
+    {
+      "name": "globalRandomInEffect",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377071
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/global-random-in-effect.md"
+    },
+    {
+      "name": "globalTimers",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377072
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/global-timers.md"
+    },
+    {
+      "name": "globalTimersInEffect",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377073
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/global-timers-in-effect.md"
+    },
+    {
+      "name": "instanceOfSchema",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377042
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/instance-of-schema.md"
+    },
+    {
+      "name": "newPromise",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377080
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/new-promise.md"
+    },
+    {
+      "name": "nodeBuiltinImport",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377057
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/node-builtin-import.md"
+    },
+    {
+      "name": "preferEffectArray",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377140
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/prefer-effect-array.md"
+    },
+    {
+      "name": "preferEffectRecord",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377143
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/prefer-effect-record.md"
+    },
+    {
+      "name": "preferEffectString",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377150
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/prefer-effect-string.md"
+    },
+    {
+      "name": "preferSchemaOverJson",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "off",
+      "codes": [
+        377026
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/prefer-schema-over-json.md"
+    },
+    {
+      "name": "processEnv",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377076
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/process-env.md"
+    },
+    {
+      "name": "processEnvInEffect",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377077
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/process-env-in-effect.md"
+    },
+    {
+      "name": "promiseAllInEffect",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377198
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/promise-all-in-effect.md"
+    },
+    {
+      "name": "promiseRaceInEffect",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "error",
+      "codes": [
+        377212,
+        377213
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/promise-race-in-effect.md"
+    },
+    {
+      "name": "schemaSync",
+      "group": "effectNative",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "warning",
+      "codes": [
+        377130
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/schema-sync.md"
+    },
+    {
+      "name": "acquireReleaseDisposable",
+      "group": "style",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377119
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/acquire-release-disposable.md"
+    },
+    {
+      "name": "allOfMapToForEach",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377113
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/all-of-map-to-for-each.md"
+    },
+    {
+      "name": "catchAllTagDispatchToCatchTag",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377122
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/catch-all-tag-dispatch-to-catch-tag.md"
+    },
+    {
+      "name": "catchAllToMapError",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377010
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/catch-all-to-map-error.md"
+    },
+    {
+      "name": "catchChainToFirstSuccessOf",
+      "group": "style",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377107
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/catch-chain-to-first-success-of.md"
+    },
+    {
+      "name": "catchConditionalRefailToCatchIf",
+      "group": "style",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377116
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/catch-conditional-refail-to-catch-if.md"
+    },
+    {
+      "name": "catchDieToOrDie",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377115
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/catch-die-to-or-die.md"
+    },
+    {
+      "name": "catchIfTagToCatchTag",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377131
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/catch-if-tag-to-catch-tag.md"
+    },
+    {
+      "name": "catchRefailToTapError",
+      "group": "style",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377133
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/catch-refail-to-tap-error.md"
+    },
+    {
+      "name": "catchTagToCatchReason",
+      "group": "style",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377110
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/catch-tag-to-catch-reason.md"
+    },
+    {
+      "name": "catchToIgnore",
+      "group": "style",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377099
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/catch-to-ignore.md"
+    },
+    {
+      "name": "catchToOrElseSucceed",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377095
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/catch-to-or-else-succeed.md"
+    },
+    {
+      "name": "deterministicKeys",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377049
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/deterministic-keys.md"
+    },
+    {
+      "name": "effectDoNotation",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377085
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/effect-do-notation.md"
+    },
+    {
+      "name": "effectFnOpportunity",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377047
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/effect-fn-opportunity.md"
+    },
+    {
+      "name": "effectMapFlatten",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377086
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/effect-map-flatten.md"
+    },
+    {
+      "name": "effectMapVoid",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377018
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/effect-map-void.md"
+    },
+    {
+      "name": "effectSleepZeroToYieldNow",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377142
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/effect-sleep-zero-to-yield-now.md"
+    },
+    {
+      "name": "effectSucceedWithUndefined",
+      "group": "style",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "off",
+      "codes": [
+        377162
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/effect-succeed-with-undefined.md"
+    },
+    {
+      "name": "effectSucceedWithVoid",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377016
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/effect-succeed-with-void.md"
+    },
+    {
+      "name": "failCauseToConstructor",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377155
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/fail-cause-to-constructor.md"
+    },
+    {
+      "name": "flatMapConditionalToFilterOrFail",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377120
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/flat-map-conditional-to-filter-or-fail.md"
+    },
+    {
+      "name": "flatMapIdentityToFlatten",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377151
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/flat-map-identity-to-flatten.md"
+    },
+    {
+      "name": "flatMapIgnoredParamToAndThen",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377132
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/flat-map-ignored-param-to-and-then.md"
+    },
+    {
+      "name": "flatMapMapToZipWith",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377218
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/flat-map-map-to-zip-with.md"
+    },
+    {
+      "name": "flatMapProvideServiceToProvideServiceEffect",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377194
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/flat-map-provide-service-to-provide-service-effect.md"
+    },
+    {
+      "name": "flatMapToMap",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377100
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/flat-map-to-map.md"
+    },
+    {
+      "name": "flatMapToTap",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377144
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/flat-map-to-tap.md"
+    },
+    {
+      "name": "forLoopPushToForEach",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377170
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/for-loop-push-to-for-each.md"
+    },
+    {
+      "name": "manualMetricTapToTrack",
+      "group": "style",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377154
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/manual-metric-tap-to-track.md"
+    },
+    {
+      "name": "mapConstToAs",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377152
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/map-const-to-as.md"
+    },
+    {
+      "name": "mapMapErrorToMapBoth",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377153
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/map-map-error-to-map-both.md"
+    },
+    {
+      "name": "mapSomeCatchNoSuchElement",
+      "group": "style",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377167
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/map-some-catch-no-such-element.md"
+    },
+    {
+      "name": "mapSomeToAsSome",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377114
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/map-some-to-as-some.md"
+    },
+    {
+      "name": "matchBooleanToIsSuccess",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377173,
+        377174
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/match-boolean-to-is-success.md"
+    },
+    {
+      "name": "matchEffectToMapBoth",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377126
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/match-effect-to-map-both.md"
+    },
+    {
+      "name": "matchEffectToMatch",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377125
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/match-effect-to-match.md"
+    },
+    {
+      "name": "matchToResultOrOption",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377175
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/match-to-result-or-option.md"
+    },
+    {
+      "name": "missedPipeableOpportunity",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "off",
+      "codes": [
+        377050
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/missed-pipeable-opportunity.md"
+    },
+    {
+      "name": "missingConcurrencyOption",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377188
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/missing-concurrency-option.md"
+    },
+    {
+      "name": "missingEffectServiceDependency",
+      "group": "style",
+      "supportedEffect": [
+        "v3"
+      ],
+      "severity": "off",
+      "codes": [
+        377039,
+        377040
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/missing-effect-service-dependency.md"
+    },
+    {
+      "name": "missingPipeableSignature",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "off",
+      "codes": [
+        377101
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/missing-pipeable-signature.md"
+    },
+    {
+      "name": "multipleCatchTag",
+      "group": "style",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377092
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/multiple-catch-tag.md"
+    },
+    {
+      "name": "nestedEffectGenYield",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377083
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/nested-effect-gen-yield.md"
+    },
+    {
+      "name": "newSchemaClass",
+      "group": "style",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377094
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/new-schema-class.md"
+    },
+    {
+      "name": "onExitFailureToOnError",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377184
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/on-exit-failure-to-on-error.md"
+    },
+    {
+      "name": "optionMatchToFromOption",
+      "group": "style",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377118
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/option-match-to-from-option.md"
+    },
+    {
+      "name": "preferBarrelImport",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "off",
+      "codes": [
+        377148
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/prefer-barrel-import.md"
+    },
+    {
+      "name": "preferNamespaceImport",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "off",
+      "codes": [
+        377146,
+        377147
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/prefer-namespace-import.md"
+    },
+    {
+      "name": "preferSchemaTaggedError",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377139
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/prefer-schema-tagged-error.md"
+    },
+    {
+      "name": "preferSchemaTypeProperty",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377104
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/prefer-schema-type-property.md"
+    },
+    {
+      "name": "preferSucceedSomeOrNone",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377117
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/prefer-succeed-some-or-none.md"
+    },
+    {
+      "name": "preferTypedSchemaDecoder",
+      "group": "style",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377112
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/prefer-typed-schema-decoder.md"
+    },
+    {
+      "name": "provideLayerSucceedToProvideService",
+      "group": "style",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377124
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/provide-layer-succeed-to-provide-service.md"
+    },
+    {
+      "name": "provideMergeAllToArray",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377161
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/provide-merge-all-to-array.md"
+    },
+    {
+      "name": "raceFirstWithSleepToTimeout",
+      "group": "style",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377121
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/race-first-with-sleep-to-timeout.md"
+    },
+    {
+      "name": "redundantMapError",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377088,
+        377089
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/redundant-map-error.md"
+    },
+    {
+      "name": "redundantOrDie",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377096,
+        377097
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/redundant-or-die.md"
+    },
+    {
+      "name": "redundantSchemaTagIdentifier",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377045
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/redundant-schema-tag-identifier.md"
+    },
+    {
+      "name": "resultMatchToFromResult",
+      "group": "style",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377165
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/result-match-to-from-result.md"
+    },
+    {
+      "name": "runOfExitToRunExit",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377123
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/run-of-exit-to-run-exit.md"
+    },
+    {
+      "name": "schemaNumber",
+      "group": "style",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377098
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/schema-number.md"
+    },
+    {
+      "name": "schemaStructWithTag",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377036
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/schema-struct-with-tag.md"
+    },
+    {
+      "name": "schemaUnionOfLiterals",
+      "group": "style",
+      "supportedEffect": [
+        "v3"
+      ],
+      "severity": "off",
+      "codes": [
+        377038
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/schema-union-of-literals.md"
+    },
+    {
+      "name": "serviceNotAsClass",
+      "group": "style",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377056
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/service-not-as-class.md"
+    },
+    {
+      "name": "strictBooleanExpressions",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "off",
+      "codes": [
+        377029
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/strict-boolean-expressions.md"
+    },
+    {
+      "name": "suspendFailToFailSync",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377163
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/suspend-fail-to-fail-sync.md"
+    },
+    {
+      "name": "syncToSucceed",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377103
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/sync-to-succeed.md"
+    },
+    {
+      "name": "timeoutCatchTagToTimeoutOrElse",
+      "group": "style",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377127
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/timeout-catch-tag-to-timeout-or-else.md"
+    },
+    {
+      "name": "typeUnionToSchemaUnion",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377159
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/type-union-to-schema-union.md"
+    },
+    {
+      "name": "unnecessaryArrowBlock",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377084
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/unnecessary-arrow-block.md"
+    },
+    {
+      "name": "unnecessaryEffectGen",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377017
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/unnecessary-effect-gen.md"
+    },
+    {
+      "name": "unnecessaryFailYieldableError",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377019
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/unnecessary-fail-yieldable-error.md"
+    },
+    {
+      "name": "unnecessaryPipe",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377013
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/unnecessary-pipe.md"
+    },
+    {
+      "name": "unnecessaryPipeChain",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377015
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/unnecessary-pipe-chain.md"
+    },
+    {
+      "name": "unnecessaryTypeofType",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377090
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/unnecessary-typeof-type.md"
+    },
+    {
+      "name": "yieldInCallArgument",
+      "group": "style",
+      "supportedEffect": [
+        "v3",
+        "v4"
+      ],
+      "severity": "suggestion",
+      "codes": [
+        377171
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/yield-in-call-argument.md"
+    },
+    {
+      "name": "apiStabilityLeak",
+      "group": "maintainers",
+      "supportedEffect": [
+        "v4"
+      ],
+      "severity": "off",
+      "codes": [
+        377137,
+        377138
+      ],
+      "source": "https://github.com/Effect-TS/tsgo/blob/d245bc034a0cee10944d5327a2974ae0cf5ae3f0/docs/rules/api-stability-leak.md"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "ompVersion": "omp/19.0.1",
+  "total": 502,
+  "passed": 502,
+  "failed": 0,
+  "coverage": [
+    "positive and negative syntax",
+    "all declared AST patterns",
+    "comments and string literals",
+    "tool and prose scope",
+    "relative and absolute paths",
+    "business inclusions and nested exclusions"
+  ],
+  "notTested": [
+    "live interruption and resume lifecycle",
+    "partial JSON tool streams",
+    "multi-file matcherEntries",
+    "repeat state across compaction",
+    "semantic symbol resolution"
+  ],
+  "failures": []
+}

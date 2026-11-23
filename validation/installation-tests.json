@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "runner": "node --test tests/*.test.mjs",
+  "nodeVersion": "26.13.1",
+  "tests": 7,
+  "passed": 7,
+  "failed": 0,
+  "checks": [
+    "complete policy coverage and references",
+    "OMP basename exclusion guard",
+    "business-only diagnostic overrides",
+    "idempotent installation and configuration preservation",
+    "TypeScript glob brace expansion",
+    "unrelated file conflict protection",
+    "monorepo include customization"
+  ]
+}

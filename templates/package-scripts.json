@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "effect:check": "node .omp/effect-template/scripts/check.mjs --project tsconfig.json"
+  }
+}
