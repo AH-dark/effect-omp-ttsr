@@ -1,0 +1,41 @@
+name: Release
+
+on:
+  release:
+    types: [published]
+
+permissions:
+  contents: write
+
+jobs:
+  rules:
+    runs-on: ubuntu-latest
+    env:
+      TAG: ${{ github.event.release.tag_name }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.release.tag_name }}
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Test
+        run: npm test
+
+      - name: Build preview
+        run: npm run build
+
+      - name: Package rules
+        run: |
+          name="effect-v4-omp-rules-${TAG}"
+          mkdir -p dist
+          tar -C preview -czf "dist/${name}.tar.gz" .omp/rules
+          (cd preview && zip -qr "../dist/${name}.zip" .omp/rules)
+          (cd dist && sha256sum -- *.tar.gz *.zip > SHA256SUMS)
+
+      - name: Upload release assets
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release upload "$TAG" dist/* --clobber
