@@ -10,7 +10,7 @@ Configuration bootstrap adapters may read the host environment. Decode missing, 
 
 Read application settings through Config and ConfigProvider instead of reading process.env in business code.
 
-**Automatic reminders:** `effect-v4-process-env`
+**Automatic reminders:** `effect-v4-process-env`, `effect-v4-bun-native`
 
 **Related diagnostics:** `processEnv`, `processEnvInEffect`
 

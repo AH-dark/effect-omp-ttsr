@@ -124,12 +124,13 @@
     "groupTitle": "Files, paths, and terminal",
     "title": "Use FileSystem",
     "instruction": "Read, write, inspect, copy, remove, and enumerate files through the FileSystem service.",
-    "exceptions": "Platform adapters and application startup are outside the default business scope. Preserve required platform-specific path behavior.",
+    "exceptions": "Exclude platform adapters and application startup from the configured scope. Preserve required platform-specific path behavior.",
     "diagnostics": [
       "nodeBuiltinImport"
     ],
     "triggers": [
-      "effect-v4-node-files"
+      "effect-v4-node-files",
+      "effect-v4-bun-native"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -146,7 +147,7 @@
     "groupTitle": "Files, paths, and terminal",
     "title": "Avoid blocking filesystem calls",
     "instruction": "Keep synchronous filesystem I/O out of business code. Wrapping a blocking Node operation in Effect.sync does not make it nonblocking.",
-    "exceptions": "Platform adapters and application startup are outside the default business scope. Preserve required platform-specific path behavior.",
+    "exceptions": "Exclude platform adapters and application startup from the configured scope. Preserve required platform-specific path behavior.",
     "diagnostics": [
       "nodeBuiltinImport"
     ],
@@ -168,7 +169,7 @@
     "groupTitle": "Files, paths, and terminal",
     "title": "Use the Path service",
     "instruction": "Use the injected Path service for platform-dependent path operations. Make POSIX or Windows-specific semantics explicit.",
-    "exceptions": "Platform adapters and application startup are outside the default business scope. Preserve required platform-specific path behavior.",
+    "exceptions": "Exclude platform adapters and application startup from the configured scope. Preserve required platform-specific path behavior.",
     "diagnostics": [
       "nodeBuiltinImport"
     ],
@@ -190,7 +191,7 @@
     "groupTitle": "Files, paths, and terminal",
     "title": "Scope filesystem resources",
     "instruction": "Use scoped file handles and scoped temporary resources when their lifetime belongs to the operation. Close or remove resources on interruption.",
-    "exceptions": "Platform adapters and application startup are outside the default business scope. Preserve required platform-specific path behavior.",
+    "exceptions": "Exclude platform adapters and application startup from the configured scope. Preserve required platform-specific path behavior.",
     "diagnostics": [],
     "triggers": [
       "effect-v4-node-files"
@@ -209,7 +210,7 @@
     "groupTitle": "Files, paths, and terminal",
     "title": "Stream file changes and content",
     "instruction": "Use FileSystem stream and watch operations when processing incremental content or changes. Keep consumption bounded.",
-    "exceptions": "Platform adapters and application startup are outside the default business scope. Preserve required platform-specific path behavior.",
+    "exceptions": "Exclude platform adapters and application startup from the configured scope. Preserve required platform-specific path behavior.",
     "diagnostics": [
       "nodeBuiltinImport"
     ],
@@ -231,7 +232,7 @@
     "groupTitle": "Files, paths, and terminal",
     "title": "Use terminal services",
     "instruction": "Use Terminal for interactive input and output. Keep machine-readable command output separate from application logs.",
-    "exceptions": "Platform adapters and application startup are outside the default business scope. Preserve required platform-specific path behavior.",
+    "exceptions": "Exclude platform adapters and application startup from the configured scope. Preserve required platform-specific path behavior.",
     "diagnostics": [
       "nodeBuiltinImport"
     ],
@@ -259,7 +260,8 @@
     "triggers": [
       "effect-v4-node-http",
       "effect-v4-foreign-http-clients",
-      "effect-v4-global-fetch"
+      "effect-v4-global-fetch",
+      "effect-v4-bun-native"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -382,7 +384,8 @@
       "nodeBuiltinImport"
     ],
     "triggers": [
-      "effect-v4-node-child-process"
+      "effect-v4-node-child-process",
+      "effect-v4-bun-native"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -505,7 +508,8 @@
     ],
     "triggers": [
       "effect-v4-node-timers",
-      "effect-v4-global-timers"
+      "effect-v4-global-timers",
+      "effect-v4-bun-native"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -681,7 +685,8 @@
     ],
     "triggers": [
       "effect-v4-node-crypto",
-      "effect-v4-secure-uuid"
+      "effect-v4-secure-uuid",
+      "effect-v4-bun-native"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -766,7 +771,8 @@
       "processEnvInEffect"
     ],
     "triggers": [
-      "effect-v4-process-env"
+      "effect-v4-process-env",
+      "effect-v4-bun-native"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -994,7 +1000,7 @@
     "groupTitle": "Effect construction and interop",
     "title": "Return Effect from effectful business APIs",
     "instruction": "Express effectful business functions as Effect values or functions returning Effect. Compose asynchronous steps with Effect.gen or Effect.fn.",
-    "exceptions": "Pure helpers may return plain values. Promise-only framework callbacks and third-party adapters may use their required foreign types outside business scope.",
+    "exceptions": "Pure helpers may return plain values. Promise-only framework callbacks and third-party adapters may use their required foreign types when excluded from the configured scope.",
     "diagnostics": [
       "asyncFunction",
       "effectFnOpportunity"
@@ -1017,7 +1023,7 @@
     "groupTitle": "Effect construction and interop",
     "title": "Keep pure code simple",
     "instruction": "Leave deterministic pure calculations as ordinary functions unless an Effect abstraction provides a concrete benefit.",
-    "exceptions": "Pure helpers may return plain values. Promise-only framework callbacks and third-party adapters may use their required foreign types outside business scope.",
+    "exceptions": "Pure helpers may return plain values. Promise-only framework callbacks and third-party adapters may use their required foreign types when excluded from the configured scope.",
     "diagnostics": [],
     "triggers": [],
     "reviewRequired": true,
@@ -1033,7 +1039,7 @@
     "groupTitle": "Effect construction and interop",
     "title": "Defer side effects",
     "instruction": "Do not execute a side effect while constructing Effect.succeed or at module initialization. Put execution in a lazy Effect constructor.",
-    "exceptions": "Pure helpers may return plain values. Promise-only framework callbacks and third-party adapters may use their required foreign types outside business scope.",
+    "exceptions": "Pure helpers may return plain values. Promise-only framework callbacks and third-party adapters may use their required foreign types when excluded from the configured scope.",
     "diagnostics": [
       "syncToSucceed"
     ],
@@ -1052,7 +1058,7 @@
     "groupTitle": "Effect construction and interop",
     "title": "Choose synchronous constructors correctly",
     "instruction": "Use Effect.sync for deferred operations whose thrown exceptions are defects. Use Effect.try with a typed catch mapping for expected exceptions.",
-    "exceptions": "Pure helpers may return plain values. Promise-only framework callbacks and third-party adapters may use their required foreign types outside business scope.",
+    "exceptions": "Pure helpers may return plain values. Promise-only framework callbacks and third-party adapters may use their required foreign types when excluded from the configured scope.",
     "diagnostics": [
       "effectTryWithoutCatch"
     ],
@@ -1074,7 +1080,7 @@
     "groupTitle": "Effect construction and interop",
     "title": "Choose Promise constructors correctly",
     "instruction": "Use Effect.tryPromise with a typed catch mapping for expected rejection. Use Effect.promise only when rejection should be treated as a defect.",
-    "exceptions": "Pure helpers may return plain values. Promise-only framework callbacks and third-party adapters may use their required foreign types outside business scope.",
+    "exceptions": "Pure helpers may return plain values. Promise-only framework callbacks and third-party adapters may use their required foreign types when excluded from the configured scope.",
     "diagnostics": [
       "effectTryWithoutCatch",
       "lazyPromiseInEffectSync",
@@ -1099,7 +1105,7 @@
     "groupTitle": "Effect construction and interop",
     "title": "Bridge cancellation deliberately",
     "instruction": "Create foreign work lazily inside the Effect callback. Pass the provided AbortSignal when supported, and register callback cleanup without claiming that uncancellable work becomes cancellable.",
-    "exceptions": "Pure helpers may return plain values. Promise-only framework callbacks and third-party adapters may use their required foreign types outside business scope.",
+    "exceptions": "Pure helpers may return plain values. Promise-only framework callbacks and third-party adapters may use their required foreign types when excluded from the configured scope.",
     "diagnostics": [
       "newPromise",
       "abortControllerInEffect"
@@ -1375,7 +1381,7 @@
     "groupTitle": "Resources and runtime boundaries",
     "title": "Pair acquisition and release",
     "instruction": "Use acquireRelease, acquireUseRelease, or acquireDisposable for owned resources as appropriate. Define acquisition failure behavior.",
-    "exceptions": "Application entry points and framework bridges are outside default business scope. A truly pure synchronous constructor can use its documented safe or Unsafe API when its preconditions are proved.",
+    "exceptions": "Exclude application entry points and framework bridges from the configured scope. A truly pure synchronous constructor can use its documented safe or Unsafe API when its preconditions are proved.",
     "diagnostics": [
       "acquireReleaseDisposable"
     ],
@@ -1394,7 +1400,7 @@
     "groupTitle": "Resources and runtime boundaries",
     "title": "Close the owning Scope",
     "instruction": "Open and close Scope at the owner of the resource lifetime. Do not remove Scope requirements with a cast.",
-    "exceptions": "Application entry points and framework bridges are outside default business scope. A truly pure synchronous constructor can use its documented safe or Unsafe API when its preconditions are proved.",
+    "exceptions": "Exclude application entry points and framework bridges from the configured scope. A truly pure synchronous constructor can use its documented safe or Unsafe API when its preconditions are proved.",
     "diagnostics": [
       "scopeInLayerEffect",
       "unsafeEffectTypeAssertion"
@@ -1414,7 +1420,7 @@
     "groupTitle": "Resources and runtime boundaries",
     "title": "Clean up on every exit",
     "instruction": "Register finalizers so normal completion, failure, and interruption release resources. Avoid leaking resources when acquisition partially succeeds.",
-    "exceptions": "Application entry points and framework bridges are outside default business scope. A truly pure synchronous constructor can use its documented safe or Unsafe API when its preconditions are proved.",
+    "exceptions": "Exclude application entry points and framework bridges from the configured scope. A truly pure synchronous constructor can use its documented safe or Unsafe API when its preconditions are proved.",
     "diagnostics": [],
     "triggers": [],
     "reviewRequired": true,
@@ -1430,7 +1436,7 @@
     "groupTitle": "Resources and runtime boundaries",
     "title": "Keep resources inside their lifetime",
     "instruction": "Do not return or store a scoped resource for use after its owner has closed. Extend the owner scope instead.",
-    "exceptions": "Application entry points and framework bridges are outside default business scope. A truly pure synchronous constructor can use its documented safe or Unsafe API when its preconditions are proved.",
+    "exceptions": "Exclude application entry points and framework bridges from the configured scope. A truly pure synchronous constructor can use its documented safe or Unsafe API when its preconditions are proved.",
     "diagnostics": [],
     "triggers": [],
     "reviewRequired": true,
@@ -1446,7 +1452,7 @@
     "groupTitle": "Resources and runtime boundaries",
     "title": "Use the platform entry point",
     "instruction": "For a standalone application, run the main Effect with the correct platform runMain so shutdown and interruption are handled.",
-    "exceptions": "Application entry points and framework bridges are outside default business scope. A truly pure synchronous constructor can use its documented safe or Unsafe API when its preconditions are proved.",
+    "exceptions": "Exclude application entry points and framework bridges from the configured scope. A truly pure synchronous constructor can use its documented safe or Unsafe API when its preconditions are proved.",
     "diagnostics": [],
     "triggers": [
       "effect-v4-process-exit",
@@ -1466,7 +1472,7 @@
     "groupTitle": "Resources and runtime boundaries",
     "title": "Centralize foreign runtime bridges",
     "instruction": "Integrate Promise-only frameworks at a dedicated adapter or entry point. Reuse the intended application context and dispose its lifetime correctly.",
-    "exceptions": "Application entry points and framework bridges are outside default business scope. A truly pure synchronous constructor can use its documented safe or Unsafe API when its preconditions are proved.",
+    "exceptions": "Exclude application entry points and framework bridges from the configured scope. A truly pure synchronous constructor can use its documented safe or Unsafe API when its preconditions are proved.",
     "diagnostics": [
       "runEffectInsideEffect"
     ],

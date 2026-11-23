@@ -2,7 +2,7 @@
 
 ## Scope and exceptions
 
-Platform adapters and application startup are outside the default business scope. Preserve required platform-specific path behavior.
+Exclude platform adapters and application startup from the configured scope. Preserve required platform-specific path behavior.
 
 ## Policies
 
@@ -10,7 +10,7 @@ Platform adapters and application startup are outside the default business scope
 
 Read, write, inspect, copy, remove, and enumerate files through the FileSystem service.
 
-**Automatic reminders:** `effect-v4-node-files`
+**Automatic reminders:** `effect-v4-node-files`, `effect-v4-bun-native`
 
 **Related diagnostics:** `nodeBuiltinImport`
 

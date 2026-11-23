@@ -10,25 +10,25 @@ All 120 selected policies are included. A listed detector covers a subcase; cont
 | A4 | Use current platform imports | `effect-v4-obsolete-imports` | `nodeBuiltinImport` |
 | A5 | Verify uncertain APIs | Review / diagnostics | Review |
 | A6 | Preserve dependency decisions | Review / diagnostics | Review |
-| B1 | Use FileSystem | `effect-v4-node-files` | `nodeBuiltinImport` |
+| B1 | Use FileSystem | `effect-v4-node-files`, `effect-v4-bun-native` | `nodeBuiltinImport` |
 | B2 | Avoid blocking filesystem calls | `effect-v4-node-files` | `nodeBuiltinImport` |
 | B3 | Use the Path service | `effect-v4-node-path` | `nodeBuiltinImport` |
 | B4 | Scope filesystem resources | `effect-v4-node-files` | Review |
 | B5 | Stream file changes and content | `effect-v4-node-files` | `nodeBuiltinImport` |
 | B6 | Use terminal services | Review / diagnostics | `nodeBuiltinImport` |
-| C1 | Use HttpClient | `effect-v4-node-http`, `effect-v4-foreign-http-clients`, `effect-v4-global-fetch` | `globalFetch`, `globalFetchInEffect`, `nodeBuiltinImport` |
+| C1 | Use HttpClient | `effect-v4-node-http`, `effect-v4-foreign-http-clients`, `effect-v4-global-fetch`, `effect-v4-bun-native` | `globalFetch`, `globalFetchInEffect`, `nodeBuiltinImport` |
 | C2 | Prefer the existing Effect HTTP stack | `effect-v4-foreign-http-clients` | Review |
 | C3 | Choose status handling explicitly | `effect-v4-node-http`, `effect-v4-global-fetch` | Review |
 | C4 | Decode response boundaries | `effect-v4-global-fetch` | `schemaSyncInEffect` |
 | C5 | Own response resources | `effect-v4-node-http`, `effect-v4-global-fetch` | Review |
 | C6 | Preserve request policies | `effect-v4-node-http`, `effect-v4-global-fetch` | Review |
-| D1 | Use ChildProcess | `effect-v4-node-child-process` | `nodeBuiltinImport` |
+| D1 | Use ChildProcess | `effect-v4-node-child-process`, `effect-v4-bun-native` | `nodeBuiltinImport` |
 | D2 | Prefer explicit argument arrays | `effect-v4-node-child-process` | Review |
 | D3 | Inject process execution | `effect-v4-node-child-process` | `nodeBuiltinImport` |
 | D4 | Stream subprocess output | `effect-v4-node-child-process` | Review |
 | D5 | Keep exit decisions at startup | `effect-v4-process-exit` | Review |
 | D6 | Require a real replacement | Review / diagnostics | `nodeBuiltinImport` |
-| E1 | Sleep with Effect | `effect-v4-node-timers`, `effect-v4-global-timers` | `globalTimers`, `globalTimersInEffect`, `newPromise` |
+| E1 | Sleep with Effect | `effect-v4-node-timers`, `effect-v4-global-timers`, `effect-v4-bun-native` | `globalTimers`, `globalTimersInEffect`, `newPromise` |
 | E2 | Schedule repeated work | `effect-v4-node-timers`, `effect-v4-global-timers` | `globalTimers`, `globalTimersInEffect` |
 | E3 | Compose retries | `effect-v4-node-timers`, `effect-v4-global-timers` | Review |
 | E4 | Read time through Clock | `effect-v4-global-clock` | `globalDate`, `globalDateInEffect` |
@@ -36,11 +36,11 @@ All 120 selected policies are included. A listed detector covers a subcase; cont
 | E6 | Make duration units explicit | Review / diagnostics | Review |
 | F1 | Use Random for ordinary randomness | `effect-v4-global-random` | `globalRandom`, `globalRandomInEffect` |
 | F2 | Use appropriate random operations | `effect-v4-global-random` | `globalRandom`, `globalRandomInEffect` |
-| F3 | Use SecureRandom for UUIDs | `effect-v4-node-crypto`, `effect-v4-secure-uuid` | `cryptoRandomUUID`, `cryptoRandomUUIDInEffect` |
+| F3 | Use SecureRandom for UUIDs | `effect-v4-node-crypto`, `effect-v4-secure-uuid`, `effect-v4-bun-native` | `cryptoRandomUUID`, `cryptoRandomUUIDInEffect` |
 | F4 | Keep security guarantees | `effect-v4-node-crypto`, `effect-v4-secure-uuid` | Review |
 | F5 | Control randomness in tests | `effect-v4-global-random`, `effect-v4-secure-uuid` | Review |
 | F6 | Adapt unmatched crypto operations | `effect-v4-node-crypto` | `nodeBuiltinImport` |
-| G1 | Read configuration through Config | `effect-v4-process-env` | `processEnv`, `processEnvInEffect` |
+| G1 | Read configuration through Config | `effect-v4-process-env`, `effect-v4-bun-native` | `processEnv`, `processEnvInEffect` |
 | G2 | Validate configuration types | `effect-v4-process-env` | Review |
 | G3 | Make defaults intentional | `effect-v4-process-env` | Review |
 | G4 | Redact secrets | `effect-v4-process-env` | Review |

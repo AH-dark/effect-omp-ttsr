@@ -10,7 +10,7 @@ A required vendor SDK may remain behind an injected adapter. Preserve status han
 
 Use an injected Effect HttpClient for HTTP requests instead of global fetch or direct Node HTTP calls.
 
-**Automatic reminders:** `effect-v4-node-http`, `effect-v4-foreign-http-clients`, `effect-v4-global-fetch`
+**Automatic reminders:** `effect-v4-node-http`, `effect-v4-foreign-http-clients`, `effect-v4-global-fetch`, `effect-v4-bun-native`
 
 **Related diagnostics:** `globalFetch`, `globalFetchInEffect`, `nodeBuiltinImport`
 

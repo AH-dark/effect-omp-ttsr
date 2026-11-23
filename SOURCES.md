@@ -9,7 +9,6 @@ Reference date: 2026-11-24.
 | Effect source commit | `0d2bb4a4b6526e1767b81101ee6e8da88ba1de55` |
 | tsgo diagnostic baseline | `@effect/tsgo@0.73.5` |
 | tsgo source commit | `d245bc034a0cee10944d5327a2974ae0cf5ae3f0` |
-| Local compatibility smoke tools | Recorded separately in `validation/tsgo-smoke.json` |
 
 Authoritative references:
 

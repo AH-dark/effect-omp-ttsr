@@ -587,5 +587,34 @@
     "positive": "class InvalidOrder extends Error { }",
     "negative": "class InvalidOrder extends Data.TaggedError(\"InvalidOrder\")<{}> {}",
     "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
+  },
+  {
+    "name": "effect-v4-bun-native",
+    "policies": [
+      "B1",
+      "C1",
+      "D1",
+      "E1",
+      "F3",
+      "G1"
+    ],
+    "patterns": [
+      "import $$$ from \"bun\"",
+      "require(\"bun\")",
+      "import(\"bun\")",
+      "import $$$ from \"bun:sqlite\"",
+      "require(\"bun:sqlite\")",
+      "import(\"bun:sqlite\")",
+      "import $$$ from \"bun:ffi\"",
+      "require(\"bun:ffi\")",
+      "import(\"bun:ffi\")",
+      "Bun.$PROP",
+      "globalThis.Bun"
+    ],
+    "body": "Do not use Bun native APIs here. Use Effect services: FileSystem instead of Bun.file and Bun.write, HttpClient or the HTTP server instead of Bun.serve, ChildProcess instead of Bun.spawn and Bun.$, Config instead of Bun.env, Effect.sleep instead of Bun.sleep, and SecureRandom or the crypto service for hashes and UUIDs. Keep unavoidable Bun code in an excluded adapter.",
+    "interrupt": "tool-only",
+    "positive": "export const read = Bun.file(\"order.json\").text();",
+    "negative": "import { FileSystem } from \"effect\";",
+    "limitation": "AST matching is syntactic and does not cover bun:test. Aliased Bun bindings are not resolved."
   }
 ]

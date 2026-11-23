@@ -3,7 +3,7 @@
 A reusable, project-scoped policy library for Effect v4 business code.
 
 - 120 policies across all 20 selected areas
-- 26 short AST-based OMP TTSR rules
+- 27 short AST-based OMP TTSR rules, including Bun native APIs
 - 141 scoped Effect tsgo diagnostics, with separate correctness and style severity
 - 20 detailed policy guides and an explicit coverage map
 - No always-apply prompt and no model-judged rules
@@ -14,7 +14,7 @@ No detector proves every part of a policy.
 
 ## Quick start
 
-1. Edit `config/business-scope.json` if your business directories differ.
+1. Edit `config/business-scope.json` if the default scope does not fit.
 2. Install the templates into an existing project:
 
    ```sh
@@ -25,7 +25,7 @@ No detector proves every part of a policy.
    new project using the reference baseline:
 
    ```sh
-   pnpm add --save-dev @effect/tsgo@0.73.5 typescript@7.0.2
+   bun add -d @effect/tsgo@0.73.5 typescript@7.0.2
    ```
 
    For an existing project, review compiler compatibility first. Follow the
@@ -52,23 +52,20 @@ regenerated; locally edited files are preserved by a conflict error.
 `--force` can replace edited files already recorded as installed, but cannot
 overwrite an unrelated conflicting file.
 
-## Business source only
+## Scope
 
-Default includes:
+The default scope sets no `businessInclude`, so rules and diagnostics apply to
+every file in the installation target. Only these directories are excluded, at
+any depth:
 
 ```text
-src/domain/**/*.{ts,tsx,mts,cts}
-src/application/**/*.{ts,tsx,mts,cts}
-src/use-cases/**/*.{ts,tsx,mts,cts}
+**/*__*/**      (any directory whose name contains "__", e.g. __tests__)
+**/dist/**
+**/build/**
+**/coverage/**
 ```
 
-Tests, declarations, generated code, adapters, infrastructure, integrations,
-configuration, scripts, dependencies, and build output are excluded even when
-they are nested inside an included directory. See the complete exclusion list
-in `config/business-scope.json`.
-
-The defaults deliberately do not assume that every file in `src/`, `features/`,
-or `services/` contains business logic. Select the actual business roots.
+Set `businessInclude` to project-relative globs to narrow the scope.
 
 For a monorepo:
 
@@ -127,7 +124,7 @@ checks, deprecated duplicate checks, unrelated generic lint rules, and conflicti
 import-style prescriptions remain off. The diagnostic catalog lists every choice.
 The standalone check fails on errors; warnings and suggestions remain visible.
 
-## Read and verify the library
+## Read the library
 
 - `CATALOG.md`: all 120 policies and their coverage
 - `guides/`: detailed rules, exceptions, diagnostics, and references
@@ -136,20 +133,10 @@ The standalone check fails on errors; warnings and suggestions remain visible.
 - `docs/enforcement.md`: prompt budget, diagnostic severity, and coverage limits
 - `examples/`: business code and an explicit SDK adapter
 - `SOURCES.md`: versions, commits, and authoritative references
-- `validation/`: recorded validation results and their limits
 
-From this library directory:
-
-```sh
-npm test
-npm run verify
-npm run build
-npm run test:omp
-```
-
-`test:omp` requires OMP on PATH and uses temporary, isolated OMP state.
-`npm run build` writes generated example files to `preview/` (not committed),
-not a second installation.
+`bun run build` writes generated example files to `preview/` (not committed),
+not a second installation. Each published GitHub release attaches the generated
+`.omp/rules` directory as `.tar.gz` and `.zip` archives.
 Generate project-specific files with the installer instead of copying placeholder
 absolute paths from the preview.
 

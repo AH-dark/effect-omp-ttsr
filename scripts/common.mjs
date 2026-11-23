@@ -28,13 +28,12 @@ export function argumentsOf(argv = process.argv.slice(2)) {
 export function loadScope(file) {
   const defaults = readJson(path.join(libraryRoot, "config/business-scope.json"));
   const custom = file ? readJson(path.resolve(file)) : {};
-  const result = { ...defaults, ...custom };
+  const result = { businessInclude: [], ...defaults, ...custom };
   for (const key of ["businessInclude", "businessExclude"]) {
     if (!Array.isArray(result[key]) || result[key].some((p) => typeof p !== "string" || !p || p.includes("\\") || /[()\n\r]/.test(p))) {
       throw new Error(`${key} must contain non-empty POSIX globs without parentheses or newlines`);
     }
   }
-  if (!result.businessInclude.length) throw new Error("Select at least one business source glob");
   if (result.businessInclude.some((p) => p.startsWith("/") || p.startsWith("!") || p.split("/").includes("..") || !p.includes("/"))) {
     throw new Error("Business includes must be project-relative positive globs with a directory component");
   }
@@ -47,7 +46,9 @@ export function exclusionGate(scope) {
   return `!{*,${scope.businessExclude.join(",")}}`;
 }
 export function includeGlobs(scope, target) {
-  return scope.businessInclude.flatMap((glob) => [glob, `${target.replaceAll("\\", "/")}/${glob}`]);
+  // No includes selects every file; exclusions still apply.
+  const globs = scope.businessInclude.length ? scope.businessInclude : ["**/*"];
+  return globs.flatMap((glob) => [glob, `${target.replaceAll("\\", "/")}/${glob}`]);
 }
 export function expandBraces(pattern) {
   const match = /\{([^{}]*)\}/.exec(pattern);

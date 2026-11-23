@@ -10,7 +10,7 @@ Low-level platform operations without an equivalent belong in adapters. Command 
 
 Describe subprocesses with the installed v4 ChildProcess API and execute them through ChildProcessSpawner.
 
-**Automatic reminders:** `effect-v4-node-child-process`
+**Automatic reminders:** `effect-v4-node-child-process`, `effect-v4-bun-native`
 
 **Related diagnostics:** `nodeBuiltinImport`
 

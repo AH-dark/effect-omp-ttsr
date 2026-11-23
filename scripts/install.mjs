@@ -20,7 +20,7 @@ export function install({ target, scopeFile, force = false }) {
     const previous = fs.existsSync(previousPath) ? readJson(previousPath) : { files: {} };
     const plan = new Map();
     for (const file of walkFiles(path.join(scratch, ".omp/rules"))) plan.set(path.relative(scratch, file), fs.readFileSync(file));
-    for (const directory of ["catalog", "config", "scripts", "guides", "docs", "examples", "tests", "templates", "validation"]) {
+    for (const directory of ["catalog", "config", "scripts", "guides", "docs", "examples", "templates"]) {
       for (const file of walkFiles(path.join(libraryRoot, directory))) plan.set(`.omp/effect-template/${path.relative(libraryRoot, file)}`, fs.readFileSync(file));
     }
     for (const name of ["package.json", "README.md", "CATALOG.md", "SOURCES.md", "NOTICE.md"]) plan.set(`.omp/effect-template/${name}`, fs.readFileSync(path.join(libraryRoot, name)));

@@ -6,10 +6,7 @@
   "description": "Project-scoped Effect v4 policies, targeted OMP TTSR rules, and tsgo diagnostics",
   "engines": { "node": ">=22" },
   "scripts": {
-    "build": "node scripts/build.mjs",
-    "test": "node --test tests/*.test.mjs",
-    "test:omp": "node scripts/test-omp.mjs",
-    "verify": "node scripts/verify.mjs",
-    "install:project": "node scripts/install.mjs"
+    "build": "bun scripts/build.mjs",
+    "install:project": "bun scripts/install.mjs"
   }
 }

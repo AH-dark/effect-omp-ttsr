@@ -2,7 +2,7 @@
 
 ## Scope and exceptions
 
-Pure helpers may return plain values. Promise-only framework callbacks and third-party adapters may use their required foreign types outside business scope.
+Pure helpers may return plain values. Promise-only framework callbacks and third-party adapters may use their required foreign types when excluded from the configured scope.
 
 ## Policies
 

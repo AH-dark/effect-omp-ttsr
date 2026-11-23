@@ -30,7 +30,7 @@ Use Random operations with documented integer-range and shuffle semantics. Check
 
 Use SecureRandom from effect/crypto for secure UUID generation when the installed version supports the needed format.
 
-**Automatic reminders:** `effect-v4-node-crypto`, `effect-v4-secure-uuid`
+**Automatic reminders:** `effect-v4-node-crypto`, `effect-v4-secure-uuid`, `effect-v4-bun-native`
 
 **Related diagnostics:** `cryptoRandomUUID`, `cryptoRandomUUIDInEffect`
 

@@ -7,7 +7,7 @@ Each entry lists its TTSR reminder names, related tsgo diagnostics, and the
 remaining review responsibility. A related diagnostic covers a recognizable
 subcase; it does not establish the complete policy contract.
 
-All 26 TTSR rules use `astCondition`. No rule watches prose, thinking, or a
+All 27 TTSR rules use `astCondition`. No rule watches prose, thinking, or a
 generic `async`, `await`, `throw`, or `Promise` keyword. Comments and string
 literals containing API examples therefore do not fire these AST patterns.
 
@@ -54,15 +54,13 @@ the baseline so its complete base severity map stays current.
 The default unstable-API allowlist includes the selected crypto, HTTP, and
 process module subtrees. Experimental APIs have no blanket allowlist.
 
-## Validation limits
+## Detection limits
 
-The OMP suite tests the real CLI matcher, every declared AST pattern, scope,
-comments, strings, and file extensions. It does not simulate provider streaming,
-live tool interruption, retry timing, compaction, or multi-file tool events.
-Those depend on the installed OMP coordinator. An AST CLI match is not evidence
-that every live edit shape will match.
+An AST match does not simulate provider streaming, live tool interruption,
+retry timing, compaction, or multi-file tool events. Those depend on the
+installed OMP coordinator. An AST match on one edit shape is not evidence that
+every live edit shape will match.
 
-The recorded tsgo smoke check names its exact local tool and Effect versions.
-Source/schema verification of the 0.73.5 profile is distinct from running that
-exact binary. Run the supplied check with your project's pinned dependencies
-before adopting a profile as a CI gate.
+Source/schema review of the 0.73.5 profile is distinct from running that exact
+binary. Run the supplied check with your project's pinned dependencies before
+adopting a profile as a CI gate.

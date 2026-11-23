@@ -2,7 +2,7 @@
 
 ## Scope and exceptions
 
-Application entry points and framework bridges are outside default business scope. A truly pure synchronous constructor can use its documented safe or Unsafe API when its preconditions are proved.
+Exclude application entry points and framework bridges from the configured scope. A truly pure synchronous constructor can use its documented safe or Unsafe API when its preconditions are proved.
 
 ## Policies
 

@@ -10,7 +10,7 @@ Pure conversion of an existing timestamp may stay pure. Preserve wall-clock vers
 
 Use Effect.sleep for interruptible waiting. Do not implement sleeps with timers or Promise constructors.
 
-**Automatic reminders:** `effect-v4-node-timers`, `effect-v4-global-timers`
+**Automatic reminders:** `effect-v4-node-timers`, `effect-v4-global-timers`, `effect-v4-bun-native`
 
 **Related diagnostics:** `globalTimers`, `globalTimersInEffect`, `newPromise`
 
