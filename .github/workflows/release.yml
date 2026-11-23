@@ -25,7 +25,7 @@ jobs:
 
       - name: Package rules
         run: |
-          name="effect-v4-omp-rules-${TAG}"
+          name="${ROOT}"
           mkdir -p dist stage
           cp -R preview/.omp/rules "stage/${ROOT}"
           tar -C stage -czf "dist/${name}.tar.gz" "${ROOT}"
