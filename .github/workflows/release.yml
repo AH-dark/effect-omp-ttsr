@@ -12,6 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TAG: ${{ github.event.release.tag_name }}
+      ROOT: ${{ github.event.repository.name }}
     steps:
       - uses: actions/checkout@v5
         with:
@@ -25,9 +26,10 @@ jobs:
       - name: Package rules
         run: |
           name="effect-v4-omp-rules-${TAG}"
-          mkdir -p dist
-          tar -C preview -czf "dist/${name}.tar.gz" .omp/rules
-          (cd preview && zip -qr "../dist/${name}.zip" .omp/rules)
+          mkdir -p dist stage
+          cp -R preview/.omp/rules "stage/${ROOT}"
+          tar -C stage -czf "dist/${name}.tar.gz" "${ROOT}"
+          (cd stage && zip -qr "../dist/${name}.zip" "${ROOT}")
           (cd dist && sha256sum -- *.tar.gz *.zip > SHA256SUMS)
 
       - name: Upload release assets

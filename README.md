@@ -137,7 +137,9 @@ The standalone check fails on errors; warnings and suggestions remain visible.
 
 `bun run build` writes generated example files to `preview/` (not committed),
 not a second installation. Each published GitHub release attaches the generated
-`.omp/rules` directory as `.tar.gz` and `.zip` archives.
+rule files as `.tar.gz` and `.zip` archives; they extract to a visible
+`effect-omp-ttsr/` directory of Markdown rules. Copy them into a project's
+`.omp/rules/` to use them.
 Generate project-specific files with the installer instead of copying placeholder
 absolute paths from the preview.
 
