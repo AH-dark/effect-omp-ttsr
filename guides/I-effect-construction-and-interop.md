@@ -40,7 +40,7 @@ Do not execute a side effect while constructing Effect.succeed or at module init
 
 Use Effect.sync for deferred operations whose thrown exceptions are defects. Use Effect.try with a typed catch mapping for expected exceptions.
 
-**Automatic reminders:** `effect-v4-schema-sync`
+**Automatic reminders:** `effect-v4-schema-sync`, `effect-v4-bun-compression`
 
 **Related diagnostics:** `effectTryWithoutCatch`
 

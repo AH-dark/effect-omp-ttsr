@@ -10,7 +10,7 @@ Trusted internal values do not require repeated decoding. Serialization must pre
 
 Treat external input as unknown until it has passed a Schema decoder. Avoid type assertions that pretend validation occurred.
 
-**Automatic reminders:** `effect-v4-native-json`
+**Automatic reminders:** `effect-v4-native-json`, `effect-v4-bun-encoding`
 
 **Related diagnostics:** `preferTypedSchemaDecoder`
 
@@ -20,7 +20,7 @@ Treat external input as unknown until it has passed a Schema decoder. Avoid type
 
 Parse and encode JSON through the appropriate Schema codec. Use fromJsonString for strings and the correct JSON codec for JSON values.
 
-**Automatic reminders:** `effect-v4-native-json`
+**Automatic reminders:** `effect-v4-native-json`, `effect-v4-bun-encoding`
 
 **Related diagnostics:** `globalJson`, `globalJsonInEffect`
 
@@ -30,7 +30,7 @@ Parse and encode JSON through the appropriate Schema codec. Use fromJsonString f
 
 Inside an Effect workflow, use Effect-based Schema decode and encode operations so expected validation errors stay typed.
 
-**Automatic reminders:** `effect-v4-native-json`, `effect-v4-schema-sync`
+**Automatic reminders:** `effect-v4-native-json`, `effect-v4-schema-sync`, `effect-v4-bun-encoding`
 
 **Related diagnostics:** `schemaSync`, `schemaSyncInEffect`
 

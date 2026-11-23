@@ -7,7 +7,7 @@ Each entry lists its TTSR reminder names, related tsgo diagnostics, and the
 remaining review responsibility. A related diagnostic covers a recognizable
 subcase; it does not establish the complete policy contract.
 
-All 27 TTSR rules use `astCondition`. No rule watches prose, thinking, or a
+All 52 TTSR rules use `astCondition`. No rule watches prose, thinking, or a
 generic `async`, `await`, `throw`, or `Promise` keyword. Comments and string
 literals containing API examples therefore do not fire these AST patterns.
 

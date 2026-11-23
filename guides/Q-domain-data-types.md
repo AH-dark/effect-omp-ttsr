@@ -60,7 +60,7 @@ Use BigDecimal for exact decimal calculations when the domain requires it. Choos
 
 Use Equal, Hash, HashSet, or related data types when value semantics are needed. Preserve object identity where identity is meaningful.
 
-**Automatic reminders:** None; use contextual review.
+**Automatic reminders:** `effect-v4-bun-hashing`, `effect-v4-bun-data-utils`
 
 **Related diagnostics:** None listed; use contextual review.
 

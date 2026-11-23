@@ -10,7 +10,7 @@ Configuration bootstrap adapters may read the host environment. Decode missing, 
 
 Read application settings through Config and ConfigProvider instead of reading process.env in business code.
 
-**Automatic reminders:** `effect-v4-process-env`, `effect-v4-bun-native`
+**Automatic reminders:** `effect-v4-process-env`, `effect-v4-bun-argv`, `effect-v4-bun-env`
 
 **Related diagnostics:** `processEnv`, `processEnvInEffect`
 
@@ -20,7 +20,7 @@ Read application settings through Config and ConfigProvider instead of reading p
 
 Decode and validate configuration at its boundary with Config and Schema rather than spreading ad hoc parsing through business logic.
 
-**Automatic reminders:** `effect-v4-process-env`
+**Automatic reminders:** `effect-v4-process-env`, `effect-v4-bun-env`
 
 **Related diagnostics:** None listed; use contextual review.
 
@@ -40,7 +40,7 @@ Mark required settings explicitly. Add defaults only when missing configuration 
 
 Represent sensitive configuration as Redacted values. Keep the wrapper until the external boundary needs the secret.
 
-**Automatic reminders:** `effect-v4-process-env`
+**Automatic reminders:** `effect-v4-process-env`, `effect-v4-bun-env`, `effect-v4-bun-password`
 
 **Related diagnostics:** None listed; use contextual review.
 
@@ -50,7 +50,7 @@ Represent sensitive configuration as Redacted values. Keep the wrapper until the
 
 Unwrap a Redacted value only at a necessary boundary. Keep secrets out of logs, traces, errors, and diagnostic messages.
 
-**Automatic reminders:** None; use contextual review.
+**Automatic reminders:** `effect-v4-bun-env`
 
 **Related diagnostics:** None listed; use contextual review.
 

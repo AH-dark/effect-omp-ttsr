@@ -10,7 +10,7 @@ A small finite array is not automatically a stream. Preserve ordering, buffering
 
 Use Stream for ongoing or incremental effectful data sources instead of hand-managed event loops and native stream plumbing.
 
-**Automatic reminders:** `effect-v4-node-streams`
+**Automatic reminders:** `effect-v4-node-streams`, `effect-v4-bun-streams`
 
 **Related diagnostics:** `nodeBuiltinImport`
 
@@ -20,7 +20,7 @@ Use Stream for ongoing or incremental effectful data sources instead of hand-man
 
 Use bounded buffers and concurrency where load can grow. Do not let a faster producer create unlimited pending work.
 
-**Automatic reminders:** `effect-v4-node-streams`
+**Automatic reminders:** `effect-v4-node-streams`, `effect-v4-bun-streams`
 
 **Related diagnostics:** None listed; use contextual review.
 
@@ -30,7 +30,7 @@ Use bounded buffers and concurrency where load can grow. Do not let a faster pro
 
 Do not runCollect an unbounded source or load a large file without a size policy. Use incremental processing or an explicit bound.
 
-**Automatic reminders:** `effect-v4-node-streams`
+**Automatic reminders:** `effect-v4-node-streams`, `effect-v4-bun-streams`
 
 **Related diagnostics:** None listed; use contextual review.
 
@@ -50,7 +50,7 @@ Acquire stream resources with stream-aware or scoped constructors. Keep their Sc
 
 Use Sink or incremental folds for aggregation and output. Choose leftover and termination behavior deliberately.
 
-**Automatic reminders:** `effect-v4-node-streams`
+**Automatic reminders:** `effect-v4-node-streams`, `effect-v4-bun-streams`
 
 **Related diagnostics:** None listed; use contextual review.
 

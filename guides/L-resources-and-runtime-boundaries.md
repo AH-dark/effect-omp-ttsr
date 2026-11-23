@@ -10,7 +10,7 @@ Exclude application entry points and framework bridges from the configured scope
 
 Use acquireRelease, acquireUseRelease, or acquireDisposable for owned resources as appropriate. Define acquisition failure behavior.
 
-**Automatic reminders:** None; use contextual review.
+**Automatic reminders:** `effect-v4-bun-sockets`, `effect-v4-bun-sql`
 
 **Related diagnostics:** `acquireReleaseDisposable`
 
@@ -20,7 +20,7 @@ Use acquireRelease, acquireUseRelease, or acquireDisposable for owned resources 
 
 Open and close Scope at the owner of the resource lifetime. Do not remove Scope requirements with a cast.
 
-**Automatic reminders:** None; use contextual review.
+**Automatic reminders:** `effect-v4-bun-sockets`
 
 **Related diagnostics:** `scopeInLayerEffect`, `unsafeEffectTypeAssertion`
 
@@ -50,7 +50,7 @@ Do not return or store a scoped resource for use after its owner has closed. Ext
 
 For a standalone application, run the main Effect with the correct platform runMain so shutdown and interruption are handled.
 
-**Automatic reminders:** `effect-v4-process-exit`, `effect-v4-runtime-in-business`
+**Automatic reminders:** `effect-v4-process-exit`, `effect-v4-runtime-in-business`, `effect-v4-bun-argv`, `effect-v4-bun-http-server`, `effect-v4-bun-runtime-internals`
 
 **Related diagnostics:** None listed; use contextual review.
 
@@ -60,7 +60,7 @@ For a standalone application, run the main Effect with the correct platform runM
 
 Integrate Promise-only frameworks at a dedicated adapter or entry point. Reuse the intended application context and dispose its lifetime correctly.
 
-**Automatic reminders:** `effect-v4-process-exit`, `effect-v4-runtime-in-business`
+**Automatic reminders:** `effect-v4-process-exit`, `effect-v4-runtime-in-business`, `effect-v4-bun-runtime-internals`, `effect-v4-bun-module`
 
 **Related diagnostics:** `runEffectInsideEffect`
 

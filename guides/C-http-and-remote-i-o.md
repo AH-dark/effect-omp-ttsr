@@ -10,7 +10,7 @@ A required vendor SDK may remain behind an injected adapter. Preserve status han
 
 Use an injected Effect HttpClient for HTTP requests instead of global fetch or direct Node HTTP calls.
 
-**Automatic reminders:** `effect-v4-node-http`, `effect-v4-foreign-http-clients`, `effect-v4-global-fetch`, `effect-v4-bun-native`
+**Automatic reminders:** `effect-v4-node-http`, `effect-v4-foreign-http-clients`, `effect-v4-global-fetch`, `effect-v4-bun-http-client`
 
 **Related diagnostics:** `globalFetch`, `globalFetchInEffect`, `nodeBuiltinImport`
 
@@ -20,7 +20,7 @@ Use an injected Effect HttpClient for HTTP requests instead of global fetch or d
 
 Use existing Effect HTTP capabilities before adding another HTTP client. Put unavoidable vendor clients behind a service.
 
-**Automatic reminders:** `effect-v4-foreign-http-clients`
+**Automatic reminders:** `effect-v4-foreign-http-clients`, `effect-v4-bun-http-server`, `effect-v4-bun-cookies`
 
 **Related diagnostics:** None listed; use contextual review.
 
@@ -30,7 +30,7 @@ Use existing Effect HTTP capabilities before adding another HTTP client. Put una
 
 Specify which HTTP status codes count as success or typed failure. Do not assume transport success implies application success.
 
-**Automatic reminders:** `effect-v4-node-http`, `effect-v4-global-fetch`
+**Automatic reminders:** `effect-v4-node-http`, `effect-v4-global-fetch`, `effect-v4-bun-http-client`
 
 **Related diagnostics:** None listed; use contextual review.
 
@@ -40,7 +40,7 @@ Specify which HTTP status codes count as success or typed failure. Do not assume
 
 Decode external response bodies with a Schema. Keep transport, parsing, and domain validation errors distinguishable.
 
-**Automatic reminders:** `effect-v4-global-fetch`
+**Automatic reminders:** `effect-v4-global-fetch`, `effect-v4-bun-http-client`
 
 **Related diagnostics:** `schemaSyncInEffect`
 
@@ -50,7 +50,7 @@ Decode external response bodies with a Schema. Keep transport, parsing, and doma
 
 Consume response bodies in the lifetime required by the HTTP API. Do not leak a response stream past its resource scope.
 
-**Automatic reminders:** `effect-v4-node-http`, `effect-v4-global-fetch`
+**Automatic reminders:** `effect-v4-node-http`, `effect-v4-global-fetch`, `effect-v4-bun-http-client`
 
 **Related diagnostics:** None listed; use contextual review.
 
@@ -60,7 +60,7 @@ Consume response bodies in the lifetime required by the HTTP API. Do not leak a 
 
 Define timeout and retry behavior deliberately. Retry only operations and failures for which repeating work is safe.
 
-**Automatic reminders:** `effect-v4-node-http`, `effect-v4-global-fetch`
+**Automatic reminders:** `effect-v4-node-http`, `effect-v4-global-fetch`, `effect-v4-bun-http-client`
 
 **Related diagnostics:** None listed; use contextual review.
 

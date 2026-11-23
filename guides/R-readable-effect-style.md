@@ -60,7 +60,7 @@ Use explicit callback parameters when a point-free reference loses generics, sel
 
 Prefer Effect Array, Record, and String helpers when their semantics fit. Check Option returns, indexing, mutation, callback arguments, and Unicode behavior before replacing native operations.
 
-**Automatic reminders:** None; use contextual review.
+**Automatic reminders:** `effect-v4-bun-data-utils`
 
 **Related diagnostics:** `preferEffectArray`, `preferEffectRecord`, `preferEffectString`
 

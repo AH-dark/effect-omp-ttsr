@@ -10,7 +10,7 @@ Small pure helpers do not need services. Per-request resources are valid when re
 
 Model external and replaceable dependencies as v4 Context.Service identifiers with stable keys.
 
-**Automatic reminders:** None; use contextual review.
+**Automatic reminders:** `effect-v4-bun-sockets`, `effect-v4-bun-dns`, `effect-v4-bun-sql`, `effect-v4-bun-redis`, `effect-v4-bun-s3`, `effect-v4-bun-compression`, `effect-v4-bun-module`
 
 **Related diagnostics:** `classSelfMismatch`, `genericEffectServices`, `serviceNotAsClass`, `deterministicKeys`
 
@@ -20,7 +20,7 @@ Model external and replaceable dependencies as v4 Context.Service identifiers wi
 
 Use Layer to construct service implementations and their dependencies. Keep live and test implementations replaceable.
 
-**Automatic reminders:** None; use contextual review.
+**Automatic reminders:** `effect-v4-bun-s3`
 
 **Related diagnostics:** `missingLayerContext`
 
@@ -60,7 +60,7 @@ Reuse Layer values when memoized sharing is intended. Use fresh construction onl
 
 Provide the application service graph at a clear composition boundary. Avoid repeated provide chains that unintentionally rebuild lifetimes.
 
-**Automatic reminders:** None; use contextual review.
+**Automatic reminders:** `effect-v4-bun-http-server`, `effect-v4-bun-sql`
 
 **Related diagnostics:** `multipleEffectProvide`, `strictEffectProvide`
 

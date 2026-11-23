@@ -3,7 +3,7 @@
 A reusable, project-scoped policy library for Effect v4 business code.
 
 - 120 policies across all 20 selected areas
-- 27 short AST-based OMP TTSR rules, including Bun native APIs
+- 52 short AST-based OMP TTSR rules, 26 of them for Bun native APIs
 - 141 scoped Effect tsgo diagnostics, with separate correctness and style severity
 - 20 detailed policy guides and an explicit coverage map
 - No always-apply prompt and no model-judged rules
@@ -131,6 +131,7 @@ The standalone check fails on errors; warnings and suggestions remain visible.
 - `docs/scoping.md`: path gates and exclusion behavior
 - `docs/semantics.md`: migrations that need semantic care
 - `docs/enforcement.md`: prompt budget, diagnostic severity, and coverage limits
+- `docs/bun.md`: Bun native API to Effect replacement map
 - `examples/`: business code and an explicit SDK adapter
 - `SOURCES.md`: versions, commits, and authoritative references
 

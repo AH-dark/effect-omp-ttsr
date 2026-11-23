@@ -589,32 +589,263 @@
     "limitation": "AST matching is syntactic. Type-aware diagnostics handle aliases and shadowed bindings."
   },
   {
-    "name": "effect-v4-bun-native",
-    "policies": [
-      "B1",
-      "C1",
-      "D1",
-      "E1",
-      "F3",
-      "G1"
-    ],
-    "patterns": [
-      "import $$$ from \"bun\"",
-      "require(\"bun\")",
-      "import(\"bun\")",
-      "import $$$ from \"bun:sqlite\"",
-      "require(\"bun:sqlite\")",
-      "import(\"bun:sqlite\")",
-      "import $$$ from \"bun:ffi\"",
-      "require(\"bun:ffi\")",
-      "import(\"bun:ffi\")",
-      "Bun.$PROP",
-      "globalThis.Bun"
-    ],
-    "body": "Do not use Bun native APIs here. Use Effect services: FileSystem instead of Bun.file and Bun.write, HttpClient or the HTTP server instead of Bun.serve, ChildProcess instead of Bun.spawn and Bun.$, Config instead of Bun.env, Effect.sleep instead of Bun.sleep, and SecureRandom or the crypto service for hashes and UUIDs. Keep unavoidable Bun code in an excluded adapter.",
+    "name": "effect-v4-bun-files",
+    "policies": ["B1", "B2", "B4", "B5"],
+    "patterns": ["Bun.file", "Bun.write", "Bun.mmap", "Bun.embeddedFiles"],
+    "body": "Use the FileSystem service instead of Bun.file, Bun.write, Bun.mmap, or Bun.embeddedFiles: readFile, readFileString, writeFile, writeFileString, stream, sink, and open for a scoped file handle. Provide BunFileSystem or BunServices layers at the entry point. Wrapping Bun calls in Effect.promise does not make them a replaceable service.",
     "interrupt": "tool-only",
     "positive": "export const read = Bun.file(\"order.json\").text();",
-    "negative": "import { FileSystem } from \"effect\";",
-    "limitation": "AST matching is syntactic and does not cover bun:test. Aliased Bun bindings are not resolved."
+    "negative": "const text = fs.readFileString(\"order.json\");",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-glob",
+    "policies": ["B1", "B5"],
+    "patterns": ["Bun.Glob"],
+    "body": "Replace Bun.Glob with FileSystem.glob for directory scans, or the effect Glob module (Glob.make, Glob.match) for pure pattern matching. Stream or bound large scan results.",
+    "interrupt": "tool-only",
+    "positive": "const glob = new Bun.Glob(\"**/*.ts\");",
+    "negative": "const files = fs.glob(\"**/*.ts\");",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-paths",
+    "policies": ["B3"],
+    "patterns": ["Bun.fileURLToPath", "Bun.pathToFileURL", "Bun.resolve", "Bun.resolveSync", "Bun.main"],
+    "body": "Use the Path service instead of Bun.fileURLToPath, Bun.pathToFileURL, Bun.resolve, Bun.resolveSync, or Bun.main: path.fromFileUrl, path.toFileUrl, and path.resolve. Module resolution and entry-file detection belong to the application entry point, not business code.",
+    "interrupt": "tool-only",
+    "positive": "const file = Bun.fileURLToPath(url);",
+    "negative": "const file = path.fromFileUrl(url);",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-stdio",
+    "policies": ["B6", "H2"],
+    "patterns": ["Bun.stdin", "Bun.stdout", "Bun.stderr", "Bun.Terminal", "Bun.stringWidth", "Bun.stripANSI", "Bun.sliceAnsi", "Bun.wrapAnsi", "Bun.color", "Bun.enableANSIColors"],
+    "body": "Use Terminal (readLine, readInput, display) or Stdio instead of Bun.stdin, Bun.stdout, Bun.stderr, or Bun.Terminal. Use Effect.log for logs and Console for intentional human output. ANSI helpers such as Bun.stringWidth, Bun.stripANSI, Bun.wrapAnsi, and Bun.color belong in effect/cli output or an excluded presentation adapter.",
+    "interrupt": "tool-only",
+    "positive": "await Bun.write(Bun.stdout, \"done\\n\");",
+    "negative": "const show = terminal.display(\"done\\n\");",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-argv",
+    "policies": ["G1", "L5"],
+    "patterns": ["Bun.argv"],
+    "body": "Parse command-line input with effect/cli Command, Flag, and Argument, or read Stdio.args, instead of Bun.argv. Run the command from the entry point with BunRuntime.runMain and pass parsed values into business code.",
+    "interrupt": "tool-only",
+    "positive": "const [, , input] = Bun.argv;",
+    "negative": "const input = Argument.string(\"input\");",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-env",
+    "policies": ["G1", "G2", "G4", "G5"],
+    "patterns": ["Bun.env", "Bun.secrets"],
+    "body": "Read settings through Config instead of Bun.env or Bun.secrets. Validate them with Config.schema, keep secrets in Config.Redacted values, and replace the ConfigProvider in tests. Host environment and secret-store access belong to a configuration layer provided at the entry point.",
+    "interrupt": "tool-only",
+    "positive": "const port = Bun.env.PORT;",
+    "negative": "const port = Config.schema(Schema.FiniteFromString, \"PORT\");",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-http-server",
+    "policies": ["C2", "L5", "M6"],
+    "patterns": ["Bun.serve", "Bun.FileSystemRouter", "Bun.CSRF"],
+    "body": "Define routes with HttpRouter or HttpApi from effect/http and serve them with HttpServer instead of Bun.serve or Bun.FileSystemRouter. Provide BunHttpServer.layer at the entry point. Implement cross-cutting concerns such as CSRF as HttpMiddleware instead of Bun.CSRF, and decode request input with Schema.",
+    "interrupt": "tool-only",
+    "positive": "Bun.serve({ fetch: () => new Response(\"ok\") });",
+    "negative": "const routes = HttpRouter.add(\"GET\", \"/\", handler);",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-http-client",
+    "policies": ["C1", "C3", "C4", "C5", "C6"],
+    "patterns": ["Bun.fetch"],
+    "body": "Use the injected HttpClient from effect/http instead of Bun.fetch. Build requests with HttpClientRequest, handle status codes explicitly, decode bodies with Schema, and provide FetchHttpClient.layer or BunHttpClient at the entry point so interruption cancels the request.",
+    "interrupt": "tool-only",
+    "positive": "const response = await Bun.fetch(\"https://example.com\");",
+    "negative": "const response = client.get(\"https://example.com\");",
+    "limitation": "AST matching is syntactic. Global fetch is reported by effect-v4-global-fetch."
+  },
+  {
+    "name": "effect-v4-bun-cookies",
+    "policies": ["C2"],
+    "patterns": ["Bun.Cookie", "Bun.CookieMap"],
+    "body": "Use the Cookies module from effect/http instead of Bun.Cookie or Bun.CookieMap. Read request cookies from HttpServerRequest and set response cookies on HttpServerResponse.",
+    "interrupt": "tool-only",
+    "positive": "const jar = new Bun.CookieMap(header);",
+    "negative": "const jar = Cookies.fromSetCookie(headers);",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-sockets",
+    "policies": ["L1", "L2", "M1"],
+    "patterns": ["Bun.connect", "Bun.listen", "Bun.udpSocket", "Bun.udp"],
+    "body": "Use Socket, SocketServer, and DatagramSocket from effect/socket instead of Bun.connect, Bun.listen, Bun.udpSocket, or Bun.udp. Acquire connections in a Scope so they close on interruption, and provide the Bun socket layers at the entry point.",
+    "interrupt": "tool-only",
+    "positive": "const socket = await Bun.connect({ hostname: \"localhost\", port: 8080, socket: handlers });",
+    "negative": "const socket = yield* Socket.Socket;",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-dns",
+    "policies": ["M1"],
+    "patterns": ["Bun.dns"],
+    "body": "Resolve names through the Dns service from effect/net instead of Bun.dns so lookups are injectable, interruptible, and replaceable in tests.",
+    "interrupt": "tool-only",
+    "positive": "const addresses = await Bun.dns.lookup(\"example.com\");",
+    "negative": "const dns = yield* Dns.Dns;",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-subprocess",
+    "policies": ["D1", "D2", "D3", "D4"],
+    "patterns": ["Bun.spawn", "Bun.spawnSync", "Bun.$", "Bun.which"],
+    "body": "Use ChildProcess and ChildProcessSpawner from effect/process instead of Bun.spawn, Bun.spawnSync, Bun.$, or Bun.which. Pass explicit argument arrays instead of shell strings, choose environment inheritance deliberately, scope the process lifetime, and consume output as a Stream.",
+    "interrupt": "tool-only",
+    "positive": "const child = Bun.spawn([\"git\", \"status\"]);",
+    "negative": "const command = ChildProcess.make(\"git\", [\"status\"]);",
+    "limitation": "AST matching is syntactic. Named imports from bun, including $, are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-time",
+    "policies": ["E1", "E4"],
+    "patterns": ["Bun.sleep", "Bun.sleepSync", "Bun.nanoseconds"],
+    "body": "Use Effect.sleep instead of Bun.sleep or Bun.sleepSync, and Clock.currentTimeNanos or Clock.currentTimeMillis instead of Bun.nanoseconds. Clock-based code stays interruptible and controllable with TestClock.",
+    "interrupt": "tool-only",
+    "positive": "await Bun.sleep(1000);",
+    "negative": "const wait = Effect.sleep(\"1 second\");",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-cron",
+    "policies": ["E2"],
+    "patterns": ["Bun.cron"],
+    "body": "Schedule recurring work with Schedule.cron and the Cron module instead of Bun.cron. Run the schedule in a fiber owned by a Scope or Layer so shutdown stops it.",
+    "interrupt": "tool-only",
+    "positive": "Bun.cron(\"0 * * * *\", job);",
+    "negative": "const hourly = Schedule.cron(\"0 * * * *\");",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-password",
+    "policies": ["F4", "G4"],
+    "patterns": ["Bun.password"],
+    "body": "Hash and verify passwords with the Password service from effect/crypto instead of Bun.password. Pass passwords as Redacted values, call needsRehash to upgrade stored hashes, and configure the algorithm in the Password layer.",
+    "interrupt": "tool-only",
+    "positive": "const hash = await Bun.password.hash(input);",
+    "negative": "const hash = password.hash(Redacted.make(input));",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-hashing",
+    "policies": ["F4", "F6", "Q6"],
+    "patterns": ["Bun.hash", "Bun.CryptoHasher", "Bun.sha", "Bun.MD4", "Bun.MD5", "Bun.SHA1", "Bun.SHA224", "Bun.SHA256", "Bun.SHA384", "Bun.SHA512", "Bun.SHA512_256"],
+    "body": "Use Digest from effect/crypto (sha256, sha512, digestHex) instead of Bun.CryptoHasher, Bun.sha, or Bun.SHA256-style classes, and Mac for HMAC. Bun.hash is non-cryptographic: use the effect Hash module only for in-memory equality hashing, never for security or persisted identifiers.",
+    "interrupt": "tool-only",
+    "positive": "const digest = new Bun.CryptoHasher(\"sha256\").update(body).digest(\"hex\");",
+    "negative": "const digest = Digest.digestHex(Digest.sha256, body);",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-uuid",
+    "policies": ["F3", "F4", "F5"],
+    "patterns": ["Bun.randomUUIDv7", "Bun.randomUUIDv5"],
+    "body": "Generate UUIDs with SecureRandom from effect/crypto (uuidV7 or uuidV4) instead of Bun.randomUUIDv7, and provide its layer at the entry point. Bun.randomUUIDv5 derives a deterministic name-based ID: compute it from Digest in a pure helper or adapter.",
+    "interrupt": "tool-only",
+    "positive": "const id = Bun.randomUUIDv7();",
+    "negative": "const id = secureRandom.uuidV7;",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-sql",
+    "policies": ["L1", "M1", "M6"],
+    "patterns": ["Bun.sql", "Bun.SQL", "Bun.postgres", "import $$$ from \"bun:sqlite\"", "require(\"bun:sqlite\")", "import(\"bun:sqlite\")"],
+    "body": "Use SqlClient from effect/sql instead of Bun.sql, Bun.SQL, Bun.postgres, or bun:sqlite. Provide @effect/sql-sqlite-bun or @effect/sql-pg layers at the entry point, run multi-statement work in withTransaction, and decode rows with SqlSchema.",
+    "interrupt": "tool-only",
+    "positive": "import { Database } from \"bun:sqlite\";",
+    "negative": "const sql = yield* SqlClient.SqlClient;",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-redis",
+    "policies": ["M1", "P5"],
+    "patterns": ["Bun.redis", "Bun.RedisClient"],
+    "body": "Use the Redis service from effect/persistence, provided by BunRedis at the entry point, instead of Bun.redis or Bun.RedisClient. For plain caching prefer KeyValueStore or PersistedCache so the backend stays replaceable.",
+    "interrupt": "tool-only",
+    "positive": "const value = await Bun.redis.get(\"key\");",
+    "negative": "const store = yield* KeyValueStore.KeyValueStore;",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-s3",
+    "policies": ["M1", "M2"],
+    "patterns": ["Bun.s3", "Bun.S3Client"],
+    "body": "Effect has no built-in S3 client. Define a service for the storage operations business code needs, implement it with Bun.s3 or an SDK in an excluded adapter Layer, map failures to typed errors, and expose object bodies as Stream values.",
+    "interrupt": "tool-only",
+    "positive": "const object = Bun.s3.file(\"reports/today.csv\");",
+    "negative": "const storage = yield* ReportStorage;",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-streams",
+    "policies": ["O1", "O2", "O3", "O5"],
+    "patterns": ["Bun.readableStreamToArray", "Bun.readableStreamToArrayBuffer", "Bun.readableStreamToBytes", "Bun.readableStreamToBlob", "Bun.readableStreamToText", "Bun.readableStreamToJSON", "Bun.readableStreamToFormData", "Bun.ArrayBufferSink", "Bun.concatArrayBuffers"],
+    "body": "Use Stream and Sink instead of Bun.readableStreamTo* helpers, Bun.ArrayBufferSink, or Bun.concatArrayBuffers. Convert at the boundary with Stream.fromReadableStream, then use decodeText, mkString, runCollect, or a fitting Sink, bounding how much is collected.",
+    "interrupt": "tool-only",
+    "positive": "const text = await Bun.readableStreamToText(body);",
+    "negative": "const text = Stream.mkString(Stream.decodeText(stream));",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-encoding",
+    "policies": ["N1", "N2", "N3"],
+    "patterns": ["Bun.TOML", "Bun.YAML", "Bun.JSON5", "Bun.JSONC", "Bun.JSONL", "Bun.XML"],
+    "body": "Parse with effect/encoding modules instead of Bun.TOML, Bun.YAML, Bun.JSON5, Bun.JSONC, Bun.JSONL, or Bun.XML: Toml.parse, Yaml.parse, Json5.parse, Jsonc.parse, Ndjson, and Xml. Then decode the parsed value with a Schema so failures stay typed.",
+    "interrupt": "tool-only",
+    "positive": "const config = Bun.TOML.parse(text);",
+    "negative": "const config = Toml.parse(text);",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-compression",
+    "policies": ["I4", "M1"],
+    "patterns": ["Bun.gzipSync", "Bun.gunzipSync", "Bun.deflateSync", "Bun.inflateSync", "Bun.zstdCompress", "Bun.zstdCompressSync", "Bun.zstdDecompress", "Bun.zstdDecompressSync", "Bun.Archive"],
+    "body": "Use Zip or Tar from effect/encoding instead of Bun.Archive, and HttpMiddleware.compression for HTTP responses. Effect has no general gzip, deflate, or zstd module: put Bun compression calls in an injected adapter service with typed errors, because synchronous variants block the fiber.",
+    "interrupt": "tool-only",
+    "positive": "const packed = Bun.gzipSync(data);",
+    "negative": "const packed = compressor.gzip(data);",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-data-utils",
+    "policies": ["Q6", "R6"],
+    "patterns": ["Bun.deepEquals", "Bun.deepMatch", "Bun.semver", "Bun.inspect", "Bun.escapeHTML"],
+    "body": "Use Equal.equals instead of Bun.deepEquals or Bun.deepMatch, SemVer and SemVerRange instead of Bun.semver, and Formatter.format instead of Bun.inspect. HTML escaping with Bun.escapeHTML belongs in the rendering adapter.",
+    "interrupt": "tool-only",
+    "positive": "const same = Bun.deepEquals(left, right);",
+    "negative": "const same = Equal.equals(left, right);",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-runtime-internals",
+    "policies": ["D6", "L5", "L6"],
+    "patterns": ["Bun.build", "Bun.plugin", "Bun.Transpiler", "Bun.gc", "Bun.shrink", "Bun.generateHeapSnapshot", "Bun.peek", "Bun.openInEditor", "Bun.unsafe", "Bun.allocUnsafe", "Bun.indexOfLine", "Bun.isMainThread", "Bun.isStandaloneExecutable", "Bun.version", "Bun.version_with_sha", "Bun.revision", "Bun.Image", "Bun.WebView", "import $$$ from \"bun:ffi\"", "require(\"bun:ffi\")", "import(\"bun:ffi\")", "import $$$ from \"bun:jsc\"", "require(\"bun:jsc\")", "import(\"bun:jsc\")"],
+    "body": "Bun runtime and tooling APIs such as Bun.build, Bun.plugin, Bun.Transpiler, Bun.gc, Bun.peek, Bun.unsafe, Bun.version, Bun.WebView, bun:ffi, and bun:jsc do not belong in business code. Keep them in build scripts or the entry point, and pass any needed runtime facts in through Config or a service.",
+    "interrupt": "tool-only",
+    "positive": "Bun.gc(true);",
+    "negative": "const version = Config.string(\"APP_VERSION\");",
+    "limitation": "AST matching is syntactic. Named imports from bun are reported by effect-v4-bun-module."
+  },
+  {
+    "name": "effect-v4-bun-module",
+    "policies": ["A4", "L6", "M1"],
+    "patterns": ["import $$$ from \"bun\"", "require(\"bun\")", "import(\"bun\")", "globalThis.Bun"],
+    "body": "Importing from bun or reading globalThis.Bun ties business code to the Bun runtime. Use the effect replacement for each API, such as FileSystem, HttpServer, HttpClient, ChildProcess, Config, SqlClient, or SecureRandom, and provide Bun implementations with @effect/platform-bun layers at the entry point.",
+    "interrupt": "tool-only",
+    "positive": "import { $ } from \"bun\";",
+    "negative": "import { ChildProcess } from \"effect/process\";",
+    "limitation": "AST matching is syntactic and does not cover bun:test. Type-only imports from bun also match."
   }
 ]

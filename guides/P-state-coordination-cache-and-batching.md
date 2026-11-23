@@ -50,7 +50,7 @@ Use Deferred, PubSub, SubscriptionRef, or a semaphore according to whether the r
 
 Use Cache or Effect caching when suitable. Define keys, capacity, TTL, invalidation, and whether failures are cached.
 
-**Automatic reminders:** None; use contextual review.
+**Automatic reminders:** `effect-v4-bun-redis`
 
 **Related diagnostics:** None listed; use contextual review.
 

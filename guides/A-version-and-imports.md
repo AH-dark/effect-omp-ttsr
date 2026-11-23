@@ -40,7 +40,7 @@ Import Schema and Match from the v4 effect package instead of obsolete standalon
 
 Use FileSystem and Path from effect. Use the installed v4 HTTP, process, crypto, and runtime exports.
 
-**Automatic reminders:** `effect-v4-obsolete-imports`
+**Automatic reminders:** `effect-v4-obsolete-imports`, `effect-v4-bun-module`
 
 **Related diagnostics:** `nodeBuiltinImport`
 

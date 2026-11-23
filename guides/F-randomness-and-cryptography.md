@@ -30,7 +30,7 @@ Use Random operations with documented integer-range and shuffle semantics. Check
 
 Use SecureRandom from effect/crypto for secure UUID generation when the installed version supports the needed format.
 
-**Automatic reminders:** `effect-v4-node-crypto`, `effect-v4-secure-uuid`, `effect-v4-bun-native`
+**Automatic reminders:** `effect-v4-node-crypto`, `effect-v4-secure-uuid`, `effect-v4-bun-uuid`
 
 **Related diagnostics:** `cryptoRandomUUID`, `cryptoRandomUUIDInEffect`
 
@@ -40,7 +40,7 @@ Use SecureRandom from effect/crypto for secure UUID generation when the installe
 
 Use a cryptographically secure source for tokens, secrets, and security-sensitive identifiers. Never replace it with seeded Random.
 
-**Automatic reminders:** `effect-v4-node-crypto`, `effect-v4-secure-uuid`
+**Automatic reminders:** `effect-v4-node-crypto`, `effect-v4-secure-uuid`, `effect-v4-bun-password`, `effect-v4-bun-hashing`, `effect-v4-bun-uuid`
 
 **Related diagnostics:** None listed; use contextual review.
 
@@ -50,7 +50,7 @@ Use a cryptographically secure source for tokens, secrets, and security-sensitiv
 
 Provide a deterministic Random seed or test service for ordinary randomness. Keep security-sensitive test doubles explicit.
 
-**Automatic reminders:** `effect-v4-global-random`, `effect-v4-secure-uuid`
+**Automatic reminders:** `effect-v4-global-random`, `effect-v4-secure-uuid`, `effect-v4-bun-uuid`
 
 **Related diagnostics:** None listed; use contextual review.
 
@@ -60,7 +60,7 @@ Provide a deterministic Random seed or test service for ordinary randomness. Kee
 
 Use an Effect crypto operation only when algorithm, encoding, timing, and security properties match. Put unmatched native crypto behind an adapter.
 
-**Automatic reminders:** `effect-v4-node-crypto`
+**Automatic reminders:** `effect-v4-node-crypto`, `effect-v4-bun-hashing`
 
 **Related diagnostics:** `nodeBuiltinImport`
 

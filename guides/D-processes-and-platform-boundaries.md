@@ -10,7 +10,7 @@ Low-level platform operations without an equivalent belong in adapters. Command 
 
 Describe subprocesses with the installed v4 ChildProcess API and execute them through ChildProcessSpawner.
 
-**Automatic reminders:** `effect-v4-node-child-process`, `effect-v4-bun-native`
+**Automatic reminders:** `effect-v4-node-child-process`, `effect-v4-bun-subprocess`
 
 **Related diagnostics:** `nodeBuiltinImport`
 
@@ -20,7 +20,7 @@ Describe subprocesses with the installed v4 ChildProcess API and execute them th
 
 Pass command arguments as separate values. Use a shell only when shell semantics are required and inputs are handled safely.
 
-**Automatic reminders:** `effect-v4-node-child-process`
+**Automatic reminders:** `effect-v4-node-child-process`, `effect-v4-bun-subprocess`
 
 **Related diagnostics:** None listed; use contextual review.
 
@@ -30,7 +30,7 @@ Pass command arguments as separate values. Use a shell only when shell semantics
 
 Expose subprocess execution through an injected service. Business modules should not start a global process executor.
 
-**Automatic reminders:** `effect-v4-node-child-process`
+**Automatic reminders:** `effect-v4-node-child-process`, `effect-v4-bun-subprocess`
 
 **Related diagnostics:** `nodeBuiltinImport`
 
@@ -40,7 +40,7 @@ Expose subprocess execution through an injected service. Business modules should
 
 Consume potentially large subprocess output incrementally with Stream or Sink. Choose a bounded collection limit when collecting.
 
-**Automatic reminders:** `effect-v4-node-child-process`
+**Automatic reminders:** `effect-v4-node-child-process`, `effect-v4-bun-subprocess`
 
 **Related diagnostics:** None listed; use contextual review.
 
@@ -60,7 +60,7 @@ Return typed outcomes from business code. Application startup owns exit status, 
 
 Restrict Node APIs that have suitable Effect replacements. For unmatched capabilities, define an adapter instead of inventing an Effect equivalent.
 
-**Automatic reminders:** None; use contextual review.
+**Automatic reminders:** `effect-v4-bun-runtime-internals`
 
 **Related diagnostics:** `nodeBuiltinImport`
 

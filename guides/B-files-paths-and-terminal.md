@@ -10,7 +10,7 @@ Exclude platform adapters and application startup from the configured scope. Pre
 
 Read, write, inspect, copy, remove, and enumerate files through the FileSystem service.
 
-**Automatic reminders:** `effect-v4-node-files`, `effect-v4-bun-native`
+**Automatic reminders:** `effect-v4-node-files`, `effect-v4-bun-files`, `effect-v4-bun-glob`
 
 **Related diagnostics:** `nodeBuiltinImport`
 
@@ -20,7 +20,7 @@ Read, write, inspect, copy, remove, and enumerate files through the FileSystem s
 
 Keep synchronous filesystem I/O out of business code. Wrapping a blocking Node operation in Effect.sync does not make it nonblocking.
 
-**Automatic reminders:** `effect-v4-node-files`
+**Automatic reminders:** `effect-v4-node-files`, `effect-v4-bun-files`
 
 **Related diagnostics:** `nodeBuiltinImport`
 
@@ -30,7 +30,7 @@ Keep synchronous filesystem I/O out of business code. Wrapping a blocking Node o
 
 Use the injected Path service for platform-dependent path operations. Make POSIX or Windows-specific semantics explicit.
 
-**Automatic reminders:** `effect-v4-node-path`
+**Automatic reminders:** `effect-v4-node-path`, `effect-v4-bun-paths`
 
 **Related diagnostics:** `nodeBuiltinImport`
 
@@ -40,7 +40,7 @@ Use the injected Path service for platform-dependent path operations. Make POSIX
 
 Use scoped file handles and scoped temporary resources when their lifetime belongs to the operation. Close or remove resources on interruption.
 
-**Automatic reminders:** `effect-v4-node-files`
+**Automatic reminders:** `effect-v4-node-files`, `effect-v4-bun-files`
 
 **Related diagnostics:** None listed; use contextual review.
 
@@ -50,7 +50,7 @@ Use scoped file handles and scoped temporary resources when their lifetime belon
 
 Use FileSystem stream and watch operations when processing incremental content or changes. Keep consumption bounded.
 
-**Automatic reminders:** `effect-v4-node-files`
+**Automatic reminders:** `effect-v4-node-files`, `effect-v4-bun-files`, `effect-v4-bun-glob`
 
 **Related diagnostics:** `nodeBuiltinImport`
 
@@ -60,7 +60,7 @@ Use FileSystem stream and watch operations when processing incremental content o
 
 Use Terminal for interactive input and output. Keep machine-readable command output separate from application logs.
 
-**Automatic reminders:** None; use contextual review.
+**Automatic reminders:** `effect-v4-bun-stdio`
 
 **Related diagnostics:** `nodeBuiltinImport`
 

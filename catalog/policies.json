@@ -75,7 +75,8 @@
       "nodeBuiltinImport"
     ],
     "triggers": [
-      "effect-v4-obsolete-imports"
+      "effect-v4-obsolete-imports",
+      "effect-v4-bun-module"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -130,7 +131,8 @@
     ],
     "triggers": [
       "effect-v4-node-files",
-      "effect-v4-bun-native"
+      "effect-v4-bun-files",
+      "effect-v4-bun-glob"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -152,7 +154,8 @@
       "nodeBuiltinImport"
     ],
     "triggers": [
-      "effect-v4-node-files"
+      "effect-v4-node-files",
+      "effect-v4-bun-files"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -174,7 +177,8 @@
       "nodeBuiltinImport"
     ],
     "triggers": [
-      "effect-v4-node-path"
+      "effect-v4-node-path",
+      "effect-v4-bun-paths"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -194,7 +198,8 @@
     "exceptions": "Exclude platform adapters and application startup from the configured scope. Preserve required platform-specific path behavior.",
     "diagnostics": [],
     "triggers": [
-      "effect-v4-node-files"
+      "effect-v4-node-files",
+      "effect-v4-bun-files"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -215,7 +220,9 @@
       "nodeBuiltinImport"
     ],
     "triggers": [
-      "effect-v4-node-files"
+      "effect-v4-node-files",
+      "effect-v4-bun-files",
+      "effect-v4-bun-glob"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -236,13 +243,16 @@
     "diagnostics": [
       "nodeBuiltinImport"
     ],
-    "triggers": [],
+    "triggers": [
+      "effect-v4-bun-stdio"
+    ],
     "reviewRequired": true,
     "application": "business source",
     "source": "https://effect.website/docs/v4/platform/file-system",
     "coverage": [
       "review",
-      "tsgo"
+      "tsgo",
+      "ttsr-reminder"
     ]
   },
   {
@@ -261,7 +271,7 @@
       "effect-v4-node-http",
       "effect-v4-foreign-http-clients",
       "effect-v4-global-fetch",
-      "effect-v4-bun-native"
+      "effect-v4-bun-http-client"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -281,7 +291,9 @@
     "exceptions": "A required vendor SDK may remain behind an injected adapter. Preserve status handling, streaming, retry, and cancellation behavior when migrating.",
     "diagnostics": [],
     "triggers": [
-      "effect-v4-foreign-http-clients"
+      "effect-v4-foreign-http-clients",
+      "effect-v4-bun-http-server",
+      "effect-v4-bun-cookies"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -301,7 +313,8 @@
     "diagnostics": [],
     "triggers": [
       "effect-v4-node-http",
-      "effect-v4-global-fetch"
+      "effect-v4-global-fetch",
+      "effect-v4-bun-http-client"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -322,7 +335,8 @@
       "schemaSyncInEffect"
     ],
     "triggers": [
-      "effect-v4-global-fetch"
+      "effect-v4-global-fetch",
+      "effect-v4-bun-http-client"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -343,7 +357,8 @@
     "diagnostics": [],
     "triggers": [
       "effect-v4-node-http",
-      "effect-v4-global-fetch"
+      "effect-v4-global-fetch",
+      "effect-v4-bun-http-client"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -363,7 +378,8 @@
     "diagnostics": [],
     "triggers": [
       "effect-v4-node-http",
-      "effect-v4-global-fetch"
+      "effect-v4-global-fetch",
+      "effect-v4-bun-http-client"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -385,7 +401,7 @@
     ],
     "triggers": [
       "effect-v4-node-child-process",
-      "effect-v4-bun-native"
+      "effect-v4-bun-subprocess"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -405,7 +421,8 @@
     "exceptions": "Low-level platform operations without an equivalent belong in adapters. Command argument and environment semantics must remain unchanged.",
     "diagnostics": [],
     "triggers": [
-      "effect-v4-node-child-process"
+      "effect-v4-node-child-process",
+      "effect-v4-bun-subprocess"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -426,7 +443,8 @@
       "nodeBuiltinImport"
     ],
     "triggers": [
-      "effect-v4-node-child-process"
+      "effect-v4-node-child-process",
+      "effect-v4-bun-subprocess"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -446,7 +464,8 @@
     "exceptions": "Low-level platform operations without an equivalent belong in adapters. Command argument and environment semantics must remain unchanged.",
     "diagnostics": [],
     "triggers": [
-      "effect-v4-node-child-process"
+      "effect-v4-node-child-process",
+      "effect-v4-bun-subprocess"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -485,13 +504,16 @@
     "diagnostics": [
       "nodeBuiltinImport"
     ],
-    "triggers": [],
+    "triggers": [
+      "effect-v4-bun-runtime-internals"
+    ],
     "reviewRequired": true,
     "application": "business source",
     "source": "https://effect.website/docs/v4/platform/introduction",
     "coverage": [
       "review",
-      "tsgo"
+      "tsgo",
+      "ttsr-reminder"
     ]
   },
   {
@@ -509,7 +531,7 @@
     "triggers": [
       "effect-v4-node-timers",
       "effect-v4-global-timers",
-      "effect-v4-bun-native"
+      "effect-v4-bun-time"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -533,7 +555,8 @@
     ],
     "triggers": [
       "effect-v4-node-timers",
-      "effect-v4-global-timers"
+      "effect-v4-global-timers",
+      "effect-v4-bun-cron"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -576,7 +599,8 @@
       "globalDateInEffect"
     ],
     "triggers": [
-      "effect-v4-global-clock"
+      "effect-v4-global-clock",
+      "effect-v4-bun-time"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -686,7 +710,7 @@
     "triggers": [
       "effect-v4-node-crypto",
       "effect-v4-secure-uuid",
-      "effect-v4-bun-native"
+      "effect-v4-bun-uuid"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -707,7 +731,10 @@
     "diagnostics": [],
     "triggers": [
       "effect-v4-node-crypto",
-      "effect-v4-secure-uuid"
+      "effect-v4-secure-uuid",
+      "effect-v4-bun-password",
+      "effect-v4-bun-hashing",
+      "effect-v4-bun-uuid"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -727,7 +754,8 @@
     "diagnostics": [],
     "triggers": [
       "effect-v4-global-random",
-      "effect-v4-secure-uuid"
+      "effect-v4-secure-uuid",
+      "effect-v4-bun-uuid"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -748,7 +776,8 @@
       "nodeBuiltinImport"
     ],
     "triggers": [
-      "effect-v4-node-crypto"
+      "effect-v4-node-crypto",
+      "effect-v4-bun-hashing"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -772,7 +801,8 @@
     ],
     "triggers": [
       "effect-v4-process-env",
-      "effect-v4-bun-native"
+      "effect-v4-bun-argv",
+      "effect-v4-bun-env"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -792,7 +822,8 @@
     "exceptions": "Configuration bootstrap adapters may read the host environment. Decode missing, malformed, and empty values according to explicit application requirements.",
     "diagnostics": [],
     "triggers": [
-      "effect-v4-process-env"
+      "effect-v4-process-env",
+      "effect-v4-bun-env"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -830,7 +861,9 @@
     "exceptions": "Configuration bootstrap adapters may read the host environment. Decode missing, malformed, and empty values according to explicit application requirements.",
     "diagnostics": [],
     "triggers": [
-      "effect-v4-process-env"
+      "effect-v4-process-env",
+      "effect-v4-bun-env",
+      "effect-v4-bun-password"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -848,12 +881,15 @@
     "instruction": "Unwrap a Redacted value only at a necessary boundary. Keep secrets out of logs, traces, errors, and diagnostic messages.",
     "exceptions": "Configuration bootstrap adapters may read the host environment. Decode missing, malformed, and empty values according to explicit application requirements.",
     "diagnostics": [],
-    "triggers": [],
+    "triggers": [
+      "effect-v4-bun-env"
+    ],
     "reviewRequired": true,
     "application": "business source",
     "source": "https://effect.website/docs/v4/configuration",
     "coverage": [
-      "review"
+      "review",
+      "ttsr-reminder"
     ]
   },
   {
@@ -911,7 +947,8 @@
     "exceptions": "Human-facing terminal output and protocol output are not application logs. Avoid adding spans to tiny pure helpers or high-cardinality metric labels.",
     "diagnostics": [],
     "triggers": [
-      "effect-v4-global-console"
+      "effect-v4-global-console",
+      "effect-v4-bun-stdio"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -1063,7 +1100,8 @@
       "effectTryWithoutCatch"
     ],
     "triggers": [
-      "effect-v4-schema-sync"
+      "effect-v4-schema-sync",
+      "effect-v4-bun-compression"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -1385,13 +1423,17 @@
     "diagnostics": [
       "acquireReleaseDisposable"
     ],
-    "triggers": [],
+    "triggers": [
+      "effect-v4-bun-sockets",
+      "effect-v4-bun-sql"
+    ],
     "reviewRequired": true,
     "application": "business source",
     "source": "https://effect.website/docs/v4/resource-management/introduction",
     "coverage": [
       "review",
-      "tsgo"
+      "tsgo",
+      "ttsr-reminder"
     ]
   },
   {
@@ -1405,13 +1447,16 @@
       "scopeInLayerEffect",
       "unsafeEffectTypeAssertion"
     ],
-    "triggers": [],
+    "triggers": [
+      "effect-v4-bun-sockets"
+    ],
     "reviewRequired": true,
     "application": "business source",
     "source": "https://effect.website/docs/v4/resource-management/introduction",
     "coverage": [
       "review",
-      "tsgo"
+      "tsgo",
+      "ttsr-reminder"
     ]
   },
   {
@@ -1456,7 +1501,10 @@
     "diagnostics": [],
     "triggers": [
       "effect-v4-process-exit",
-      "effect-v4-runtime-in-business"
+      "effect-v4-runtime-in-business",
+      "effect-v4-bun-argv",
+      "effect-v4-bun-http-server",
+      "effect-v4-bun-runtime-internals"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -1478,7 +1526,9 @@
     ],
     "triggers": [
       "effect-v4-process-exit",
-      "effect-v4-runtime-in-business"
+      "effect-v4-runtime-in-business",
+      "effect-v4-bun-runtime-internals",
+      "effect-v4-bun-module"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -1502,13 +1552,22 @@
       "serviceNotAsClass",
       "deterministicKeys"
     ],
-    "triggers": [],
+    "triggers": [
+      "effect-v4-bun-sockets",
+      "effect-v4-bun-dns",
+      "effect-v4-bun-sql",
+      "effect-v4-bun-redis",
+      "effect-v4-bun-s3",
+      "effect-v4-bun-compression",
+      "effect-v4-bun-module"
+    ],
     "reviewRequired": true,
     "application": "business source",
     "source": "https://effect.website/docs/v4/requirements-management/services",
     "coverage": [
       "review",
-      "tsgo"
+      "tsgo",
+      "ttsr-reminder"
     ]
   },
   {
@@ -1521,13 +1580,16 @@
     "diagnostics": [
       "missingLayerContext"
     ],
-    "triggers": [],
+    "triggers": [
+      "effect-v4-bun-s3"
+    ],
     "reviewRequired": true,
     "application": "business source",
     "source": "https://effect.website/docs/v4/requirements-management/services",
     "coverage": [
       "review",
-      "tsgo"
+      "tsgo",
+      "ttsr-reminder"
     ]
   },
   {
@@ -1595,13 +1657,17 @@
       "multipleEffectProvide",
       "strictEffectProvide"
     ],
-    "triggers": [],
+    "triggers": [
+      "effect-v4-bun-http-server",
+      "effect-v4-bun-sql"
+    ],
     "reviewRequired": true,
     "application": "business source",
     "source": "https://effect.website/docs/v4/requirements-management/services",
     "coverage": [
       "review",
-      "tsgo"
+      "tsgo",
+      "ttsr-reminder"
     ]
   },
   {
@@ -1615,7 +1681,8 @@
       "preferTypedSchemaDecoder"
     ],
     "triggers": [
-      "effect-v4-native-json"
+      "effect-v4-native-json",
+      "effect-v4-bun-encoding"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -1638,7 +1705,8 @@
       "globalJsonInEffect"
     ],
     "triggers": [
-      "effect-v4-native-json"
+      "effect-v4-native-json",
+      "effect-v4-bun-encoding"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -1662,7 +1730,8 @@
     ],
     "triggers": [
       "effect-v4-native-json",
-      "effect-v4-schema-sync"
+      "effect-v4-schema-sync",
+      "effect-v4-bun-encoding"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -1748,7 +1817,8 @@
       "nodeBuiltinImport"
     ],
     "triggers": [
-      "effect-v4-node-streams"
+      "effect-v4-node-streams",
+      "effect-v4-bun-streams"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -1768,7 +1838,8 @@
     "exceptions": "A small finite array is not automatically a stream. Preserve ordering, buffering, error behavior, and resource ownership when migrating a pipeline.",
     "diagnostics": [],
     "triggers": [
-      "effect-v4-node-streams"
+      "effect-v4-node-streams",
+      "effect-v4-bun-streams"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -1787,7 +1858,8 @@
     "exceptions": "A small finite array is not automatically a stream. Preserve ordering, buffering, error behavior, and resource ownership when migrating a pipeline.",
     "diagnostics": [],
     "triggers": [
-      "effect-v4-node-streams"
+      "effect-v4-node-streams",
+      "effect-v4-bun-streams"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -1825,7 +1897,8 @@
     "exceptions": "A small finite array is not automatically a stream. Preserve ordering, buffering, error behavior, and resource ownership when migrating a pipeline.",
     "diagnostics": [],
     "triggers": [
-      "effect-v4-node-streams"
+      "effect-v4-node-streams",
+      "effect-v4-bun-streams"
     ],
     "reviewRequired": true,
     "application": "business source",
@@ -1926,12 +1999,15 @@
     "instruction": "Use Cache or Effect caching when suitable. Define keys, capacity, TTL, invalidation, and whether failures are cached.",
     "exceptions": "Local mutation inside a pure, non-escaping calculation is allowed. Coordination, caching, and batching are introduced only when the actual behavior needs them.",
     "diagnostics": [],
-    "triggers": [],
+    "triggers": [
+      "effect-v4-bun-redis"
+    ],
     "reviewRequired": true,
     "application": "business source",
     "source": "https://effect.website/docs/v4/state-management/ref",
     "coverage": [
-      "review"
+      "review",
+      "ttsr-reminder"
     ]
   },
   {
@@ -2038,12 +2114,16 @@
     "instruction": "Use Equal, Hash, HashSet, or related data types when value semantics are needed. Preserve object identity where identity is meaningful.",
     "exceptions": "Do not mechanically replace external nullability contracts, ordinary numbers, object identity, or simple branches. Convert at a deliberate domain boundary.",
     "diagnostics": [],
-    "triggers": [],
+    "triggers": [
+      "effect-v4-bun-hashing",
+      "effect-v4-bun-data-utils"
+    ],
     "reviewRequired": true,
     "application": "business source",
     "source": "https://effect.website/docs/v4/data-types/option",
     "coverage": [
-      "review"
+      "review",
+      "ttsr-reminder"
     ]
   },
   {
@@ -2157,13 +2237,16 @@
       "preferEffectRecord",
       "preferEffectString"
     ],
-    "triggers": [],
+    "triggers": [
+      "effect-v4-bun-data-utils"
+    ],
     "reviewRequired": true,
     "application": "business source",
     "source": "https://effect.website/docs/v4/code-style/guidelines",
     "coverage": [
       "review",
-      "tsgo"
+      "tsgo",
+      "ttsr-reminder"
     ]
   },
   {

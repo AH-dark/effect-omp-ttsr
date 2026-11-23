@@ -10,7 +10,7 @@ Pure conversion of an existing timestamp may stay pure. Preserve wall-clock vers
 
 Use Effect.sleep for interruptible waiting. Do not implement sleeps with timers or Promise constructors.
 
-**Automatic reminders:** `effect-v4-node-timers`, `effect-v4-global-timers`, `effect-v4-bun-native`
+**Automatic reminders:** `effect-v4-node-timers`, `effect-v4-global-timers`, `effect-v4-bun-time`
 
 **Related diagnostics:** `globalTimers`, `globalTimersInEffect`, `newPromise`
 
@@ -20,7 +20,7 @@ Use Effect.sleep for interruptible waiting. Do not implement sleeps with timers 
 
 Use Schedule and Effect repetition for recurring jobs. Specify fixed-rate versus spaced timing deliberately.
 
-**Automatic reminders:** `effect-v4-node-timers`, `effect-v4-global-timers`
+**Automatic reminders:** `effect-v4-node-timers`, `effect-v4-global-timers`, `effect-v4-bun-cron`
 
 **Related diagnostics:** `globalTimers`, `globalTimersInEffect`
 
@@ -40,7 +40,7 @@ Use Effect.retry with an explicit Schedule or retry policy. Bound attempts or el
 
 Get current time through Clock or the corresponding Effect time API so tests can control it.
 
-**Automatic reminders:** `effect-v4-global-clock`
+**Automatic reminders:** `effect-v4-global-clock`, `effect-v4-bun-time`
 
 **Related diagnostics:** `globalDate`, `globalDateInEffect`
 

@@ -20,7 +20,7 @@ Write application logs with Effect.log operations and configured Logger services
 
 Use Console or Terminal for intentional user output. Keep logs separate from JSON, binary, or other machine-readable output.
 
-**Automatic reminders:** `effect-v4-global-console`
+**Automatic reminders:** `effect-v4-global-console`, `effect-v4-bun-stdio`
 
 **Related diagnostics:** None listed; use contextual review.
 
